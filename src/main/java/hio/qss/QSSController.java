@@ -5,6 +5,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class QSSController {
@@ -684,16 +685,49 @@ public class QSSController {
         Pane pane = (Pane) O0_0.getParent();
         String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"};
 
+        // Board pixel boundaries (derived from polygon positions + scale)
+        double boardLeft   = 25;
+        double boardRight  = 995;
+        double boardTop    = 23;
+        double boardBottom = 993;
+        double frameEnd    = 1025; // right/bottom edge of the visible border frame
+
+        // --- Background border rectangles ---
+        // Brown strips on left and right (behind the row numbers)
+        Rectangle brownLeft = new Rectangle(0, 0, boardLeft, frameEnd);
+        brownLeft.setFill(Color.web("#8B4513"));
+
+        Rectangle brownRight = new Rectangle(boardRight, 0, frameEnd - boardRight, frameEnd);
+        brownRight.setFill(Color.web("#8B4513"));
+
+        // Black strips on top and bottom (behind the column labels, on top of brown at corners)
+        Rectangle blackTop = new Rectangle(0, 0, frameEnd, boardTop);
+        blackTop.setFill(Color.BLACK);
+
+        Rectangle blackBottom = new Rectangle(0, boardBottom, frameEnd, frameEnd - boardBottom);
+        blackBottom.setFill(Color.BLACK);
+
+        // Insert at index 0 in reverse layering order so final order is:
+        // [brownLeft, brownRight, blackTop, blackBottom, ...polygons...]
+        // → brown renders first (back), black in front, polygons on top
+        pane.getChildren().add(0, blackBottom);
+        pane.getChildren().add(0, blackTop);
+        pane.getChildren().add(0, brownRight);
+        pane.getChildren().add(0, brownLeft);
+
+        // --- Labels (added last so they render on top of everything) ---
         for (int col = 0; col < 11; col++) {
             double x = 70 + col * 88;
 
-            //Top Row : A-K
+            // Top row: A-K (white text — visible on black background)
             Text topLabel = new Text(x - 5, 15, letters[col]);
             topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+            topLabel.setFill(Color.WHITE);
 
-            //Bottom Row: A-K
+            // Bottom row: A-K (white text — visible on black background)
             Text bottomLabel = new Text(x - 5, 1010, letters[col]);
             bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+            bottomLabel.setFill(Color.WHITE);
 
             pane.getChildren().addAll(topLabel, bottomLabel);
         }
@@ -702,9 +736,11 @@ public class QSSController {
             double y = 68 + row * 88;
             int number = 11 - row;
 
+            // Left numbers (black text on brown background)
             Text leftLabel = new Text(10, y + 5, String.valueOf(number));
             leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
+            // Right numbers (black text on brown background)
             Text rightLabel = new Text(1005, y + 5, String.valueOf(number));
             rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
