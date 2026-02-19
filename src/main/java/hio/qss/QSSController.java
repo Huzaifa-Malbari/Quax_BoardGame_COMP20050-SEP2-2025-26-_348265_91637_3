@@ -2,11 +2,12 @@ package hio.qss;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 
 public class QSSController {
-
     @FXML
     private Polygon O0_0;
 
@@ -674,6 +675,41 @@ public class QSSController {
     void getCellID(MouseEvent event) {
         Polygon polygon = (Polygon) event.getSource();
         polygon.setFill(Color.valueOf("Black"));
+    }
+    @FXML
+    public void initialize() {
+      addBoardLabels();
+    }
+    private void addBoardLabels() {
+        Pane pane = (Pane) O0_0.getParent();
+        String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"};
+
+        for (int col = 0; col < 11; col++) {
+            double x = 70 + col * 88;
+
+            //Top Row : A-K
+            Text topLabel = new Text(x - 5, 15, letters[col]);
+            topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+            //Bottom Row: A-K
+            Text bottomLabel = new Text(x - 5, 1010, letters[col]);
+            bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+            pane.getChildren().addAll(topLabel, bottomLabel);
+        }
+
+        for (int row = 0; row < 11; row++) {
+            double y = 68 + row * 88;
+            int number = 11 - row;
+
+            Text leftLabel = new Text(10, y + 5, String.valueOf(number));
+            leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+            Text rightLabel = new Text(1005, y + 5, String.valueOf(number));
+            rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+            pane.getChildren().addAll(leftLabel, rightLabel);
+        }
     }
 
 }
