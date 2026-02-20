@@ -39,3 +39,10 @@ build/
 .DS_Store
 
 .idea/*
+
+javafx/
+junit/
+run.cmd
+src/main/java/hio/qss/Launcher.class
+src/main/java/hio/qss/QSSApplication.class
+src/main/java/hio/qss/QSSController.class
