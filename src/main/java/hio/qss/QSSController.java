@@ -672,14 +672,25 @@ public class QSSController {
     @FXML
     private Polygon R9_9;
 
+    Game game;
     @FXML
     void getCellID(MouseEvent event) {
         Polygon polygon = (Polygon) event.getSource();
-        polygon.setFill(Color.valueOf("Black"));
+        Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
+
+        //Get cell properties
+        String id = polygon.getId();
+        Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
+        String[] tockens = id.substring(1).split("_");
+        Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
+        if (success)
+            polygon.setFill(color);
+
     }
     @FXML
     public void initialize() {
       addBoardLabels();
+      game = new Game();
     }
     private void addBoardLabels() {
         Pane pane = (Pane) O0_0.getParent();
