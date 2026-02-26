@@ -17,14 +17,12 @@ public class Game {
 
         if (isRhombic) {
             if (rcells[row][col] != null) {
-                JOptionPane.showMessageDialog(null,"Cell already occupied");
                 return false;
             }
             RawCell cell = new RawCell(true, (isBlack) ? CellStatus.B : CellStatus.W);
             rcells[row][col] = cell;
         }else {
             if (ocells[row][col] != null) {
-                JOptionPane.showMessageDialog(null,"Cell already occupied");
                 return false;
             }
             RawCell cell = new RawCell(false, (isBlack) ? CellStatus.B : CellStatus.W);

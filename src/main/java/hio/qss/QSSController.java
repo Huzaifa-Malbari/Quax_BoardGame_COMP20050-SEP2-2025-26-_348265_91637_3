@@ -1,12 +1,17 @@
 package hio.qss;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.control.Alert;
+
+import javax.swing.*;
 
 public class QSSController {
     @FXML
@@ -676,16 +681,26 @@ public class QSSController {
     @FXML
     void getCellID(MouseEvent event) {
         Polygon polygon = (Polygon) event.getSource();
+        placeCell(polygon);
+    }
+
+    private void placeCell(Polygon polygon) {
         Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
-        //Get cell properties
+        //Get gui id
         String id = polygon.getId();
+        //Get cell indices
         Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
         String[] tockens = id.substring(1).split("_");
+        //Query and update Model
         Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
-        if (success)
+        //Update View
+        if (success) {
             polygon.setFill(color);
-
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
     @FXML
     public void initialize() {
