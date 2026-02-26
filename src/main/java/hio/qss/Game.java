@@ -10,7 +10,7 @@ public class Game {
     public Game() {
         isBlack = true;
         ocells = new Cell[11][11];
-        rcells = new Cell[11][11];
+        rcells = new Cell[10][10];
     }
 
     public Boolean placeCell(Boolean isRhombic, int row, int col) {
