@@ -692,7 +692,7 @@ public class QSSController {
         double boardBottom = 993;
         double frameEnd    = 1025; // right/bottom edge of the visible border frame
 
-        // --- Background border rectangles ---
+        //Background border rectangles
         // Brown strips on left and right (behind the row numbers)
         Rectangle brownLeft = new Rectangle(0, 0, boardLeft, frameEnd);
         brownLeft.setFill(Color.web("#8B4513"));
