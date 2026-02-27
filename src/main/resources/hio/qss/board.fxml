@@ -9,10 +9,11 @@
 <?import javafx.scene.text.Font?>
 
 
-<ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController">
+<ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController" >
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1170.0" prefWidth="1209.0">
-         <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1170.0" prefWidth="1209.0" >
+
+         <Label fx:id="turnLabel" layoutX="300" layoutY="55" prefHeight="31.0" prefWidth="200.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 18;" text="Black's Turn" textAlignment="CENTER" />
             <BorderPane layoutX="1135.0" layoutY="139.0" prefHeight="914.0" prefWidth="53.0" style="-fx-background-color: white;" />
             <BorderPane layoutX="176.0" layoutY="139.0" prefHeight="914.0" prefWidth="46.0" style="-fx-background-color: white;" />
             <BorderPane layoutX="175.0" layoutY="93.0" prefHeight="46.0" prefWidth="1011.0" style="-fx-background-color: black;" />
@@ -3644,7 +3645,7 @@
           </font>
       
       </Label>
-         </children>
-      </AnchorPane>
-   </content>
-</ScrollPane>
+         </AnchorPane>
+      </content>
+   </ScrollPane>
+

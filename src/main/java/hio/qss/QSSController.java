@@ -3,15 +3,13 @@ package hio.qss;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.control.Alert;
-
-import javax.swing.*;
 
 public class QSSController {
     @FXML
@@ -677,13 +675,25 @@ public class QSSController {
     @FXML
     private Polygon R9_9;
 
+   @FXML
+   private Label turnLabel;
+
     Game game;
+
     @FXML
     void getCellID(MouseEvent event) {
         Polygon polygon = (Polygon) event.getSource();
         placeCell(polygon);
     }
 
+     private void setPlayerTurnText(String text) {
+      if(game.isBlack()) {
+          turnLabel.setText("Black's Turn");
+      }
+       else {
+          turnLabel.setText("Whites Turn");
+      }
+     }
     private void placeCell(Polygon polygon) {
         Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
@@ -697,6 +707,7 @@ public class QSSController {
         //Update View
         if (success) {
             polygon.setFill(color);
+            setPlayerTurnText(null);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
             alert.showAndWait();
