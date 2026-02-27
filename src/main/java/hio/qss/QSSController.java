@@ -678,7 +678,7 @@ public class QSSController {
    @FXML
    private Label turnLabel;
 
-    Game game;
+    Game game = new Game();
 
     @FXML
     void getCellID(MouseEvent event) {
@@ -694,6 +694,11 @@ public class QSSController {
           turnLabel.setText("Whites Turn");
       }
      }
+
+     String getTurnText() {
+        return game.isBlack() ? "Black's Turn" : "White's Turn";
+     }
+
     private void placeCell(Polygon polygon) {
         Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
