@@ -11,9 +11,9 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController" >
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1170.0" prefWidth="1209.0" >
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1270.0" prefWidth="1470.0" >
 
-         <Label fx:id="turnLabel" layoutX="300" layoutY="55" prefHeight="31.0" prefWidth="200.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 18;" text="Black's Turn" textAlignment="CENTER" />
+         <Label fx:id="turnLabel" layoutX="395.0" layoutY="1152.0" prefHeight="31.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 18;" text="Black's Turn" textAlignment="CENTER" />
             <BorderPane layoutX="1135.0" layoutY="139.0" prefHeight="914.0" prefWidth="53.0" style="-fx-background-color: white;" />
             <BorderPane layoutX="176.0" layoutY="139.0" prefHeight="914.0" prefWidth="46.0" style="-fx-background-color: white;" />
             <BorderPane layoutX="175.0" layoutY="93.0" prefHeight="46.0" prefWidth="1011.0" style="-fx-background-color: black;" />
@@ -2438,6 +2438,49 @@
                   <Double fx:value="75.1" />
                </points>
             </Polygon>
+
+         <Polygon fx:id="O10_11" fill="black" layoutX="200.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+            <points>
+               <Double fx:value="75.1" />
+               <Double fx:value="40.0" />
+               <Double fx:value="124.9" />
+               <Double fx:value="40.0" />
+               <Double fx:value="160.0" />
+               <Double fx:value="75.1" />
+               <Double fx:value="160.0" />
+               <Double fx:value="124.9" />
+               <Double fx:value="124.9" />
+               <Double fx:value="160.0" />
+               <Double fx:value="75.1" />
+               <Double fx:value="160.0" />
+               <Double fx:value="40.0" />
+               <Double fx:value="124.9" />
+               <Double fx:value="40.0" />
+               <Double fx:value="75.1" />
+            </points>
+         </Polygon>
+
+         <Polygon fx:id="O10_12" fill="#d0a60e" layoutX="1240.0" layoutY="480.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+            <points>
+               <Double fx:value="75.1" />
+               <Double fx:value="40.0" />
+               <Double fx:value="124.9" />
+               <Double fx:value="40.0" />
+               <Double fx:value="160.0" />
+               <Double fx:value="75.1" />
+               <Double fx:value="160.0" />
+               <Double fx:value="124.9" />
+               <Double fx:value="124.9" />
+               <Double fx:value="160.0" />
+               <Double fx:value="75.1" />
+               <Double fx:value="160.0" />
+               <Double fx:value="40.0" />
+               <Double fx:value="124.9" />
+               <Double fx:value="40.0" />
+               <Double fx:value="75.1" />
+            </points>
+         </Polygon>
+
             <Polygon fx:id="R0_0" fill="#eeae0b" layoutX="183.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
                <points>
                   <Double fx:value="100.0" />
@@ -3638,7 +3681,39 @@
                   <Double fx:value="100.0" />
                </points>
             </Polygon>
-            <Label layoutX="619.0" layoutY="28.0" prefHeight="31.0" prefWidth="217.0" style="-fx-text-fill: green;" text="Human VS Human" textAlignment="CENTER">
+         <Polygon fx:id="R9_10" fill="black" layoutX="265.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+            <points>
+               <Double fx:value="100.0" />
+               <Double fx:value="64.9" />
+               <Double fx:value="135.1" />
+               <Double fx:value="100.0" />
+               <Double fx:value="100.0" />
+               <Double fx:value="135.1" />
+               <Double fx:value="64.9" />
+               <Double fx:value="100.0" />
+            </points>
+            </Polygon>
+
+         <Polygon fx:id="R9_11" fill="#eeae0b" layoutX="1305.0" layoutY="480.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+            <points>
+               <Double fx:value="100.0" />
+               <Double fx:value="64.9" />
+               <Double fx:value="135.1" />
+               <Double fx:value="100.0" />
+               <Double fx:value="100.0" />
+               <Double fx:value="135.1" />
+               <Double fx:value="64.9" />
+               <Double fx:value="100.0" />
+            </points>
+         </Polygon>
+
+            <!-- Turn indicator arrow -->
+         <Label layoutX="360.0" layoutY="1155.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="&#x2192;" />
+         <!-- Unoccupied indicator labels -->
+         <Label layoutX="1250.0" layoutY="530.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="All" />
+         <Label layoutX="1250.0" layoutY="650" style="-fx-font-size: 20; -fx-font-weight: bold;" text="cells are unoccupied" />
+
+         <Label layoutX="619.0" layoutY="28.0" prefHeight="31.0" prefWidth="217.0" style="-fx-text-fill: green;" text="Human VS Human" textAlignment="CENTER">
       
           <font>
               <Font name="System Bold" size="21.0" />

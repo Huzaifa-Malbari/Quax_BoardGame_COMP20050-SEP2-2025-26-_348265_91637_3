@@ -55,6 +55,12 @@ public class QSSController {
     private Polygon O10_10;
 
     @FXML
+    private Polygon O10_11;
+
+    @FXML
+    private Polygon O10_12;
+
+    @FXML
     private Polygon O10_2;
 
     @FXML
@@ -376,6 +382,12 @@ public class QSSController {
     private Polygon O9_9;
 
     @FXML
+    private Polygon O10;
+
+    @FXML
+    private Polygon O_11;
+
+    @FXML
     private Polygon R0_0;
 
     @FXML
@@ -675,6 +687,12 @@ public class QSSController {
     @FXML
     private Polygon R9_9;
 
+    @FXML
+    private Polygon R9_10;
+
+    @FXML
+    private Polygon R9_11;
+
    @FXML
    private Label turnLabel;
 
@@ -687,12 +705,16 @@ public class QSSController {
     }
 
      private void setPlayerTurnText(String text) {
-      if(game.isBlack()) {
-          turnLabel.setText("Black's Turn");
-      }
-       else {
-          turnLabel.setText("Whites Turn");
-      }
+         Color indicatorColor;
+         if (game.isBlack()) {
+             turnLabel.setText("Black's Turn");
+             indicatorColor = Color.BLACK;
+         } else {
+             turnLabel.setText("White's Turn");
+             indicatorColor = Color.WHITE;
+         }
+         O10_11.setFill(indicatorColor);
+         R9_10.setFill(indicatorColor);
      }
 
      String getTurnText() {
@@ -722,6 +744,7 @@ public class QSSController {
     public void initialize() {
       addBoardLabels();
       game = new Game();
+      setPlayerTurnText(null);
     }
     private void addBoardLabels() {
         Pane pane = (Pane) O0_0.getParent();
