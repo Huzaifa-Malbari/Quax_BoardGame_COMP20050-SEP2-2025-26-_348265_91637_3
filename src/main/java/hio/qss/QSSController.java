@@ -55,7 +55,7 @@ public class QSSController {
     private Polygon O10_10;
 
     @FXML
-    private Polygon O10_11;
+    private Polygon promptOct;
 
     @FXML
     private Polygon O10_12;
@@ -688,7 +688,7 @@ public class QSSController {
     private Polygon R9_9;
 
     @FXML
-    private Polygon R9_10;
+    private Polygon promptRhombus;
 
     @FXML
     private Polygon R9_11;
@@ -713,8 +713,8 @@ public class QSSController {
              turnLabel.setText("White's Turn");
              indicatorColor = Color.WHITE;
          }
-         O10_11.setFill(indicatorColor);
-         R9_10.setFill(indicatorColor);
+         promptOct.setFill(indicatorColor);
+         promptRhombus.setFill(indicatorColor);
      }
 
      String getTurnText() {
