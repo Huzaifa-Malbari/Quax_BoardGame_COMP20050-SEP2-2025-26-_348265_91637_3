@@ -17,7 +17,8 @@ public class BoardCell extends RawCell{
         if (furthestCell == this) {
             return this;
         }
-        return resolveFurthest(furthestCell);
+        furthestCell = resolveFurthest(furthestCell);
+        return furthestCell;
     }
 
     public void setFurthestCell(BoardCell furthestCell) {
@@ -57,24 +58,11 @@ public class BoardCell extends RawCell{
             return false;
         }
 
-        int thisFurthestLine = getRow();
-        int thatFurthestLine = cell.getRow();
-        if (getStatus() == CellStatus.W) {
-            thisFurthestLine = getCol();
-            thatFurthestLine = cell.getCol();
+        if (getRow() < cell.getRow() || getCol() < cell.getCol()) {
+            return true;
+        }else {
+            return false;
         }
-
-        if (getRhombic()) {
-            return (thatFurthestLine > thisFurthestLine) ? true : false;
-        }
-
-        // this is octagonal
-
-        if (cell.getRhombic()) {
-            return (thatFurthestLine >= thisFurthestLine) ? true : false;
-        }
-
-        return (thatFurthestLine > thisFurthestLine) ? true : false;
 
 
     }

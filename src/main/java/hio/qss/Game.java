@@ -1,6 +1,7 @@
 package hio.qss;
 
 import javax.swing.*;
+import java.lang.classfile.constantpool.LoadableConstantEntry;
 import java.util.ArrayList;
 
 public class Game {
@@ -9,6 +10,7 @@ public class Game {
     private static int MAX_OCTAGONS = 11;
 
     private boolean isBlack;
+    private boolean blackWins;
     private boolean gameOver;
 
     private BoardCell[][] ocells;
@@ -19,6 +21,8 @@ public class Game {
         isBlack = true;
         ocells = new BoardCell[11][11];
         rcells = new BoardCell[10][10];
+        blackWins = false;
+        gameOver = false;
     }
 
     public boolean placeCell(Boolean isRhombic, int row, int col) {
@@ -46,64 +50,119 @@ public class Game {
         return isBlack;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isBlackWins() {
+        return blackWins;
+    }
+
     private void updateChains(int row, int col, boolean isRhombic) {
 
-        BoardCell thisCell  = ocells[row][col];
-        ArrayList<BoardCell> toUpdate = new ArrayList<>();
+        ArrayList<BoardCell> neighbours = getNeighbours(row, col, isRhombic);
 
+        BoardCell thisCell = ocells[row][col];
+        if (isRhombic) {
+            thisCell = rcells[row][col];
+        }
+
+        for (BoardCell cell : neighbours) {
+            if (cell != null) {
+                thisCell.setFurthestCell(cell);
+            }
+        }
+        BoardCell thisFurthest = thisCell.getFurthestCell();
+        for (BoardCell cell : neighbours) {
+            if (cell != null && (cell.getFurthestCell() != thisCell.getFurthestCell())) {
+                cell.setFurthestCell(thisFurthest);
+            }
+        }
+
+        checkForWin();
+
+        System.out.println(thisCell.toString() + "'s furthest: " + thisCell.getFurthestCell().toString());
+
+    }
+
+    private void checkForWin() {
+
+       if (isBlack) {
+           for (int i = 0; i < MAX_OCTAGONS; i++) {
+               if (ocells[0][i] == null) {
+                   continue;
+               }
+               if (ocells[0][i].getFurthestCell().getRow() == MAX_OCTAGONS - 1) {
+                   gameOver = true;
+                   blackWins = true;
+                   return;
+               }
+           }
+       }else {
+           for (int i = 0; i < MAX_OCTAGONS; i++) {
+               if (ocells[i][0] == null) {
+                   continue;
+               }
+               if (ocells[i][0].getFurthestCell().getCol() == MAX_OCTAGONS - 1) {
+                   gameOver = true;
+                   blackWins = false;
+                   return;
+               }
+           }
+       }
+
+    }
+
+    public ArrayList<BoardCell> getNeighbours(int row, int col, boolean isRhombic) {
+
+        BoardCell thisCell = ocells[row][col];
+        ArrayList<BoardCell> neighbours = new ArrayList<>();
         if (isRhombic) {
             thisCell  = rcells[row][col];
 
-            toUpdate.add(ocells[row][col]);
-            toUpdate.add(ocells[row][col + 1]);
-            toUpdate.add(ocells[row + 1][col]);
-            toUpdate.add(ocells[row + 1][col + 1]);
+            neighbours.add(ocells[row][col]);
+            neighbours.add(ocells[row][col + 1]);
+            neighbours.add(ocells[row + 1][col]);
+            neighbours.add(ocells[row + 1][col + 1]);
 
         } else {
 
             // check neighboring octagons
             if (row - 1 >= 0) {
-                toUpdate.add(ocells[row - 1][col]);
+                neighbours.add(ocells[row - 1][col]);
             }
             if (row + 1 < MAX_OCTAGONS) {
-                toUpdate.add(ocells[row + 1][col]);
+                neighbours.add(ocells[row + 1][col]);
             }
             if (col - 1 >= 0) {
-                toUpdate.add(ocells[row][col - 1]);
+                neighbours.add(ocells[row][col - 1]);
             }
             if (col + 1 < MAX_OCTAGONS) {
-                toUpdate.add(ocells[row][col + 1]);
+                neighbours.add(ocells[row][col + 1]);
             }
 
             // check neighboring rhombises
 
             if (col - 1 >= 0) {
                 if (row < MAX_RHOMBIS) {
-                    toUpdate.add(rcells[row][col - 1]);
+                    neighbours.add(rcells[row][col - 1]);
                 }
                 if (row - 1 >= 0) {
-                    toUpdate.add(rcells[row - 1][col - 1]);
+                    neighbours.add(rcells[row - 1][col - 1]);
                 }
             }
             if (col < MAX_RHOMBIS) {
                 if (row < MAX_RHOMBIS) {
-                    toUpdate.add(rcells[row][col]);
+                    neighbours.add(rcells[row][col]);
                 }
                 if (row - 1 >= 0) {
-                    toUpdate.add(rcells[row - 1][col]);
+                    neighbours.add(rcells[row - 1][col]);
                 }
 
             }
         }
 
-        for (BoardCell cell : toUpdate) {
-            if (cell != null) {
-                thisCell.setFurthestCell(cell);
-                cell.setFurthestCell(thisCell);
-            }
-        }
-
-        System.out.println(thisCell.toString() + "'s furthest: " + thisCell.getFurthestCell().toString());
+        return neighbours;
 
     }
 

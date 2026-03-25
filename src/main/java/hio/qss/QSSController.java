@@ -722,22 +722,24 @@ public class QSSController {
      }
 
     private void placeCell(Polygon polygon) {
-        Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
+        if (!game.isGameOver()){
+            Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
-        //Get gui id
-        String id = polygon.getId();
-        //Get cell indices
-        Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
-        String[] tockens = id.substring(1).split("_");
-        //Query and update Model
-        Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
-        //Update View
-        if (success) {
-            polygon.setFill(color);
-            setPlayerTurnText(null);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
-            alert.showAndWait();
+            //Get gui id
+            String id = polygon.getId();
+            //Get cell indices
+            Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
+            String[] tockens = id.substring(1).split("_");
+            //Query and update Model
+            Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
+            //Update View
+            if (success) {
+                polygon.setFill(color);
+                setPlayerTurnText(null);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
+                alert.showAndWait();
+            }
         }
     }
     @FXML
