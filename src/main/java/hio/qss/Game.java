@@ -1,7 +1,6 @@
 package hio.qss;
 
 import javax.swing.*;
-import java.lang.classfile.constantpool.LoadableConstantEntry;
 import java.util.ArrayList;
 
 public class Game {
@@ -15,6 +14,7 @@ public class Game {
 
     private BoardCell[][] ocells;
     private BoardCell[][] rcells;
+    private ArrayList<CellGroup> cellGroups;
 
 
     public Game() {
@@ -23,6 +23,7 @@ public class Game {
         rcells = new BoardCell[10][10];
         blackWins = false;
         gameOver = false;
+        cellGroups = new ArrayList<CellGroup>();
     }
 
     public boolean placeCell(Boolean isRhombic, int row, int col) {
@@ -31,19 +32,32 @@ public class Game {
             if (rcells[row][col] != null) {
                 return false;
             }
-            BoardCell cell = new BoardCell(true, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
+            BoardCell cell = createCell(row, col, isRhombic);
             rcells[row][col] = cell;
             updateChains(row, col, true);
         }else {
             if (ocells[row][col] != null) {
                 return false;
             }
-            BoardCell cell = new BoardCell(false, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
+            BoardCell cell = createCell(row, col, isRhombic);
             ocells[row][col] = cell;
             updateChains(row, col, false);
         }
         isBlack = !isBlack;
         return true;
+    }
+
+    private BoardCell createCell(int row, int col, boolean isRhombic) {
+        BoardCell cell;
+        if (isRhombic) {
+            cell = new BoardCell(true, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
+        }else {
+            cell = new BoardCell(false, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
+        }
+
+
+
+        return cell;
     }
 
     public boolean isBlack() {
@@ -60,28 +74,36 @@ public class Game {
 
     private void updateChains(int row, int col, boolean isRhombic) {
 
-        ArrayList<BoardCell> neighbours = getNeighbours(row, col, isRhombic);
-
         BoardCell thisCell = ocells[row][col];
         if (isRhombic) {
             thisCell = rcells[row][col];
         }
 
-        for (BoardCell cell : neighbours) {
-            if (cell != null) {
-                thisCell.setFurthestCell(cell);
+        ArrayList<BoardCell> neighbours = getNeighbours(row, col, isRhombic);
+        ArrayList<CellGroup> groups = new ArrayList<CellGroup>();
+        CellGroup maxGroup = new CellGroup();
+        for (BoardCell neighbour : neighbours) {
+            if (neighbour != null && neighbour.getStatus().equals(thisCell.getStatus()) && !groups.contains(neighbour.getGroup())) {
+                groups.add(neighbour.getGroup());
+                if (groups.size() > 0 && groups.getLast().size() > maxGroup.size()) {
+                    maxGroup = groups.getLast();
+                }
             }
         }
-        BoardCell thisFurthest = thisCell.getFurthestCell();
-        for (BoardCell cell : neighbours) {
-            if (cell != null && (cell.getFurthestCell() != thisCell.getFurthestCell())) {
-                cell.setFurthestCell(thisFurthest);
-            }
+
+        if (maxGroup.size() != 0) {
+            groups.remove(maxGroup);
         }
+        for (CellGroup group : groups) {
+            maxGroup.merge(group);
+        }
+
+        maxGroup.addCell(thisCell);
+        maxGroup.setFurthest(thisCell);
 
         checkForWin();
 
-        System.out.println(thisCell.toString() + "'s furthest: " + thisCell.getFurthestCell().toString());
+        System.out.println(thisCell.toString() + "'s furthest: " + thisCell.getGroup().getFurthest());
 
     }
 
@@ -89,26 +111,29 @@ public class Game {
 
        if (isBlack) {
            for (int i = 0; i < MAX_OCTAGONS; i++) {
-               if (ocells[0][i] == null) {
+               if (ocells[0][i] == null || ocells[0][i].getStatus().equals(CellStatus.W)) {
                    continue;
                }
-               if (ocells[0][i].getFurthestCell().getRow() == MAX_OCTAGONS - 1) {
+               if (ocells[0][i].getGroup().getFurthest().getRow() == MAX_OCTAGONS - 1) {
                    gameOver = true;
                    blackWins = true;
-                   return;
+                   break;
                }
            }
        }else {
            for (int i = 0; i < MAX_OCTAGONS; i++) {
-               if (ocells[i][0] == null) {
+               if (ocells[i][0] == null || ocells[i][0].getStatus().equals(CellStatus.B)) {
                    continue;
                }
-               if (ocells[i][0].getFurthestCell().getCol() == MAX_OCTAGONS - 1) {
+               if (ocells[i][0].getGroup().getFurthest().getCol() == MAX_OCTAGONS - 1) {
                    gameOver = true;
                    blackWins = false;
-                   return;
+                   break;
                }
            }
+       }
+       if (gameOver) {
+           System.out.println((blackWins) ? "Black wins" : "White wins");
        }
 
     }
@@ -165,5 +190,6 @@ public class Game {
         return neighbours;
 
     }
+
 
 }

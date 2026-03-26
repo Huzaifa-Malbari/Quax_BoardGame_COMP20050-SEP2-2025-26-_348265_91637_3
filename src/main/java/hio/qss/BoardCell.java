@@ -4,41 +4,24 @@ public class BoardCell extends RawCell{
 
     private int row;
     private int col;
-    private BoardCell furthestCell;
+    private CellGroup group;
+
+
+    public CellGroup getGroup() {
+        return group;
+    }
+
+    public void setGroup(CellGroup group) {
+        this.group = group;
+    }
+
 
     public BoardCell (Boolean isRhombic, CellStatus status, int row, int col) {
         super(isRhombic, status);
         this.row = row;
         this.col = col;
-        this.furthestCell = this;
-    }
+        group = null;
 
-    public BoardCell getFurthestCell() {
-        if (furthestCell == this) {
-            return this;
-        }
-        furthestCell = resolveFurthest(furthestCell);
-        return furthestCell;
-    }
-
-    public void setFurthestCell(BoardCell furthestCell) {
-        if (furthestCell == null) {
-            return;
-        }
-        BoardCell otherFurtheset = furthestCell.getFurthestCell();
-        if (getFurthestCell().isFurther(otherFurtheset)) {
-            this.furthestCell = otherFurtheset;
-        }
-    }
-
-    private BoardCell resolveFurthest(BoardCell cell) {
-
-        if (cell.getFurthestCell() == cell) {
-            return cell;
-        }
-
-        cell.setFurthestCell(resolveFurthest(cell.getFurthestCell()));
-        return cell.getFurthestCell();
     }
 
     public int getRow() {
@@ -58,11 +41,24 @@ public class BoardCell extends RawCell{
             return false;
         }
 
-        if (getRow() < cell.getRow() || getCol() < cell.getCol()) {
-            return true;
-        }else {
-            return false;
+        int thisFurthestLine = getRow();
+        int thatFurthestLine = cell.getRow();
+        if (getStatus() == CellStatus.W) {
+            thisFurthestLine = getCol();
+            thatFurthestLine = cell.getCol();
         }
+
+        if (getRhombic()) {
+            return (thatFurthestLine > thisFurthestLine) ? true : false;
+        }
+
+        // this is octagonal
+
+        if (cell.getRhombic()) {
+            return (thatFurthestLine >= thisFurthestLine) ? true : false;
+        }
+
+        return (thatFurthestLine > thisFurthestLine) ? true : false;
 
 
     }
