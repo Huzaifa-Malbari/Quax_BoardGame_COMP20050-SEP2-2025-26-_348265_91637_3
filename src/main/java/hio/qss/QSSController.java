@@ -55,7 +55,7 @@ public class QSSController {
     private Polygon O10_10;
 
     @FXML
-    private Polygon O10_11;
+    private Polygon promptOct;
 
     @FXML
     private Polygon O10_12;
@@ -688,7 +688,7 @@ public class QSSController {
     private Polygon R9_9;
 
     @FXML
-    private Polygon R9_10;
+    private Polygon promptRhombus;
 
     @FXML
     private Polygon R9_11;
@@ -713,8 +713,8 @@ public class QSSController {
              turnLabel.setText("White's Turn");
              indicatorColor = Color.WHITE;
          }
-         O10_11.setFill(indicatorColor);
-         R9_10.setFill(indicatorColor);
+         promptOct.setFill(indicatorColor);
+         promptRhombus.setFill(indicatorColor);
      }
 
      String getTurnText() {
@@ -722,22 +722,26 @@ public class QSSController {
      }
 
     private void placeCell(Polygon polygon) {
-        Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
+        if (!game.isGameOver()){
+            Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
-        //Get gui id
-        String id = polygon.getId();
-        //Get cell indices
-        Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
-        String[] tockens = id.substring(1).split("_");
-        //Query and update Model
-        Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
-        //Update View
-        if (success) {
-            polygon.setFill(color);
-            setPlayerTurnText(null);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
-            alert.showAndWait();
+            //Get gui id
+            String id = polygon.getId();
+            //Get cell indices
+            Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
+            String[] tockens = id.substring(1).split("_");
+            //Query and update Model
+            Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
+            //Update View
+            if (success) {
+                polygon.setFill(color);
+                setPlayerTurnText(null);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
+                alert.showAndWait();
+            }
+
+
         }
     }
     @FXML
@@ -815,5 +819,12 @@ public class QSSController {
             pane.getChildren().addAll(leftLabel, rightLabel);
         }
     }
+    /*
+
+    private void displayWinner() {
+
+    }
+
+     */
 
 }
