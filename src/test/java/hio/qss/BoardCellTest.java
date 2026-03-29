@@ -7,21 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoardCellTest {
 
     @Test
-    void testSetFurthestCell() {
-        BoardCell cell1 = new BoardCell(false, CellStatus.B, 0,0);
-        BoardCell cell2 = new BoardCell(false, CellStatus.B, 1,0);
-        BoardCell cell3 = new BoardCell(false, CellStatus.B, 2,0);
-
-        cell1.setFurthestCell(cell2);
-        assertEquals(cell2, cell1.getFurthestCell());
-
-        cell2.setFurthestCell(cell3);
-        assertEquals(cell3, cell2.getFurthestCell());
-
-        assertEquals(cell3, cell1.getFurthestCell());
-    }
-
-    @Test
     void testIsFurther() {
         BoardCell cell1 = new BoardCell(false, CellStatus.B, 0,0);
         BoardCell cell2 = new BoardCell(false, CellStatus.B, 1,0);

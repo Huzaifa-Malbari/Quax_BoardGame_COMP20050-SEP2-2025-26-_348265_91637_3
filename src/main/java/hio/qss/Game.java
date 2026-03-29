@@ -34,14 +34,14 @@ public class Game {
             }
             BoardCell cell = createCell(row, col, isRhombic);
             rcells[row][col] = cell;
-            updateChains(row, col, true);
+            updateChains(cell);
         }else {
             if (ocells[row][col] != null) {
                 return false;
             }
             BoardCell cell = createCell(row, col, isRhombic);
             ocells[row][col] = cell;
-            updateChains(row, col, false);
+            updateChains(cell);
         }
         isBlack = !isBlack;
         return true;
@@ -72,14 +72,17 @@ public class Game {
         return blackWins;
     }
 
-    private void updateChains(int row, int col, boolean isRhombic) {
+    private void updateChains(BoardCell thisCell) {
 
-        BoardCell thisCell = ocells[row][col];
+        int row = thisCell.getRow();
+        int col = thisCell.getCol();
+        boolean isRhombic = thisCell.getRhombic();
+
         if (isRhombic) {
             thisCell = rcells[row][col];
         }
 
-        ArrayList<BoardCell> neighbours = getNeighbours(row, col, isRhombic);
+        ArrayList<BoardCell> neighbours = getNeighbours(thisCell);
         ArrayList<CellGroup> groups = new ArrayList<CellGroup>();
         CellGroup maxGroup = new CellGroup();
         for (BoardCell neighbour : neighbours) {
@@ -138,10 +141,13 @@ public class Game {
 
     }
 
-    public ArrayList<BoardCell> getNeighbours(int row, int col, boolean isRhombic) {
+    public ArrayList<BoardCell> getNeighbours(BoardCell thisCell) {
 
-        BoardCell thisCell = ocells[row][col];
+        int row = thisCell.getRow();
+        int col = thisCell.getCol();
+        boolean isRhombic = thisCell.getRhombic();
         ArrayList<BoardCell> neighbours = new ArrayList<>();
+
         if (isRhombic) {
             thisCell  = rcells[row][col];
 
@@ -188,8 +194,6 @@ public class Game {
         }
 
         return neighbours;
-
     }
-
 
 }
