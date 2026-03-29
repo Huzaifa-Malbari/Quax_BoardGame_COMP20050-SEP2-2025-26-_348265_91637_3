@@ -725,6 +725,7 @@ public class QSSController {
         if (!game.isGameOver()){
             Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
+
             //Get gui id
             String id = polygon.getId();
             //Get cell indices
@@ -740,8 +741,6 @@ public class QSSController {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
                 alert.showAndWait();
             }
-
-
         }
     }
     @FXML

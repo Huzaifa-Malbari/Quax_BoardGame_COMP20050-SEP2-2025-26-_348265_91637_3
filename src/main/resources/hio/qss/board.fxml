@@ -8,10 +8,9 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController" >
+<ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1270.0" prefWidth="1470.0" >
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1270.0" prefWidth="1470.0">
 
          <Label fx:id="turnLabel" layoutX="395.0" layoutY="1152.0" prefHeight="31.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 18;" text="Black's Turn" textAlignment="CENTER" />
             <BorderPane layoutX="1135.0" layoutY="139.0" prefHeight="914.0" prefWidth="53.0" style="-fx-background-color: white;" />
@@ -2439,7 +2438,7 @@
                </points>
             </Polygon>
 
-         <Polygon fx:id="O10_11" fill="black" layoutX="200.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+         <Polygon fx:id="promptOct" fill="black" layoutX="200.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
             <points>
                <Double fx:value="75.1" />
                <Double fx:value="40.0" />
@@ -3681,7 +3680,7 @@
                   <Double fx:value="100.0" />
                </points>
             </Polygon>
-         <Polygon fx:id="R9_10" fill="black" layoutX="265.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+         <Polygon fx:id="promptRhombus" fill="black" layoutX="265.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
             <points>
                <Double fx:value="100.0" />
                <Double fx:value="64.9" />
@@ -3708,7 +3707,7 @@
          </Polygon>
 
             <!-- Turn indicator arrow -->
-         <Label layoutX="360.0" layoutY="1155.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="&#x2192;" />
+         <Label layoutX="360.0" layoutY="1155.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="→" />
          <!-- Unoccupied indicator labels -->
          <Label layoutX="1250.0" layoutY="530.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="All" />
          <Label layoutX="1250.0" layoutY="650" style="-fx-font-size: 20; -fx-font-weight: bold;" text="cells are unoccupied" />
@@ -3723,4 +3722,3 @@
          </AnchorPane>
       </content>
    </ScrollPane>
-
