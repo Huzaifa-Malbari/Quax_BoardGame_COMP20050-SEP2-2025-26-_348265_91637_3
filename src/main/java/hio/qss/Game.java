@@ -106,9 +106,6 @@ public class Game {
         maxGroup.setFurthest(thisCell);
 
         checkForWin();
-
-        System.out.println(thisCell.toString() + "'s furthest: " + thisCell.getGroup().getFurthest());
-
     }
 
     private void checkForWin() {
@@ -136,10 +133,6 @@ public class Game {
                }
            }
        }
-       if (gameOver) {
-           System.out.println((blackWins) ? "Black wins" : "White wins");
-       }
-
     }
 
     public ArrayList<BoardCell> getNeighbours(BoardCell thisCell) {

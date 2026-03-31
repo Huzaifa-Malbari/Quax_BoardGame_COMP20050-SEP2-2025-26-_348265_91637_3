@@ -3720,7 +3720,7 @@
           </font>
       
       </Label>
-         <Button fx:id="pieRuleButton" layoutX="943.0" layoutY="1131.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Activate Pie Rule" onAction="#activatePieRule" />
+         <Button fx:id="pieRuleButton" layoutX="943.0" layoutY="1131.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Activate Pie Rule" onAction="#activatePieRule"  visible=" false"/>
          </AnchorPane>
       </content>
    </ScrollPane>

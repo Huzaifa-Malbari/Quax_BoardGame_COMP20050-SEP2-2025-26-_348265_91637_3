@@ -737,11 +737,16 @@ public class QSSController {
 
   // added by Osama
   private void setPlayerTurnText(String text) {
-    if (game.isBlack()) {
-      turnLabel.setText("Black's Turn");
-    } else {
-      turnLabel.setText("Whites Turn");
-    }
+      Color indicatorColor;
+      if (game.isBlack()) {
+          turnLabel.setText("Black's Turn");
+          indicatorColor = Color.BLACK;
+      } else {
+          turnLabel.setText("White's Turn");
+          indicatorColor = Color.WHITE;
+      }
+      promptOct.setFill(indicatorColor);
+      promptRhombus.setFill(indicatorColor);
   }
 
      String getTurnText() {
@@ -818,6 +823,7 @@ public class QSSController {
             }
         }
         setPlayerTurnText(null);
+        pieRuleUsedOrExpired = false;
     }
 
     @FXML
