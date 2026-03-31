@@ -14,7 +14,16 @@ class QSSControllerTest {
 
         qssController.game.placeCell(false, 0, 0); // switches turn from Black to White
         assertEquals("White's Turn", qssController.getTurnText());
-
    }
 
+   @Test
+    void restartButtonTest() {
+        QSSController qssController = new QSSController();
+
+    }
+
+    @Test
+    void displayWinner() {
+        QSSController qssController = new QSSController();
+    }
 }
