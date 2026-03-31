@@ -1,6 +1,9 @@
 package hio.qss;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -10,6 +13,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class QSSController {
     @FXML
@@ -725,6 +731,7 @@ public class QSSController {
         if (!game.isGameOver()){
             Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
+
             //Get gui id
             String id = polygon.getId();
             //Get cell indices
@@ -735,13 +742,55 @@ public class QSSController {
             //Update View
             if (success) {
                 polygon.setFill(color);
-                setPlayerTurnText(null);
+                if (game.isGameOver()) {
+                    displayWinner();
+                } else {
+                    setPlayerTurnText(null);
+                }
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
                 alert.showAndWait();
             }
         }
     }
+    private void displayWinner() {
+        String winner = game.isBlackWins() ? "Black" : "White";
+        turnLabel.setText(winner + " Wins!");
+
+        ButtonType restartButton = new ButtonType("Restart");
+        Alert alert = new Alert(Alert.AlertType.WARNING, winner + " Wins!", restartButton, ButtonType.OK);
+        alert.setHeaderText("Game Over");
+        alert.getDialogPane().setPrefSize(400, 200);
+        alert.initModality(Modality.NONE);
+
+        alert.setOnShown(e -> Platform.runLater(() -> {
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            Rectangle2D screen = Screen.getPrimary().getVisualBounds();
+            stage.setX((screen.getWidth()  - stage.getWidth())  / 2);
+            stage.setY((screen.getHeight() - stage.getHeight()) / 2);
+
+            alert.getDialogPane().lookupButton(restartButton)
+                    .addEventFilter(MouseEvent.MOUSE_RELEASED, ev -> restartGame());
+        }));
+
+        alert.show();
+    }
+
+    private void restartGame() {
+        game = new Game();
+        Pane pane = (Pane) O0_0.getParent();
+        for (Node node : pane.getChildren()) {
+            if (node instanceof Polygon) {
+                Polygon p = (Polygon) node;
+                String id = p.getId();
+                if (id != null && (id.startsWith("O") || id.startsWith("R"))) {
+                    p.setFill(Color.web("#d0a60e"));
+                }
+            }
+        }
+        setPlayerTurnText(null);
+    }
+
     @FXML
     public void initialize() {
       addBoardLabels();
@@ -817,5 +866,4 @@ public class QSSController {
             pane.getChildren().addAll(leftLabel, rightLabel);
         }
     }
-
 }
