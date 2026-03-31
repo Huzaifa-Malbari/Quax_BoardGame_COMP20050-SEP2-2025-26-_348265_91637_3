@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CellGroupTest {
 
     @Test
-    void setFurthest() {
+    void testSetFurthest() {
         CellGroup group = new CellGroup();
         BoardCell o0_0 = new BoardCell(false, CellStatus.B, 0, 0);
 
@@ -25,7 +25,7 @@ class CellGroupTest {
     }
 
     @Test
-    void addCell() {
+    void testAddCell() {
         CellGroup group = new CellGroup();
         BoardCell o0_0 = new BoardCell(false, CellStatus.B, 0, 0);
 
@@ -34,7 +34,7 @@ class CellGroupTest {
     }
 
     @Test
-    void getCells() {
+    void testGetCells() {
         CellGroup group = new CellGroup();
         ArrayList<BoardCell> cells = new ArrayList<BoardCell>();
         for (int i = 0; i < 5; i++) {
@@ -49,7 +49,7 @@ class CellGroupTest {
     }
 
     @Test
-    void merge() {
+    void testMerge() {
         CellGroup group1 = new CellGroup();
         ArrayList<BoardCell> cells1 = new ArrayList<BoardCell>();
         for (int i = 0; i < 5; i++) {

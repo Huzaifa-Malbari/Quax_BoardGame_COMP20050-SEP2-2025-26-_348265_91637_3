@@ -14,7 +14,6 @@ public class Game {
 
     private BoardCell[][] ocells;
     private BoardCell[][] rcells;
-    private ArrayList<CellGroup> cellGroups;
 
 
     public Game() {
@@ -23,7 +22,6 @@ public class Game {
         rcells = new BoardCell[10][10];
         blackWins = false;
         gameOver = false;
-        cellGroups = new ArrayList<CellGroup>();
     }
 
     public boolean placeCell(Boolean isRhombic, int row, int col) {
