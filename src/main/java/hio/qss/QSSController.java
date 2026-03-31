@@ -56,19 +56,14 @@ public class QSSController {
   @FXML
   private Polygon O10_10;
 
-<<<<<<< Updated upstream
-    @FXML
-    private Polygon promptOct;
+  @FXML
+  private Polygon promptOct;
 
-    @FXML
-    private Polygon O10_12;
+  @FXML
+  private Polygon O10_12;
 
-    @FXML
-    private Polygon O10_2;
-=======
   @FXML
   private Polygon O10_2;
->>>>>>> Stashed changes
 
   @FXML
   private Polygon O10_3;
@@ -388,19 +383,14 @@ public class QSSController {
   @FXML
   private Polygon O9_9;
 
-<<<<<<< Updated upstream
-    @FXML
-    private Polygon O10;
+  @FXML
+  private Polygon O10;
 
-    @FXML
-    private Polygon O_11;
+  @FXML
+  private Polygon O_11;
 
-    @FXML
-    private Polygon R0_0;
-=======
   @FXML
   private Polygon R0_0;
->>>>>>> Stashed changes
 
   @FXML
   private Polygon R0_1;
@@ -699,19 +689,14 @@ public class QSSController {
   @FXML
   private Polygon R9_9;
 
-<<<<<<< Updated upstream
-    @FXML
-    private Polygon promptRhombus;
+  @FXML
+  private Polygon promptRhombus;
 
-    @FXML
-    private Polygon R9_11;
+  @FXML
+  private Polygon R9_11;
 
-   @FXML
-   private Label turnLabel;
-=======
   @FXML
   private Label turnLabel;
->>>>>>> Stashed changes
 
   @FXML
   private Button pieRuleButton; // added by Ioan
@@ -736,20 +721,6 @@ public class QSSController {
       return;
     }
 
-<<<<<<< Updated upstream
-     private void setPlayerTurnText(String text) {
-         Color indicatorColor;
-         if (game.isBlack()) {
-             turnLabel.setText("Black's Turn");
-             indicatorColor = Color.BLACK;
-         } else {
-             turnLabel.setText("White's Turn");
-             indicatorColor = Color.WHITE;
-         }
-         promptOct.setFill(indicatorColor);
-         promptRhombus.setFill(indicatorColor);
-     }
-=======
     pieRuleUsedOrExpired = true;
 
     // TODO: apply actual pie rule logic here
@@ -790,20 +761,12 @@ public class QSSController {
       if (game.getMoveCount() > 1) {
         pieRuleUsedOrExpired = true;
       }
->>>>>>> Stashed changes
 
       updateTurnUI();
     } else {
       Alert alert = new Alert(Alert.AlertType.WARNING, "Cell already occupied", ButtonType.OK);
       alert.showAndWait();
     }
-<<<<<<< Updated upstream
-    @FXML
-    public void initialize() {
-      addBoardLabels();
-      game = new Game();
-      setPlayerTurnText(null);
-=======
   }
 
   @FXML
@@ -867,7 +830,6 @@ public class QSSController {
       bottomLabel.setFill(Color.WHITE);
 
       pane.getChildren().addAll(topLabel, bottomLabel);
->>>>>>> Stashed changes
     }
 
     for (int row = 0; row < 11; row++) {

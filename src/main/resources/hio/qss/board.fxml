@@ -11,11 +11,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController">
    <content>
-<<<<<<< Updated upstream
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1270.0" prefWidth="1470.0">
-=======
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1170.0" prefWidth="1209.0">
->>>>>>> Stashed changes
 
          <Label fx:id="turnLabel" layoutX="395.0" layoutY="1152.0" prefHeight="31.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 18;" text="Black's Turn" textAlignment="CENTER" />
             <BorderPane layoutX="1135.0" layoutY="139.0" prefHeight="914.0" prefWidth="53.0" style="-fx-background-color: white;" />
