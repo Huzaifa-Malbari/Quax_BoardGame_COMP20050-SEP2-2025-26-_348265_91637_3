@@ -14,6 +14,7 @@ public class Game {
 
     private BoardCell[][] ocells;
     private BoardCell[][] rcells;
+    private int moveCount; // added by Ioan
 
 
     public Game() {
@@ -22,6 +23,7 @@ public class Game {
         rcells = new BoardCell[10][10];
         blackWins = false;
         gameOver = false;
+        moveCount = 0;
     }
 
     public boolean placeCell(Boolean isRhombic, int row, int col) {
@@ -41,6 +43,7 @@ public class Game {
             ocells[row][col] = cell;
             updateChains(cell);
         }
+        moveCount++;
         isBlack = !isBlack;
         return true;
     }
@@ -192,6 +195,10 @@ public class Game {
         }
 
         return neighbours;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
 }

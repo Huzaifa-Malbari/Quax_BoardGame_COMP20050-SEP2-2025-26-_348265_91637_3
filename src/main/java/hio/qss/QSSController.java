@@ -17,6 +17,8 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import javafx.scene.control.Button;
+
 public class QSSController {
     @FXML
     private Polygon O0_0;
@@ -702,7 +704,12 @@ public class QSSController {
    @FXML
    private Label turnLabel;
 
-    Game game = new Game();
+  @FXML
+  private Button pieRuleButton; // added by Ioan
+
+  private boolean pieRuleUsedOrExpired = false; // added by Ioan
+
+  Game game = new Game();
 
     @FXML
     void getCellID(MouseEvent event) {
@@ -710,18 +717,32 @@ public class QSSController {
         placeCell(polygon);
     }
 
-     private void setPlayerTurnText(String text) {
-         Color indicatorColor;
-         if (game.isBlack()) {
-             turnLabel.setText("Black's Turn");
-             indicatorColor = Color.BLACK;
-         } else {
-             turnLabel.setText("White's Turn");
-             indicatorColor = Color.WHITE;
-         }
-         promptOct.setFill(indicatorColor);
-         promptRhombus.setFill(indicatorColor);
-     }
+  @FXML
+  private void activatePieRule() { // added by Ioan - button event handler
+    boolean canUsePieRule = !pieRuleUsedOrExpired &&
+        game.getMoveCount() == 1 &&
+        !game.isBlack();
+
+    if (!canUsePieRule) {
+      return;
+    }
+
+    pieRuleUsedOrExpired = true;
+
+    // TODO: apply actual pie rule logic here
+    // This usually means player 2 takes over player 1's first move / swaps sides.
+
+    updateTurnUI();
+  }
+
+  // added by Osama
+  private void setPlayerTurnText(String text) {
+    if (game.isBlack()) {
+      turnLabel.setText("Black's Turn");
+    } else {
+      turnLabel.setText("Whites Turn");
+    }
+  }
 
      String getTurnText() {
         return game.isBlack() ? "Black's Turn" : "White's Turn";
@@ -742,6 +763,14 @@ public class QSSController {
             //Update View
             if (success) {
                 polygon.setFill(color);
+
+                // If more than 1 move has been played, pie rule is no longer available. - added
+                // by Ioan
+                if (game.getMoveCount() > 1) {
+                    pieRuleUsedOrExpired = true;
+                }
+                updateTurnUI();
+
                 if (game.isGameOver()) {
                     displayWinner();
                 } else {
@@ -863,7 +892,25 @@ public class QSSController {
             Text rightLabel = new Text(startX + 1000, y + 5, String.valueOf(number));
             rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
-            pane.getChildren().addAll(leftLabel, rightLabel);
-        }
+      pane.getChildren().addAll(leftLabel, rightLabel);
     }
+  }
+
+  // added by Ioan - during Initialization it offers the option to activate the
+  // pie rule to the first player
+  private void updateTurnUI() {
+    if (game.isBlack()) {
+      turnLabel.setText("Black's Turn");
+    } else {
+      turnLabel.setText("White's Turn");
+    }
+
+    boolean showPieRule = !pieRuleUsedOrExpired &&
+        game.getMoveCount() == 1 &&
+        !game.isBlack(); // White's turn after Black's first move
+
+    pieRuleButton.setVisible(showPieRule);
+    pieRuleButton.setManaged(showPieRule);
+  }
+
 }
