@@ -50,4 +50,31 @@ class GameTest {
         game.placeCell(true, 0, 0);
         assertFalse(game.isBlack(), "It is still blacks turn after they placed");
     }
+
+    @Test
+    void testCheckForWin() {
+
+        for (int i = 0; i < 11; i++) {
+            Game game = new Game();
+
+            for (int j = 0; j < 11; j++) {
+                game.placeCell(false, j, i);
+                game.placeCell(false,  j, (i + 1) % 11);
+            }
+            assertTrue(game.isGameOver());
+            assertTrue(game.isBlackWins());
+        }
+
+        for (int i = 0; i < 11; i++) {
+            Game game = new Game();
+
+            for (int j = 0; j < 11; j++) {
+                game.placeCell(false, (i + 1) % 11, j);
+                game.placeCell(false, i, j);
+            }
+            assertTrue(game.isGameOver());
+            assertFalse(game.isBlackWins());
+        }
+
+    }
 }
