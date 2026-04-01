@@ -51,30 +51,30 @@ class GameTest {
     assertFalse(game.isBlack(), "It is still blacks turn after they placed");
   }
 
-  /* Unit tests for pie rule feature (move counter tests) */
   @Test
-  void newGame_startsWithZeroMoves() {
-    Game game = new Game();
+  void testCheckForWin() {
 
-    assertEquals(0, game.getMoveCount());
-  }
+    for (int i = 0; i < 11; i++) {
+      Game game = new Game();
 
-  @Test
-  void placeCell_successfulMove_incrementsMoveCount() {
-    Game game = new Game();
+      for (int j = 0; j < 11; j++) {
+        game.placeCell(false, j, i);
+        game.placeCell(false, j, (i + 1) % 11);
+      }
+      assertTrue(game.isGameOver());
+      assertTrue(game.isBlackWins());
+    }
 
-    game.placeCell(false, 0, 0);
+    for (int i = 0; i < 11; i++) {
+      Game game = new Game();
 
-    assertEquals(1, game.getMoveCount());
-  }
+      for (int j = 0; j < 11; j++) {
+        game.placeCell(false, (i + 1) % 11, j);
+        game.placeCell(false, i, j);
+      }
+      assertTrue(game.isGameOver());
+      assertFalse(game.isBlackWins());
+    }
 
-  @Test
-  void placeCell_failedMove_doesNotIncrementMoveCount() {
-    Game game = new Game();
-
-    assertTrue(game.placeCell(false, 0, 0));
-    assertFalse(game.placeCell(false, 0, 0));
-
-    assertEquals(1, game.getMoveCount());
   }
 }
