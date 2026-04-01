@@ -77,4 +77,32 @@ class GameTest {
     }
 
   }
+
+  /* Test for pie rule event - move count */
+
+  @Test
+  void newGame_startsWithZeroMoves() {
+    Game game = new Game();
+
+    assertEquals(0, game.getMoveCount());
+  }
+
+  @Test
+  void placeCell_successfulMove_incrementsMoveCount() {
+    Game game = new Game();
+
+    game.placeCell(false, 0, 0);
+
+    assertEquals(1, game.getMoveCount());
+  }
+
+  @Test
+  void placeCell_failedMove_doesNotIncrementMoveCount() {
+    Game game = new Game();
+
+    assertTrue(game.placeCell(false, 0, 0));
+    assertFalse(game.placeCell(false, 0, 0));
+
+    assertEquals(1, game.getMoveCount());
+  }
 }
