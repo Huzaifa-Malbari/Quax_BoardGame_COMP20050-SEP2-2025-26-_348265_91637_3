@@ -47,9 +47,6 @@ class QSSControllerTest {
     assertTrue(qssController.game.isBlackWins());
     }
 
-
-   }
-
   /*
    * Unit tests added by Ioan - Check if pie rule button should be shown in
    * various situations
