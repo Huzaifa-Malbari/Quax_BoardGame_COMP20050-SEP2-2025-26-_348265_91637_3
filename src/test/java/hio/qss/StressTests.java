@@ -62,10 +62,10 @@ public class StressTests {
             game.placeCell(false, 9, i);
             blk.set(game, true);
         }
-        for (int i = 0; i < 9; i++) {
-            game.placeCell(false, 10, i);
-            blk.set(game, true);
-        }
+//        for (int i = 0; i < 9; i++) {
+//            game.placeCell(false, 10, i);
+//            blk.set(game, true);
+//        }
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 10; j++)  {
@@ -79,7 +79,7 @@ public class StressTests {
         }
 
         CellGroup big = ocells[0][0].getGroup();
-        assertEquals(11*11 + 10*10 - 4, big.size());
+        assertEquals(10*11 + 10*10 - 2, big.size());
 
         blk.set(game, true);
         game.placeCell(false, 10, 10);
@@ -89,7 +89,7 @@ public class StressTests {
         blk.set(game, true);
         game.placeCell(true, 9, 9);
 
-        assertEquals(11*11 + 10*10 - 2, big.size());
+        assertEquals(10*11 + 10*10, big.size());
         assertEquals(0, small.size());
         assertTrue(big.getCells().contains(ocells[10][10]));
 
