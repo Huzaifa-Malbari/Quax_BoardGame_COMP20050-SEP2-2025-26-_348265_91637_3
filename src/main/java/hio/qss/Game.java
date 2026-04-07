@@ -29,14 +29,14 @@ public class Game {
     public boolean placeCell(Boolean isRhombic, int row, int col) {
 
         if (isRhombic) {
-            if (rcells[row][col] != null) {
+            if (rcells[row][col] != null || gameOver) {
                 return false;
             }
             BoardCell cell = createCell(row, col, isRhombic);
             rcells[row][col] = cell;
             updateChains(cell);
         }else {
-            if (ocells[row][col] != null) {
+            if (ocells[row][col] != null || gameOver) {
                 return false;
             }
             BoardCell cell = createCell(row, col, isRhombic);
