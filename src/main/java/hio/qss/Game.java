@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private static int MAX_RHOMBIS = 10;
-    private static int MAX_OCTAGONS = 11;
+    public static int MAX_RHOMBIS = 10;
+    public static int MAX_OCTAGONS = 11;
 
     private boolean isBlack;
     private boolean blackWins;
@@ -98,7 +98,7 @@ public class Game {
             thisCell = rcells[row][col];
         }
 
-        ArrayList<BoardCell> neighbours = getNeighbours(thisCell);
+        ArrayList<BoardCell> neighbours = thisCell.getNeighbours(new GameState(ocells, rcells, isBlack));
         ArrayList<CellGroup> groups = new ArrayList<CellGroup>();
         CellGroup maxGroup = new CellGroup();
         for (BoardCell neighbour : neighbours) {
@@ -150,60 +150,6 @@ public class Game {
        }
     }
 
-    public ArrayList<BoardCell> getNeighbours(BoardCell thisCell) {
-
-        int row = thisCell.getRow();
-        int col = thisCell.getCol();
-        boolean isRhombic = thisCell.getRhombic();
-        ArrayList<BoardCell> neighbours = new ArrayList<>();
-
-        if (isRhombic) {
-            thisCell  = rcells[row][col];
-
-            neighbours.add(ocells[row][col]);
-            neighbours.add(ocells[row][col + 1]);
-            neighbours.add(ocells[row + 1][col]);
-            neighbours.add(ocells[row + 1][col + 1]);
-
-        } else {
-
-            // check neighboring octagons
-            if (row - 1 >= 0) {
-                neighbours.add(ocells[row - 1][col]);
-            }
-            if (row + 1 < MAX_OCTAGONS) {
-                neighbours.add(ocells[row + 1][col]);
-            }
-            if (col - 1 >= 0) {
-                neighbours.add(ocells[row][col - 1]);
-            }
-            if (col + 1 < MAX_OCTAGONS) {
-                neighbours.add(ocells[row][col + 1]);
-            }
-
-            // check neighboring rhombises
-
-            if (col - 1 >= 0) {
-                if (row < MAX_RHOMBIS) {
-                    neighbours.add(rcells[row][col - 1]);
-                }
-                if (row - 1 >= 0) {
-                    neighbours.add(rcells[row - 1][col - 1]);
-                }
-            }
-            if (col < MAX_RHOMBIS) {
-                if (row < MAX_RHOMBIS) {
-                    neighbours.add(rcells[row][col]);
-                }
-                if (row - 1 >= 0) {
-                    neighbours.add(rcells[row - 1][col]);
-                }
-
-            }
-        }
-
-        return neighbours;
-    }
 
     public int getMoveCount() {
         return moveCount;
