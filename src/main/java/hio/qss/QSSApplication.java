@@ -14,6 +14,7 @@ public class QSSApplication extends Application {
     Scene scene = new Scene(fxmlLoader.load(), 1209, 1170);
     stage.setTitle("Hello!");
     stage.setScene(scene);
+    stage.setMaximized(true);
     stage.show();
   }
 }

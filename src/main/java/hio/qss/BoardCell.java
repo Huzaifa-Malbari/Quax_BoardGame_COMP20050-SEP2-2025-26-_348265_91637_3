@@ -33,10 +33,6 @@ public class BoardCell extends RawCell{
     }
 
     public boolean isFurther(BoardCell cell) {
-        if (cell == null) {
-            return false;
-        }
-
         if (cell.getStatus() != getStatus()) {
             return false;
         }

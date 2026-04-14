@@ -24,19 +24,34 @@ public class Game {
         blackWins = false;
         gameOver = false;
         moveCount = 0;
+
+        initialiseBoard();
+    }
+
+    private void initialiseBoard() {
+        for (int i = 0; i < MAX_OCTAGONS; i++) {
+            for (int j = 0; j < MAX_OCTAGONS; j++) {
+                ocells[i][j] = new BoardCell(false, CellStatus.Free, i, j);
+            }
+        }
+        for (int i = 0; i < MAX_RHOMBIS; i++) {
+            for (int j = 0; j < MAX_RHOMBIS; j++) {
+                rcells[i][j] = new BoardCell(true, CellStatus.Free, i, j);
+            }
+        }
     }
 
     public boolean placeCell(Boolean isRhombic, int row, int col) {
 
         if (isRhombic) {
-            if (rcells[row][col] != null || gameOver) {
+            if (!rcells[row][col].getStatus().equals(CellStatus.Free) || gameOver) {
                 return false;
             }
             BoardCell cell = createCell(row, col, isRhombic);
             rcells[row][col] = cell;
             updateChains(cell);
         }else {
-            if (ocells[row][col] != null || gameOver) {
+            if (!ocells[row][col].getStatus().equals(CellStatus.Free) || gameOver) {
                 return false;
             }
             BoardCell cell = createCell(row, col, isRhombic);
@@ -87,7 +102,7 @@ public class Game {
         ArrayList<CellGroup> groups = new ArrayList<CellGroup>();
         CellGroup maxGroup = new CellGroup();
         for (BoardCell neighbour : neighbours) {
-            if (neighbour != null && neighbour.getStatus().equals(thisCell.getStatus()) && !groups.contains(neighbour.getGroup())) {
+            if (neighbour.getStatus().equals(thisCell.getStatus()) && !groups.contains(neighbour.getGroup())) {
                 groups.add(neighbour.getGroup());
                 if (groups.size() > 0 && groups.getLast().size() > maxGroup.size()) {
                     maxGroup = groups.getLast();
@@ -112,7 +127,7 @@ public class Game {
 
        if (isBlack) {
            for (int i = 0; i < MAX_OCTAGONS; i++) {
-               if (ocells[0][i] == null || ocells[0][i].getStatus().equals(CellStatus.W)) {
+               if (!ocells[0][i].getStatus().equals(CellStatus.B)) {
                    continue;
                }
                if (ocells[0][i].getGroup().getFurthest().getRow() == MAX_OCTAGONS - 1) {
@@ -123,7 +138,7 @@ public class Game {
            }
        }else {
            for (int i = 0; i < MAX_OCTAGONS; i++) {
-               if (ocells[i][0] == null || ocells[i][0].getStatus().equals(CellStatus.B)) {
+               if (!ocells[i][0].getStatus().equals(CellStatus.W)) {
                    continue;
                }
                if (ocells[i][0].getGroup().getFurthest().getCol() == MAX_OCTAGONS - 1) {
