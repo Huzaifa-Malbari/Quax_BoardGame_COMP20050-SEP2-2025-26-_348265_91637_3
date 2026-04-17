@@ -1,8 +1,8 @@
 package hio.qss;
 
 public class RawCell implements Cell {
-  Boolean isRhombic;
-  CellStatus status;
+  private Boolean isRhombic;
+  private CellStatus status;
 
   public RawCell(Boolean isRhombic, CellStatus status) {
     this.isRhombic = isRhombic;

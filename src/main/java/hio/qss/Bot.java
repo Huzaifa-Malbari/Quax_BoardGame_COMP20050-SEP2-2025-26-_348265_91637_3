@@ -18,11 +18,12 @@ public class Bot {
     public ArrayList<ArrayList<SearchNode>> getPaths() {
         return strategy.getPaths();
     }
+
     public void calculatePaths(GameState state) {
         strategy.calculatePaths(state, lastMove, lastOpponentMove);
     }
 
-    public BoardCell getNextMove(GameState state) {
+    public BoardCell getNextMove() {
         return strategy.getNextMove();
     }
 
@@ -32,6 +33,10 @@ public class Bot {
 
     public BoardCell getLastMove() {
         return lastMove;
+    }
+
+    public void setLastMove(BoardCell lastMove) {
+        this.lastMove = lastMove;
     }
 
     public BoardCell getLastOpponentMove() {

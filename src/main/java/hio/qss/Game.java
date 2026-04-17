@@ -16,6 +16,7 @@ public class Game {
     private BoardCell[][] rcells;
     private int moveCount; // added by Ioan
 
+    private Bot bot;
 
     public Game() {
         isBlack = true;
@@ -24,6 +25,7 @@ public class Game {
         blackWins = false;
         gameOver = false;
         moveCount = 0;
+        bot = new Bot(new SimpleStrategy());
 
         initialiseBoard();
     }
@@ -71,9 +73,11 @@ public class Game {
             cell = new BoardCell(false, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
         }
 
-
-
         return cell;
+    }
+
+    private BoardCell createCell(BoardCell cell) {
+        return createCell(cell.getRow(), cell.getCol(), cell.getRhombic());
     }
 
     public boolean isBlack() {
@@ -151,8 +155,20 @@ public class Game {
     }
 
 
+    public Bot getBot() {
+        return bot;
+    }
+
+    public void setBot(Bot bot) {
+        this.bot = bot;
+    }
+
     public int getMoveCount() {
         return moveCount;
+    }
+
+    public GameState getState() {
+        return new GameState(ocells, rcells, isBlack);
     }
 
 }

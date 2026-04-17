@@ -39,7 +39,7 @@ public class SearchNode extends BoardCell{
     }
 
     public SearchNode(BoardCell cell) {
-        super(cell.isRhombic, cell.getStatus(), cell.getRow(), cell.getCol());
+        super(cell.getRhombic(), cell.getStatus(), cell.getRow(), cell.getCol());
         g = 0;
         h = 0;
         f = 0;

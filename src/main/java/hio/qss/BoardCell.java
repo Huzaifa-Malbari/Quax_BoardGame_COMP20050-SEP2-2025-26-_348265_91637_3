@@ -77,13 +77,9 @@ public class BoardCell extends RawCell{
         BoardCell[][] ocells = state.ocells();
         BoardCell[][] rcells = state.rcells();
 
-//        int row = thisCell.getRow();
-//        int col = thisCell.getCol();
-//        boolean isRhombic = thisCell.getRhombic();
         ArrayList<BoardCell> neighbours = new ArrayList<>();
 
-        if (isRhombic) {
-//            thisCell  = rcells[row][col];
+        if (getRhombic()) {
 
             neighbours.add(ocells[row][col]);
             neighbours.add(ocells[row][col + 1]);
@@ -128,6 +124,13 @@ public class BoardCell extends RawCell{
         }
 
         return neighbours;
+    }
+
+    public String getAssociatedCellID() {
+        StringBuilder id = new StringBuilder();
+        id.append(getRhombic() ? "R" : "O");
+        id.append(getRow() + "_" + getCol());
+        return id.toString();
     }
 
 }

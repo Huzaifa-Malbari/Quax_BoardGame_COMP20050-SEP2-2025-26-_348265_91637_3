@@ -715,6 +715,9 @@ public class QSSController {
   void getCellID(MouseEvent event) {
     Polygon polygon = (Polygon) event.getSource();
     placeCell(polygon);
+    if (game.isBlack() == game.getBot().isBlack()) {
+      botMove();
+    }
   }
 
   @FXML
@@ -787,6 +790,23 @@ public class QSSController {
     }
   }
 
+  private void botMove() {
+    Bot bot = game.getBot();
+    bot.calculatePaths(game.getState());
+    String id = bot.getNextMove().getAssociatedCellID();
+    placeCell( (Polygon) getNodeWithID(id));
+    bot.setLastMove(bot.getNextMove());
+  }
+
+  private Node getNodeWithID(String id) {
+    for (Node o : O0_0.getParent().getChildrenUnmodifiable()) {
+      if (o.getId() != null && o.getId().equals(id)){
+        return o;
+      }
+    }
+    return null;
+  }
+
   private void displayWinner() {
     String winner = game.isBlackWins() ? "Black" : "White";
     turnLabel.setText(winner + " Wins!");
@@ -811,7 +831,6 @@ public class QSSController {
   }
 
   private void restartGame() {
-    game = new Game();
     Pane pane = (Pane) O0_0.getParent();
     for (Node node : pane.getChildren()) {
       if (node instanceof Polygon) {
@@ -822,7 +841,7 @@ public class QSSController {
         }
       }
     }
-    setPlayerTurnText(null);
+    initialize();
     pieRuleUsedOrExpired = false;
   }
 
@@ -830,6 +849,7 @@ public class QSSController {
   public void initialize() {
     addBoardLabels();
     game = new Game();
+    botMove();
     setPlayerTurnText(null);
   }
 
