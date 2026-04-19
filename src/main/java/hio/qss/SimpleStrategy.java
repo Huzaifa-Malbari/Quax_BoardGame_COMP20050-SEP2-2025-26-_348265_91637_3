@@ -34,9 +34,10 @@ public class SimpleStrategy implements Strategy{
 
         BoardCell furthest = null;
         for (BoardCell neighbour : lastMove.getNeighbours(state)) {
+            BoardCell neighbourBoardCell = new BoardCell(neighbour.getRhombic(), (state.isBlack()) ? CellStatus.B : CellStatus.W, neighbour.getRow(), neighbour.getCol());
             if (neighbour.getStatus().equals(CellStatus.Free)) {
-                if (furthest == null || furthest.isFurther(neighbour)) {
-                    furthest = neighbour;
+                if (furthest == null || furthest.isFurther(neighbourBoardCell)) {
+                    furthest = neighbourBoardCell;
                 }
             }
         }
@@ -55,8 +56,21 @@ public class SimpleStrategy implements Strategy{
 
         for (int i = 0; i < state.ocells().length; i++) {
             for (int j = 0; j < state.ocells().length; j++) {
+
+                if (!state.isBlack()) {
+                    int temp = i;
+                    i = j;
+                    j = temp;
+                }
+
                 if (state.ocells()[i][j].getStatus().equals(CellStatus.Free)){
                     return state.ocells()[i][j];
+                }
+
+                if (!state.isBlack()) {
+                    int temp = i;
+                    i = j;
+                    j = temp;
                 }
 
             }
@@ -65,8 +79,6 @@ public class SimpleStrategy implements Strategy{
         for (int i = 0; i < state.rcells().length; i++) {
             for (int j = 0; j < state.rcells().length; j++) {
                 if (state.rcells()[i][j].getStatus().equals(CellStatus.Free)){
-                    paths.add(new ArrayList<>());
-                    paths.get(0).add(new SearchNode(state.rcells()[i][j]));
                     return state.rcells()[i][j];
                 }
 

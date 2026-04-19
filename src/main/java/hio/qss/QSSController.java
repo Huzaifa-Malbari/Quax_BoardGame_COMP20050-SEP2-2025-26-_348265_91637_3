@@ -734,6 +734,9 @@ public class QSSController {
 
     // TODO: apply actual pie rule logic here
     // This usually means player 2 takes over player 1's first move / swaps sides.
+    game.setBot(new Bot(new SimpleStrategy()));
+    game.getBot().setBlack(false);
+    botMove();
 
     updateTurnUI();
   }
@@ -841,13 +844,17 @@ public class QSSController {
         }
       }
     }
-    initialize();
     pieRuleUsedOrExpired = false;
+    startGame();
   }
 
   @FXML
   public void initialize() {
     addBoardLabels();
+    startGame();
+  }
+
+  private void startGame() {
     game = new Game();
     botMove();
     setPlayerTurnText(null);
