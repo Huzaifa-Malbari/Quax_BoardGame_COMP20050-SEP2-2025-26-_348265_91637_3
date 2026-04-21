@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.Button;
 
+
 public class QSSController {
   @FXML
   private Polygon O0_0;
@@ -707,7 +708,11 @@ public class QSSController {
   @FXML
   private Button pieRuleButton; // added by Ioan
 
+
+
+
   private boolean pieRuleUsedOrExpired = false; // added by Ioan
+  private Polygon highlightedBotCell = null;
 
   Game game = new Game();
 
@@ -794,6 +799,12 @@ public class QSSController {
   }
 
   private void botMove() {
+    if (highlightedBotCell != null) {
+      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
+        highlightedBotCell.setFill(Color.web("#d0a60e"));
+      }
+      highlightedBotCell = null;
+    }
     Bot bot = game.getBot();
     bot.calculatePaths(game.getState());
     String id = bot.getNextMove().getAssociatedCellID();
@@ -949,6 +960,33 @@ public class QSSController {
 
     pieRuleButton.setVisible(showPieRule);
     pieRuleButton.setManaged(showPieRule);
+  }
+  @FXML
+  private void showBotStrategyButton() {
+    showBotStrategy();
+  }
+
+  private void showBotStrategy() {
+    if (game.isGameOver()) return;
+
+    if (highlightedBotCell != null) {
+      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
+        highlightedBotCell.setFill(Color.web("#d0a60e"));
+      }
+      highlightedBotCell = null;
+    }
+
+    Bot bot = game.getBot();
+    GameState state = game.getState();
+    GameState botState = new GameState(state.ocells(), state.rcells(), bot.isBlack());
+    bot.calculatePaths(botState);
+    String id = bot.getNextMove().getAssociatedCellID();
+
+    Polygon polygon = (Polygon) getNodeWithID(id);
+    if (polygon != null) {
+      polygon.setFill(Color.LIGHTGREEN);
+      highlightedBotCell = polygon;
+    }
   }
 
 }

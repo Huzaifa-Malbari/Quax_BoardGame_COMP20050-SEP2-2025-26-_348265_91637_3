@@ -3721,6 +3721,7 @@
       
       </Label>
          <Button fx:id="pieRuleButton" layoutX="943.0" layoutY="1131.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Activate Pie Rule" onAction="#activatePieRule"  visible=" false"/>
+         <Button fx:id="showBotStrategyButton" layoutX="943.0" layoutY="1170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Show Bot Strategy" onAction="#showBotStrategyButton"/>
          </AnchorPane>
       </content>
    </ScrollPane>
