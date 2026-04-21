@@ -30,6 +30,10 @@ public class ShortestPathStrategy implements Strategy{
 
         addNeighbourPaths(state, lastMove);
 
+        if (paths.size() != 0) {
+            return;
+        }
+
         for (BoardCell cell : lastMove.getGroup().getCells()) {
             addNeighbourPaths(state, cell);
         }

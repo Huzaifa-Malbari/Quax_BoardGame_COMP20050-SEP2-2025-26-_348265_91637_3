@@ -703,16 +703,17 @@ public class QSSController {
   private Polygon R9_11;
 
   @FXML
+  private Button showBotStrategyButton;
+
+  @FXML
   private Label turnLabel;
 
   @FXML
   private Button pieRuleButton; // added by Ioan
 
-
-
-
   private boolean pieRuleUsedOrExpired = false; // added by Ioan
   private Polygon highlightedBotCell = null;
+  private boolean showStrategy = false;
 
   Game game = new Game();
 
@@ -722,6 +723,9 @@ public class QSSController {
     placeCell(polygon);
     if (game.isBlack() == game.getBot().isBlack()) {
       botMove();
+      if (showStrategy) {
+        showBotStrategy();
+      }
     }
   }
 
@@ -963,7 +967,14 @@ public class QSSController {
   }
   @FXML
   private void showBotStrategyButton() {
-    showBotStrategy();
+    showStrategy = !showStrategy;
+    if (showStrategy) {
+      showBotStrategyButton.setText("Hide Bot Strategy");
+      showBotStrategy();
+    }else {
+      showBotStrategyButton.setText("Show Bot Strategy");
+    }
+
   }
 
   private void showBotStrategy() {
