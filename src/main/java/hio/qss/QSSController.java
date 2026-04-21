@@ -713,6 +713,7 @@ public class QSSController {
 
   private boolean pieRuleUsedOrExpired = false; // added by Ioan
   private Polygon highlightedBotCell = null;
+  boolean botStrategyButtonEnabled = true;
 
   Game game = new Game();
 
@@ -988,5 +989,11 @@ public class QSSController {
       highlightedBotCell = polygon;
     }
   }
+/*
+  public  Polygon getHighlightedBotCell(){
+    return highlightedBotCell;
+  }
+
+ */
 
 }
