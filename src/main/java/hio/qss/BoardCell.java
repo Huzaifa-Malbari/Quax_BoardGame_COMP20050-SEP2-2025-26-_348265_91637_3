@@ -1,5 +1,7 @@
 package hio.qss;
 
+import java.util.ArrayList;
+
 public class BoardCell extends RawCell{
 
     private int row;
@@ -33,10 +35,6 @@ public class BoardCell extends RawCell{
     }
 
     public boolean isFurther(BoardCell cell) {
-        if (cell == null) {
-            return false;
-        }
-
         if (cell.getStatus() != getStatus()) {
             return false;
         }
@@ -72,6 +70,86 @@ public class BoardCell extends RawCell{
         sb.append(getCol() + " Colour: ");
         sb.append((getStatus() == CellStatus.B) ? "Black" : "White");
         return sb.toString();
+    }
+
+    public ArrayList<BoardCell> getNeighbours(GameState state) {
+
+        BoardCell[][] ocells = state.ocells();
+        BoardCell[][] rcells = state.rcells();
+
+        ArrayList<BoardCell> neighbours = new ArrayList<>();
+
+        if (getRhombic()) {
+
+            neighbours.add(ocells[row][col]);
+            neighbours.add(ocells[row][col + 1]);
+            neighbours.add(ocells[row + 1][col]);
+            neighbours.add(ocells[row + 1][col + 1]);
+
+        } else {
+
+            // check neighboring octagons
+            if (row - 1 >= 0) {
+                neighbours.add(ocells[row - 1][col]);
+            }
+            if (row + 1 < Game.MAX_OCTAGONS) {
+                neighbours.add(ocells[row + 1][col]);
+            }
+            if (col - 1 >= 0) {
+                neighbours.add(ocells[row][col - 1]);
+            }
+            if (col + 1 < Game.MAX_OCTAGONS) {
+                neighbours.add(ocells[row][col + 1]);
+            }
+
+            // check neighboring rhombises
+
+            if (col - 1 >= 0) {
+                if (row < Game.MAX_RHOMBIS) {
+                    neighbours.add(rcells[row][col - 1]);
+                }
+                if (row - 1 >= 0) {
+                    neighbours.add(rcells[row - 1][col - 1]);
+                }
+            }
+            if (col < Game.MAX_RHOMBIS) {
+                if (row < Game.MAX_RHOMBIS) {
+                    neighbours.add(rcells[row][col]);
+                }
+                if (row - 1 >= 0) {
+                    neighbours.add(rcells[row - 1][col]);
+                }
+
+            }
+        }
+
+        return neighbours;
+    }
+
+    public String getAssociatedCellID() {
+        StringBuilder id = new StringBuilder();
+        id.append(getRhombic() ? "R" : "O");
+        id.append(getRow() + "_" + getCol());
+        return id.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof BoardCell)) {
+            return false;
+        }
+
+        BoardCell that = (BoardCell) o;
+
+        if (getAssociatedCellID().equals(that.getAssociatedCellID())) {
+            return true;
+        }
+
+        return false;
     }
 
 }

@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.Button;
 
+
 public class QSSController {
   @FXML
   private Polygon O0_0;
@@ -707,7 +708,11 @@ public class QSSController {
   @FXML
   private Button pieRuleButton; // added by Ioan
 
+
+
+
   private boolean pieRuleUsedOrExpired = false; // added by Ioan
+  private Polygon highlightedBotCell = null;
 
   Game game = new Game();
 
@@ -715,6 +720,9 @@ public class QSSController {
   void getCellID(MouseEvent event) {
     Polygon polygon = (Polygon) event.getSource();
     placeCell(polygon);
+    if (game.isBlack() == game.getBot().isBlack()) {
+      botMove();
+    }
   }
 
   @FXML
@@ -731,6 +739,9 @@ public class QSSController {
 
     // TODO: apply actual pie rule logic here
     // This usually means player 2 takes over player 1's first move / swaps sides.
+    game.setBot(new Bot(game.getBot().getStrategy()));
+    game.getBot().setBlack(false);
+    botMove();
 
     updateTurnUI();
   }
@@ -787,6 +798,29 @@ public class QSSController {
     }
   }
 
+  private void botMove() {
+    if (highlightedBotCell != null) {
+      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
+        highlightedBotCell.setFill(Color.web("#d0a60e"));
+      }
+      highlightedBotCell = null;
+    }
+    Bot bot = game.getBot();
+    bot.calculatePaths(game.getState());
+    String id = bot.getNextMove().getAssociatedCellID();
+    placeCell( (Polygon) getNodeWithID(id));
+    bot.setLastMove(game.getBoardCellWithID(bot.getNextMove().getAssociatedCellID()));
+  }
+
+  private Node getNodeWithID(String id) {
+    for (Node o : O0_0.getParent().getChildrenUnmodifiable()) {
+      if (o.getId() != null && o.getId().equals(id)){
+        return o;
+      }
+    }
+    return null;
+  }
+
   private void displayWinner() {
     String winner = game.isBlackWins() ? "Black" : "White";
     turnLabel.setText(winner + " Wins!");
@@ -811,7 +845,6 @@ public class QSSController {
   }
 
   private void restartGame() {
-    game = new Game();
     Pane pane = (Pane) O0_0.getParent();
     for (Node node : pane.getChildren()) {
       if (node instanceof Polygon) {
@@ -822,14 +855,19 @@ public class QSSController {
         }
       }
     }
-    setPlayerTurnText(null);
     pieRuleUsedOrExpired = false;
+    startGame();
   }
 
   @FXML
   public void initialize() {
     addBoardLabels();
+    startGame();
+  }
+
+  private void startGame() {
     game = new Game();
+    botMove();
     setPlayerTurnText(null);
   }
 
@@ -922,6 +960,33 @@ public class QSSController {
 
     pieRuleButton.setVisible(showPieRule);
     pieRuleButton.setManaged(showPieRule);
+  }
+  @FXML
+  private void showBotStrategyButton() {
+    showBotStrategy();
+  }
+
+  private void showBotStrategy() {
+    if (game.isGameOver()) return;
+
+    if (highlightedBotCell != null) {
+      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
+        highlightedBotCell.setFill(Color.web("#d0a60e"));
+      }
+      highlightedBotCell = null;
+    }
+
+    Bot bot = game.getBot();
+    GameState state = game.getState();
+    GameState botState = new GameState(state.ocells(), state.rcells(), bot.isBlack());
+    bot.calculatePaths(botState);
+    String id = bot.getNextMove().getAssociatedCellID();
+
+    Polygon polygon = (Polygon) getNodeWithID(id);
+    if (polygon != null) {
+      polygon.setFill(Color.LIGHTGREEN);
+      highlightedBotCell = polygon;
+    }
   }
 
 }
