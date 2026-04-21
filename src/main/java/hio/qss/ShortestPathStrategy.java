@@ -30,6 +30,10 @@ public class ShortestPathStrategy implements Strategy{
 
         addNeighbourPaths(state, lastMove);
 
+        if (paths.size() != 0) {
+            return;
+        }
+
         for (BoardCell cell : lastMove.getGroup().getCells()) {
             addNeighbourPaths(state, cell);
         }
@@ -59,7 +63,8 @@ public class ShortestPathStrategy implements Strategy{
             SearchNode start = new SearchNode(neighbour);
             for (int i = 0; i < Game.MAX_OCTAGONS; i++) {
 //            int significantCoordinate = (state.isBlack()) ? neighbour.getCol() : neighbour.getRow();
-//            for (int i = significantCoordinate; i <= significantCoordinate; i++) {
+//            for (int i = Math.max(0, significantCoordinate - 2);
+//                 i <= Math.min(significantCoordinate + 2, Game.MAX_OCTAGONS - 1); i++) {
 
                 SearchNode end;
                 if (state.isBlack()) {
