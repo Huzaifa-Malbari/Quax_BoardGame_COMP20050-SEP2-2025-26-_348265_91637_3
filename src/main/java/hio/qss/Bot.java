@@ -50,4 +50,8 @@ public class Bot {
     public void setBlack(boolean black) {
         isBlack = black;
     }
+
+    public Strategy getStrategy() {
+        return strategy;
+    }
 }

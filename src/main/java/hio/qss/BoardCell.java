@@ -133,4 +133,23 @@ public class BoardCell extends RawCell{
         return id.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof BoardCell)) {
+            return false;
+        }
+
+        BoardCell that = (BoardCell) o;
+
+        if (getAssociatedCellID().equals(that.getAssociatedCellID())) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

@@ -739,7 +739,7 @@ public class QSSController {
 
     // TODO: apply actual pie rule logic here
     // This usually means player 2 takes over player 1's first move / swaps sides.
-    game.setBot(new Bot(new SimpleStrategy()));
+    game.setBot(new Bot(game.getBot().getStrategy()));
     game.getBot().setBlack(false);
     botMove();
 
@@ -809,7 +809,7 @@ public class QSSController {
     bot.calculatePaths(game.getState());
     String id = bot.getNextMove().getAssociatedCellID();
     placeCell( (Polygon) getNodeWithID(id));
-    bot.setLastMove(bot.getNextMove());
+    bot.setLastMove(game.getBoardCellWithID(bot.getNextMove().getAssociatedCellID()));
   }
 
   private Node getNodeWithID(String id) {

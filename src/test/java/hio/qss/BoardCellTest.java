@@ -98,4 +98,23 @@ class BoardCellTest {
         assertTrue(neighbours.contains(ocells[1][1]));
     }
 
+    @Test
+    void testEquals() {
+
+        ArrayList<BoardCell> cells = new ArrayList<BoardCell>();
+        BoardCell first = new BoardCell(false, CellStatus.B, 0, 0);
+        BoardCell second = new BoardCell(false, CellStatus.B, 0, 0);
+        BoardCell other = new BoardCell(true, CellStatus.B, 0, 0);
+
+        assertEquals(first, first);
+        assertEquals(first, second);
+        assertFalse(first.equals(other));
+
+        cells.add(first);
+        cells.add(other);
+
+        assertTrue(cells.contains(second));
+
+    }
+
 }

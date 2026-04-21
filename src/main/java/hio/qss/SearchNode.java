@@ -4,7 +4,6 @@ public class SearchNode extends BoardCell{
     private SearchNode connection;
     private int g;
     private int h;
-    private int f;
 
     public SearchNode getConnection() {
         return connection;
@@ -31,52 +30,42 @@ public class SearchNode extends BoardCell{
     }
 
     public int getF() {
-        return f;
-    }
-
-    public void setF(int f) {
-        this.f = f;
+        return h + g;
     }
 
     public SearchNode(BoardCell cell) {
         super(cell.getRhombic(), cell.getStatus(), cell.getRow(), cell.getCol());
         g = 0;
         h = 0;
-        f = 0;
     }
 
-    public int calculateH(BoardCell thisCell, BoardCell target) {
+    public static int calculateDistance(BoardCell thisCell, BoardCell target) {
         int dx = Math.abs(target.getRow() - thisCell.getRow());
         int dy = Math.abs(target.getCol() - thisCell.getCol());
-        if (getRhombic()) {
-//            int dx = Math.abs(target.getRow() - getRow());
-//            int dy = Math.abs(target.getCol() - getCol());
-            h = dx + dy;
+        int newH = dx + dy;
+        if (thisCell.getRhombic()) {
             if (target.getRhombic()) {
-//                dx = (dx == 0) ? 1 : dx;
-//                dy = (dy == 0) ? 1 : dy;
-                if ((dx == 0) || (dy == 0)) {
-                    h--;
+                if (newH == 0) {
+                    return newH;
                 }
-                return h;
+                if ((dx == 0) || (dy == 0)) {
+                    newH++;
+                }
+                return newH;
             }
-//            dx = (dx == 0) ? dx : dx - 1;
-//            dy = (dy == 0) ? dy : dy - 1;
             if ((dx != 0) || (dy != 0)) {
-                h--;
+                newH++;
             }
-            h = (h == 0) ? 1 : h;
-            return h;
+            newH = (newH == 0) ? 1 : newH;
+            return newH;
 
         }
 
         if (target.getRhombic()) {
-            return calculateH(target, thisCell);
+            return calculateDistance(target, thisCell);
         }
 
-
-
-        return 0;
+        return newH;
     }
 
 }

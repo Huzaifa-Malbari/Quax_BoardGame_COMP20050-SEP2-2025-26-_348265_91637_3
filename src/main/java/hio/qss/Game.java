@@ -25,7 +25,8 @@ public class Game {
         blackWins = false;
         gameOver = false;
         moveCount = 0;
-        bot = new Bot(new SimpleStrategy());
+//        bot = new Bot(new SimpleStrategy());
+        bot = new Bot(new ShortestPathStrategy());
 
         initialiseBoard();
     }
@@ -169,6 +170,18 @@ public class Game {
 
     public GameState getState() {
         return new GameState(ocells, rcells, isBlack);
+    }
+
+    public BoardCell getBoardCellWithID(String id) {
+        Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
+        String[] tockens = id.substring(1).split("_");
+        int row = Integer.valueOf(tockens[0]);
+        int col = Integer.valueOf(tockens[1]);
+        if (isRhombic) {
+            return rcells[row][col];
+        }else {
+            return ocells[row][col];
+        }
     }
 
 }
