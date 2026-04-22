@@ -901,7 +901,12 @@ public class QSSController {
 
   private void startGame() {
     game = new Game();
-    botMove();
+    Random random = new Random();
+    if (random.nextDouble() >= 0.5) {
+      botMove();
+    }else {
+      game.getBot().setBlack(false);
+    }
     setPlayerTurnText(null);
   }
 
@@ -1016,6 +1021,9 @@ public class QSSController {
   private void showPaths() {
     Bot bot = game.getBot();
     ArrayList<SearchNode> chosenPath = bot.getChosenPath();
+    if (chosenPath == null) {
+      return;
+    }
 
     changedColour = new ArrayList<>();
     oldColour = new ArrayList<>();
@@ -1028,7 +1036,7 @@ public class QSSController {
       if (node.equals(chosenPath.getFirst())) {
         polygon.setFill(Color.DARKBLUE);
       }else {
-        polygon.setFill(Color.LIGHTGREEN);
+        polygon.setFill(Color.YELLOW);
       }
     }
 
@@ -1059,6 +1067,9 @@ public class QSSController {
   }
 
   private void hidePaths() {
+    if (changedColour == null) {
+      return;
+    }
 
     while (!changedColour.isEmpty()) {
       Polygon polygon = changedColour.removeFirst();
