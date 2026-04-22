@@ -199,4 +199,9 @@ public class ShortestPathStrategy implements Strategy{
         return null;
     }
 
+    @Override
+    public ArrayList<SearchNode> getChosenPath() {
+        return shortestPath;
+    }
+
 }
