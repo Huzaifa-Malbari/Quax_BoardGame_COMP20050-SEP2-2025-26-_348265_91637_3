@@ -124,5 +124,10 @@ class BotTest {
       lastMovePassed = lastMove;
       lastOpponentMovePassed = lastOpponentMove;
     }
+
+    @Override
+    public ArrayList<SearchNode> getChosenPath() {
+      return paths.getFirst();
+    }
   }
 }
