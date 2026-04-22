@@ -16,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
+import javafx.scene.control.Button;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -715,12 +715,16 @@ public class QSSController {
   @FXML
   private Button pieRuleButton; // added by Ioan
 
+
+
+
   private boolean pieRuleUsedOrExpired = false; // added by Ioan
   private Polygon highlightedBotCell = null;
   private boolean showStrategy = false;
 
   ArrayList<Polygon> changedColour;
   ArrayList<Paint> oldColour;
+  boolean botStrategyButtonEnabled = true;
 
   Game game = new Game();
 
@@ -1062,5 +1066,11 @@ public class QSSController {
     }
 
   }
+/*
+  public  Polygon getHighlightedBotCell(){
+    return highlightedBotCell;
+  }
+
+ */
 
 }
