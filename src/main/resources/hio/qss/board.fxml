@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController">
    <content>
@@ -3713,15 +3714,29 @@
          <Label layoutX="1250.0" layoutY="530.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="All" />
          <Label layoutX="1250.0" layoutY="650" style="-fx-font-size: 20; -fx-font-weight: bold;" text="cells are unoccupied" />
 
-         <Label layoutX="619.0" layoutY="28.0" prefHeight="31.0" prefWidth="217.0" style="-fx-text-fill: green;" text="Human VS Human" textAlignment="CENTER">
+         <Label layoutX="619.0" layoutY="28.0" prefHeight="31.0" prefWidth="217.0" style="-fx-text-fill: green;" text="Human VS Bot" textAlignment="CENTER">
       
           <font>
               <Font name="System Bold" size="21.0" />
           </font>
       
       </Label>
-         <Button fx:id="pieRuleButton" layoutX="943.0" layoutY="1131.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Activate Pie Rule" onAction="#activatePieRule"  visible=" false"/>
-         <Button fx:id="showBotStrategyButton" layoutX="943.0" layoutY="1170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Show Bot Strategy" onAction="#showBotStrategyButton"/>
+         <Button fx:id="pieRuleButton" layoutX="943.0" layoutY="1131.0" mnemonicParsing="false" onAction="#activatePieRule" prefHeight="25.0" prefWidth="194.0" text="Activate Pie Rule" visible=" false" />
+         <Button fx:id="showBotStrategyButton" layoutX="943.0" layoutY="1170.0" mnemonicParsing="false" onAction="#showBotStrategyButton" prefHeight="25.0" prefWidth="194.0" text="Show Bot Strategy" />
+         <ScrollPane fx:id="textualStrategyPane" layoutX="1210.0" layoutY="704.0" prefHeight="276.0" prefWidth="241.0" visible="false">
+            <content>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="223.0">
+                  <children>
+                     <Text layoutX="4.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The bot uses the A star algorithm to get paths from the last move's neighbours to all ending octagons. It then choses the shortest path. If no neighbours are free, the bot checks all other cells in the current chain. Otherwise start a new chain. On the GUI, the paths considered are show in random colours, and the chosen path is shown in Yellow. The chosen cell in DarkBlue" wrappingWidth="214.74569702148438" />
+                     <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="24.0" prefWidth="210.0" text="Textual Bot Strategy: " textAlignment="CENTER" textFill="RED">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </AnchorPane>
+            </content>
+         </ScrollPane>
          </AnchorPane>
       </content>
    </ScrollPane>

@@ -131,4 +131,20 @@ class QSSControllerTest {
 
     assertFalse(controller.shouldShowPieRuleButton());
   }
+
+  @Test
+  void shouldShowBotStrategyButton() {
+    QSSController controller = new QSSController();
+    controller.game = new Game();
+    assertTrue(controller.botStrategyButtonEnabled);
+  }
+
+  @Test
+  void shouldShowBotStrategy() {
+    QSSController controller = new QSSController();
+    controller.game = new Game();
+    Bot bot = controller.game.getBot();
+    bot.calculatePaths(controller.game.getState());
+    assertNotNull(bot.getNextMove());
+  }
 }

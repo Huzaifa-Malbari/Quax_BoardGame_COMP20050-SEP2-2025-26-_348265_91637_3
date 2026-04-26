@@ -4,12 +4,11 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -18,6 +17,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javafx.scene.control.Button;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 public class QSSController {
@@ -703,6 +704,9 @@ public class QSSController {
   private Polygon R9_11;
 
   @FXML
+  private ScrollPane textualStrategyPane;
+
+  @FXML
   private Button showBotStrategyButton;
 
   @FXML
@@ -716,7 +720,11 @@ public class QSSController {
 
   private boolean pieRuleUsedOrExpired = false; // added by Ioan
   private Polygon highlightedBotCell = null;
-  private boolean showStrategy;
+  private boolean showStrategy = false;
+
+  ArrayList<Polygon> changedColour;
+  ArrayList<Paint> oldColour;
+  boolean botStrategyButtonEnabled = true;
 
   Game game = new Game();
 
@@ -726,9 +734,6 @@ public class QSSController {
     placeCell(polygon);
     if (game.isBlack() == game.getBot().isBlack()) {
       botMove();
-      if (showStrategy){
-        showBotStrategy();
-      }
     }
   }
 
@@ -786,6 +791,12 @@ public class QSSController {
       if (success) {
         polygon.setFill(color);
 
+        if (changedColour != null && changedColour.contains(polygon)) {
+          int index = changedColour.indexOf(polygon);
+          changedColour.remove(index);
+          oldColour.remove(index);
+        }
+
         // If more than 1 move has been played, pie rule is no longer available. - added
         // by Ioan
         if (game.getMoveCount() > 1) {
@@ -806,17 +817,23 @@ public class QSSController {
   }
 
   private void botMove() {
-    if (highlightedBotCell != null) {
-      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
-        highlightedBotCell.setFill(Color.web("#d0a60e"));
-      }
-      highlightedBotCell = null;
+//    if (highlightedBotCell != null) {
+//      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
+//        highlightedBotCell.setFill(Color.web("#d0a60e"));
+//      }
+//      highlightedBotCell = null;
+//    }
+    if (showStrategy) {
+      hidePaths();
     }
     Bot bot = game.getBot();
     bot.calculatePaths(game.getState());
     String id = bot.getNextMove().getAssociatedCellID();
     placeCell( (Polygon) getNodeWithID(id));
     bot.setLastMove(game.getBoardCellWithID(bot.getNextMove().getAssociatedCellID()));
+    if (showStrategy) {
+      showPaths();
+    }
   }
 
   private Node getNodeWithID(String id) {
@@ -852,6 +869,18 @@ public class QSSController {
   }
 
   private void restartGame() {
+    resetColour();
+    pieRuleUsedOrExpired = false;
+    startGame();
+  }
+
+  private void resetColour() {
+    if (showStrategy) {
+      showBotStrategyButton();
+    }
+    changedColour = new ArrayList<Polygon>();
+    oldColour = new ArrayList<Paint>();
+
     Pane pane = (Pane) O0_0.getParent();
     for (Node node : pane.getChildren()) {
       if (node instanceof Polygon) {
@@ -862,8 +891,6 @@ public class QSSController {
         }
       }
     }
-    pieRuleUsedOrExpired = false;
-    startGame();
   }
 
   @FXML
@@ -874,7 +901,12 @@ public class QSSController {
 
   private void startGame() {
     game = new Game();
-    botMove();
+    Random random = new Random();
+    if (random.nextDouble() >= 0.5) {
+      botMove();
+    }else {
+      game.getBot().setBlack(false);
+    }
     setPlayerTurnText(null);
   }
 
@@ -971,36 +1003,85 @@ public class QSSController {
   @FXML
   private void showBotStrategyButton() {
     showStrategy = !showStrategy;
-
     if (showStrategy) {
       showBotStrategyButton.setText("Hide Bot Strategy");
       showBotStrategy();
     }else {
       showBotStrategyButton.setText("Show Bot Strategy");
+      hidePaths();
     }
+    textualStrategyPane.setVisible(!textualStrategyPane.isVisible());
+
   }
 
   private void showBotStrategy() {
-    if (game.isGameOver()) return;
-
-    if (highlightedBotCell != null) {
-      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
-        highlightedBotCell.setFill(Color.web("#d0a60e"));
-      }
-      highlightedBotCell = null;
-    }
-
-    Bot bot = game.getBot();
-    GameState state = game.getState();
-    GameState botState = new GameState(state.ocells(), state.rcells(), bot.isBlack());
-    bot.calculatePaths(botState);
-    String id = bot.getNextMove().getAssociatedCellID();
-
-    Polygon polygon = (Polygon) getNodeWithID(id);
-    if (polygon != null) {
-      polygon.setFill(Color.LIGHTGREEN);
-      highlightedBotCell = polygon;
-    }
+    showPaths();
   }
+
+  private void showPaths() {
+    Bot bot = game.getBot();
+    ArrayList<SearchNode> chosenPath = bot.getChosenPath();
+    if (chosenPath == null) {
+      return;
+    }
+
+    changedColour = new ArrayList<>();
+    oldColour = new ArrayList<>();
+
+
+    for (SearchNode node : chosenPath) {
+      Polygon polygon = (Polygon) getNodeWithID(node.getAssociatedCellID());
+      oldColour.add(polygon.getFill());
+      changedColour.add(polygon);
+      if (node.equals(chosenPath.getFirst())) {
+        polygon.setFill(Color.DARKBLUE);
+      }else {
+        polygon.setFill(Color.YELLOW);
+      }
+    }
+
+    ArrayList<ArrayList<SearchNode>> paths = bot.getPaths();
+    paths.remove(chosenPath);
+
+    Random random = new Random();
+    for (ArrayList<SearchNode> currpath : paths) {
+
+      Color color = Color.BLACK;
+      do {
+      color = Color.rgb(random.nextInt(100, 256), random.nextInt(100, 256)
+              , random.nextInt(100, 256));
+      }while (color.equals(Color.BLACK) || color.equals(Color.WHITE) || color.equals(Color.LIGHTGREEN));
+
+      for (SearchNode node : currpath) {
+        Polygon polygon = (Polygon) getNodeWithID(node.getAssociatedCellID());
+        if (changedColour.contains(polygon)) {
+          continue;
+        }
+        oldColour.add(polygon.getFill());
+        changedColour.add(polygon);
+        polygon.setFill(color);
+
+      }
+    }
+
+  }
+
+  private void hidePaths() {
+    if (changedColour == null) {
+      return;
+    }
+
+    while (!changedColour.isEmpty()) {
+      Polygon polygon = changedColour.removeFirst();
+      polygon.setFill(oldColour.removeFirst());
+    }
+
+  }
+/*
+  public  Polygon getHighlightedBotCell(){
+    return highlightedBotCell;
+  }
+
+ */
 
 }
