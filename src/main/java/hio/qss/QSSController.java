@@ -6,6 +6,8 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -17,6 +19,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javafx.scene.control.Button;
+
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -63,9 +67,6 @@ public class QSSController {
 
   @FXML
   private Polygon O10_10;
-
-  @FXML
-  private Polygon promptOct;
 
   @FXML
   private Polygon O10_12;
@@ -392,12 +393,6 @@ public class QSSController {
   private Polygon O9_9;
 
   @FXML
-  private Polygon O10;
-
-  @FXML
-  private Polygon O_11;
-
-  @FXML
   private Polygon R0_0;
 
   @FXML
@@ -674,6 +669,9 @@ public class QSSController {
   private Polygon R9_1;
 
   @FXML
+  private Polygon R9_11;
+
+  @FXML
   private Polygon R9_2;
 
   @FXML
@@ -698,22 +696,46 @@ public class QSSController {
   private Polygon R9_9;
 
   @FXML
+  private BorderPane blackBottom;
+
+  @FXML
+  private BorderPane blackTop;
+
+  @FXML
+  private AnchorPane buttonPanel;
+
+  @FXML
+  private AnchorPane mainAnchor;
+
+  @FXML
+  private Button pieRuleButton;
+
+  @FXML
+  private Polygon promptOct;
+
+  @FXML
   private Polygon promptRhombus;
 
   @FXML
-  private Polygon R9_11;
-
-  @FXML
-  private ScrollPane textualStrategyPane;
+  private AnchorPane rightPane;
 
   @FXML
   private Button showBotStrategyButton;
 
   @FXML
+  private ScrollPane textualStrategyPane;
+
+  @FXML
+  private Label title;
+
+  @FXML
   private Label turnLabel;
 
   @FXML
-  private Button pieRuleButton; // added by Ioan
+  private BorderPane whiteLeft;
+
+  @FXML
+  private BorderPane whiteRight;
 
 
 
@@ -727,6 +749,16 @@ public class QSSController {
   boolean botStrategyButtonEnabled = true;
 
   Game game = new Game();
+
+  Polygon[][] opolygons = new Polygon[Game.MAX_OCTAGONS][Game.MAX_OCTAGONS];
+  Polygon[][] rpolygons = new Polygon[Game.MAX_RHOMBIS][Game.MAX_RHOMBIS];
+  double scale;
+  double octagonWidth;
+
+  double boardLeft;
+  double boardRight;
+  double boardTop;
+  double boardBottom;
 
   @FXML
   void getCellID(MouseEvent event) {
@@ -749,7 +781,6 @@ public class QSSController {
 
     pieRuleUsedOrExpired = true;
 
-    // TODO: apply actual pie rule logic here
     // This usually means player 2 takes over player 1's first move / swaps sides.
     game.setBot(new Bot(game.getBot().getStrategy()));
     game.getBot().setBlack(false);
@@ -895,7 +926,7 @@ public class QSSController {
 
   @FXML
   public void initialize() {
-    addBoardLabels();
+    resize();
     startGame();
   }
 
@@ -914,51 +945,36 @@ public class QSSController {
     Pane pane = (Pane) O0_0.getParent();
     String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
 
-    // Board pixel boundaries (derived from polygon positions + scale)
-    double boardLeft = 25;
-    double boardRight = 995;
-    double boardTop = 23;
-    double boardBottom = 993;
-    double frameEnd = 1025; // right/bottom edge of the visible border frame
+    double witdh = octagonWidth * 0.4;
 
     // Background border rectangles
     // Brown strips on left and right (behind the row numbers)
-    int startX = (int) O0_0.getLayoutX() + 30;
-    int startY = (int) O0_0.getLayoutY() + 30;
-    Rectangle brownLeft = new Rectangle(startX, startY, boardLeft, frameEnd);
+    int startX = (int) boardLeft;
+    int startY = (int) boardTop;
+    Rectangle brownLeft = new Rectangle(startX, startY, witdh, boardBottom - boardTop + octagonWidth);
     brownLeft.setFill(Color.web("#8B4513"));
 
-    Rectangle brownRight = new Rectangle(startX + boardRight, startY, frameEnd - boardRight, frameEnd);
+    Rectangle brownRight = new Rectangle(boardRight + witdh, startY, witdh, boardBottom - boardTop + octagonWidth);
     brownRight.setFill(Color.web("#8B4513"));
-
-    // Black strips on top and bottom (behind the column labels, on top of brown at
-    // corners)
-    Rectangle blackTop = new Rectangle(startX, startY, frameEnd, boardTop);
-    blackTop.setFill(Color.BLACK);
-
-    Rectangle blackBottom = new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
-    blackBottom.setFill(Color.BLACK);
 
     // Insert at index 0 in reverse layering order so final order is:
     // [brownLeft, brownRight, blackTop, blackBottom, ...polygons...]
     // → brown renders first (back), black in front, polygons on top
     int numChildren = pane.getChildren().size();
-    pane.getChildren().add(numChildren, blackBottom);
-    pane.getChildren().add(numChildren, blackTop);
     pane.getChildren().add(numChildren, brownRight);
     pane.getChildren().add(numChildren, brownLeft);
 
     // --- Labels (added last so they render on top of everything) ---
     for (int col = 0; col < 11; col++) {
-      double x = startX + 60 + col * 88;
+      double x = startX + 0.8 * octagonWidth + col * octagonWidth;
 
       // Top row: A-K (white text — visible on black background)
-      Text topLabel = new Text(x, startY + 15, letters[col]);
+      Text topLabel = new Text(x, startY + 0.3 * octagonWidth, letters[col]);
       topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       topLabel.setFill(Color.WHITE);
 
       // Bottom row: A-K (white text — visible on black background)
-      Text bottomLabel = new Text(x, startY + 1010, letters[col]);
+      Text bottomLabel = new Text(x, boardBottom + 0.8 * octagonWidth, letters[col]);
       bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       bottomLabel.setFill(Color.WHITE);
 
@@ -966,15 +982,15 @@ public class QSSController {
     }
 
     for (int row = 0; row < 11; row++) {
-      double y = startY + 68 + row * 88;
+      double y = startY + 0.8 * octagonWidth + row * octagonWidth;
       int number = 11 - row;
 
       // Left numbers (black text on brown background)
-      Text leftLabel = new Text(startX + 5, y + 5, String.valueOf(number));
+      Text leftLabel = new Text(startX, y, String.valueOf(number));
       leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
       // Right numbers (black text on brown background)
-      Text rightLabel = new Text(startX + 1000, y + 5, String.valueOf(number));
+      Text rightLabel = new Text(boardRight + 0.5 * octagonWidth, y, String.valueOf(number));
       rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
       pane.getChildren().addAll(leftLabel, rightLabel);
@@ -1083,5 +1099,88 @@ public class QSSController {
   }
 
  */
+
+  public void resize() {
+
+    for (int i = 0; i < Game.MAX_OCTAGONS; i++) {
+      for (int j = 0; j < Game.MAX_OCTAGONS; j++) {
+        opolygons[i][j] = (Polygon) getNodeWithID("O" + i + "_" + j);
+      }
+    }
+
+    for (int i = 0; i < Game.MAX_RHOMBIS; i++) {
+      for (int j = 0; j < Game.MAX_RHOMBIS; j++) {
+        rpolygons[i][j] = (Polygon) getNodeWithID("R" + i + "_" + j);
+      }
+    }
+
+    double maxHeight = Screen.getPrimary().getVisualBounds().getHeight();
+    double maxWidth = Screen.getPrimary().getVisualBounds().getWidth();
+    mainAnchor.resize(maxWidth, maxHeight);
+
+    double normalOctagonWidth = 88/0.75;
+    // scale * normalOctagonWidth * 11 = boardAnchor.width
+    scale = (maxHeight * 0.7)/(normalOctagonWidth * 11);
+    double translate = scale * (normalOctagonWidth);
+    octagonWidth = scale * normalOctagonWidth;
+
+
+    for (int i = 0; i < Game.MAX_OCTAGONS; i++) {
+      for (int j = 0; j < Game.MAX_OCTAGONS; j++) {
+        Polygon thisP = opolygons[i][j];
+        thisP.setScaleX(scale);
+        thisP.setScaleY(scale);
+        thisP.setLayoutX(translate * j);
+        thisP.setLayoutY(translate * i);
+      }
+    }
+
+    for (int i = 0; i < Game.MAX_RHOMBIS; i++) {
+      for (int j = 0; j < Game.MAX_RHOMBIS; j++) {
+        Polygon thisP = rpolygons[i][j];
+        thisP.setScaleX(scale);
+        thisP.setScaleY(scale);
+        thisP.setLayoutX(translate/2 + translate * j);
+        thisP.setLayoutY(translate/2 + translate * i);
+      }
+    }
+
+    boardTop = opolygons[0][0].getLayoutX() + 50;
+    boardLeft = opolygons[0][0].getLayoutY() + 50;
+    boardRight = boardLeft + 11 * octagonWidth;
+    boardBottom = boardTop + 11 * octagonWidth;
+
+    blackTop.setLayoutX(boardLeft);
+    blackTop.setLayoutY(boardTop);
+    blackTop.setPrefWidth(boardRight - boardLeft + 0.5 * octagonWidth);
+    blackTop.setPrefHeight(octagonWidth);
+
+    whiteLeft.setLayoutX(boardLeft);
+    whiteLeft.setLayoutY(boardTop);
+    whiteLeft.setPrefWidth(0.5 * octagonWidth);
+    whiteLeft.setPrefHeight(boardBottom - boardTop);
+
+    blackBottom.setLayoutX(boardLeft);
+    blackBottom.setLayoutY(boardBottom);
+    blackBottom.setPrefWidth(boardRight - boardLeft + 0.5 * octagonWidth);
+    blackBottom.setPrefHeight(octagonWidth);
+
+    whiteRight.setLayoutX(boardRight);
+    whiteRight.setLayoutY(boardTop);
+    whiteRight.setPrefWidth(0.5 * octagonWidth);
+    whiteRight.setPrefHeight(boardBottom - boardTop);
+
+    title.setLayoutX(boardLeft + 5 * octagonWidth);
+
+    addBoardLabels();
+
+    buttonPanel.setLayoutY(boardBottom + octagonWidth);
+    buttonPanel.setLayoutX(boardLeft);
+    buttonPanel.setPrefWidth(boardRight - boardLeft);
+
+    rightPane.setLayoutY(boardTop);
+    rightPane.setLayoutX(boardRight + octagonWidth);
+
+  }
 
 }
