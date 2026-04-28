@@ -130,7 +130,8 @@ public class Game {
                if (!ocells[0][i].getStatus().equals(CellStatus.B)) {
                    continue;
                }
-               if (ocells[0][i].getGroup().getFurthest().getRow() == MAX_OCTAGONS - 1) {
+               BoardCell furthest = ocells[0][i].getFurthestCellInGroup();
+               if (furthest.getRow() == MAX_OCTAGONS - 1) {
                    gameOver = true;
                    blackWins = true;
                    break;
@@ -141,7 +142,8 @@ public class Game {
                if (!ocells[i][0].getStatus().equals(CellStatus.W)) {
                    continue;
                }
-               if (ocells[i][0].getGroup().getFurthest().getCol() == MAX_OCTAGONS - 1) {
+               BoardCell furthest = ocells[i][0].getFurthestCellInGroup();
+               if (furthest.getCol() == MAX_OCTAGONS - 1) {
                    gameOver = true;
                    blackWins = false;
                    break;

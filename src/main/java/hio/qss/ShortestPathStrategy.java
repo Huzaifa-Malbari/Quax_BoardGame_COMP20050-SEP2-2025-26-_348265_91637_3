@@ -39,7 +39,7 @@ public class ShortestPathStrategy implements Strategy{
             return;
         }
 
-        for (BoardCell cell : lastMove.getGroup().getCells()) {
+        for (BoardCell cell : lastMove.getCellsInGroup()) {
             addNeighbourPaths(state, cell);
         }
 

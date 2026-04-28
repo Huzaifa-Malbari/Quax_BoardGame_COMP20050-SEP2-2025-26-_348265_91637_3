@@ -20,6 +20,14 @@ public class BoardCell extends RawCell{
         return group;
     }
 
+    public ArrayList<BoardCell> getCellsInGroup() {
+        return group.getCells();
+    }
+
+    public BoardCell getFurthestCellInGroup() {
+        return group.getFurthest();
+    }
+
     public void setGroup(CellGroup group) {
         this.group = group;
     }
