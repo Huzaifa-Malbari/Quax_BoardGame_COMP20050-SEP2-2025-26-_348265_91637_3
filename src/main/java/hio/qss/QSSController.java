@@ -811,13 +811,7 @@ public class QSSController {
     if (!game.isGameOver()) {
       Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
-      // Get gui id
-      String id = polygon.getId();
-      // Get cell indices
-      Boolean isRhombic = (id.charAt(0) == 'O') ? false : true;
-      String[] tockens = id.substring(1).split("_");
-      // Query and update Model
-      Boolean success = game.placeCell(isRhombic, Integer.valueOf(tockens[0]), Integer.valueOf(tockens[1]));
+      Boolean success = game.placeCell(polygon.getId());
       // Update View
       if (success) {
         polygon.setFill(color);
@@ -848,12 +842,6 @@ public class QSSController {
   }
 
   private void botMove() {
-//    if (highlightedBotCell != null) {
-//      if (Color.LIGHTGREEN.equals(highlightedBotCell.getFill())) {
-//        highlightedBotCell.setFill(Color.web("#d0a60e"));
-//      }
-//      highlightedBotCell = null;
-//    }
     if (showStrategy) {
       hidePaths();
     }

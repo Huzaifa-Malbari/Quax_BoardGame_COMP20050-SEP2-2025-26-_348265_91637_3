@@ -44,41 +44,36 @@ public class Game {
         }
     }
 
+    // For old unit tests
     public boolean placeCell(Boolean isRhombic, int row, int col) {
+        BoardCell cell = new BoardCell(isRhombic, CellStatus.Free, row, col);
+        return placeCell(cell.getAssociatedCellID());
+    }
 
-        if (isRhombic) {
-            if (!rcells[row][col].getStatus().equals(CellStatus.Free) || gameOver) {
-                return false;
-            }
-            BoardCell cell = createCell(row, col, isRhombic);
-            rcells[row][col] = cell;
-            updateChains(cell);
-        }else {
-            if (!ocells[row][col].getStatus().equals(CellStatus.Free) || gameOver) {
-                return false;
-            }
-            BoardCell cell = createCell(row, col, isRhombic);
-            ocells[row][col] = cell;
-            updateChains(cell);
+    public boolean placeCell(String id) {
+
+        BoardCell cell = getBoardCellWithID(id);
+
+        if (gameOver || !cell.getStatus().equals(CellStatus.Free)) {
+            return false;
         }
+
+        cell = updateCell(cell);
+        updateChains(cell);
         moveCount++;
         isBlack = !isBlack;
         return true;
     }
 
-    private BoardCell createCell(int row, int col, boolean isRhombic) {
-        BoardCell cell;
-        if (isRhombic) {
-            cell = new BoardCell(true, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
-        }else {
-            cell = new BoardCell(false, (isBlack) ? CellStatus.B : CellStatus.W, row, col);
-        }
+    private BoardCell updateCell(BoardCell cell) {
 
-        return cell;
-    }
+        int row = cell.getRow();
+        int col = cell.getCol();
+        CellStatus status = isBlack ? CellStatus.B : CellStatus.W;
+        BoardCell[][] cells = cell.getRhombic() ? rcells : ocells;
 
-    private BoardCell createCell(BoardCell cell) {
-        return createCell(cell.getRow(), cell.getCol(), cell.getRhombic());
+        cells[row][col] = new BoardCell(cell.getRhombic(), status, row, col);
+        return cells[row][col];
     }
 
     public boolean isBlack() {
