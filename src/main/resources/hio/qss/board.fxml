@@ -3718,13 +3718,14 @@
          </Polygon>
          <!-- Unoccupied indicator labels -->
          <Label layoutX="40.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="All" />
-         <Label layoutX="19.0" layoutY="144.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="cells are unoccupied" />
-         <ScrollPane fx:id="textualStrategyPane" layoutY="174.0" prefHeight="276.0" prefWidth="241.0" visible="false">
+         <Label layoutX="19.0" layoutY="174.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="unoccupied" />
+         <Label layoutX="19.0" layoutY="144.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="cells are" />
+         <ScrollPane fx:id="textualStrategyPane" layoutX="8.0" layoutY="204.0">
             <content>
-             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="223.0">
+             <AnchorPane minHeight="0.0" minWidth="0.0">
                   <children>
-                     <Text layoutX="4.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The bot uses the A star algorithm to get paths from the last move's neighbours to all ending octagons. It then choses the shortest path. If no neighbours are free, the bot checks all other cells in the current chain. Otherwise start a new chain. On the GUI, the paths considered are show in random colours, and the chosen path is shown in Yellow. The chosen cell in DarkBlue" wrappingWidth="214.74569702148438" />
-                     <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="24.0" prefWidth="210.0" text="Textual Bot Strategy: " textAlignment="CENTER" textFill="RED">
+                     <Text layoutX="4.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The bot uses the A star algorithm to get paths from the last move's neighbours to all ending octagons. It then choses the shortest path. If no neighbours are free, the bot checks all other cells in the current chain. Otherwise start a new chain. On the GUI, the paths considered are show in random colours, and the chosen path is shown in Yellow. The chosen cell in DarkBlue" wrappingWidth="149.23635846098614" />
+                     <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="24.0" prefWidth="149.0" text="Textual Bot Strategy: " textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="System Bold" size="13.0" />
                         </font>

@@ -702,6 +702,9 @@ public class QSSController {
   private BorderPane blackTop;
 
   @FXML
+  private AnchorPane boardAnchor;
+
+  @FXML
   private AnchorPane buttonPanel;
 
   @FXML
@@ -933,16 +936,14 @@ public class QSSController {
     Pane pane = (Pane) O0_0.getParent();
     String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
 
-    double witdh = octagonWidth * 0.4;
+    double width = 0.5 * octagonWidth;
 
     // Background border rectangles
     // Brown strips on left and right (behind the row numbers)
-    int startX = (int) boardLeft;
-    int startY = (int) boardTop;
-    Rectangle brownLeft = new Rectangle(startX, startY, witdh, boardBottom - boardTop + octagonWidth);
+    Rectangle brownLeft = new Rectangle(boardLeft - width, boardTop - width, width, boardBottom - boardTop + 2 * width);
     brownLeft.setFill(Color.web("#8B4513"));
 
-    Rectangle brownRight = new Rectangle(boardRight + witdh, startY, witdh, boardBottom - boardTop + octagonWidth);
+    Rectangle brownRight = new Rectangle(boardRight, boardTop - width, width, boardBottom - boardTop + 2 * width);
     brownRight.setFill(Color.web("#8B4513"));
 
     // Insert at index 0 in reverse layering order so final order is:
@@ -954,15 +955,15 @@ public class QSSController {
 
     // --- Labels (added last so they render on top of everything) ---
     for (int col = 0; col < 11; col++) {
-      double x = startX + 0.8 * octagonWidth + col * octagonWidth;
+      double x = boardLeft + width + col * octagonWidth;
 
       // Top row: A-K (white text — visible on black background)
-      Text topLabel = new Text(x, startY + 0.3 * octagonWidth, letters[col]);
+      Text topLabel = new Text(x, boardTop, letters[col]);
       topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       topLabel.setFill(Color.WHITE);
 
       // Bottom row: A-K (white text — visible on black background)
-      Text bottomLabel = new Text(x, boardBottom + 0.8 * octagonWidth, letters[col]);
+      Text bottomLabel = new Text(x, boardBottom + width, letters[col]);
       bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       bottomLabel.setFill(Color.WHITE);
 
@@ -970,15 +971,15 @@ public class QSSController {
     }
 
     for (int row = 0; row < 11; row++) {
-      double y = startY + 0.8 * octagonWidth + row * octagonWidth;
+      double y = boardTop + width + row * octagonWidth;
       int number = 11 - row;
 
       // Left numbers (black text on brown background)
-      Text leftLabel = new Text(startX, y, String.valueOf(number));
+      Text leftLabel = new Text(boardLeft - width, y, String.valueOf(number));
       leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
       // Right numbers (black text on brown background)
-      Text rightLabel = new Text(boardRight + 0.5 * octagonWidth, y, String.valueOf(number));
+      Text rightLabel = new Text(boardRight, y, String.valueOf(number));
       rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
       pane.getChildren().addAll(leftLabel, rightLabel);
@@ -1108,8 +1109,7 @@ public class QSSController {
 
     double normalOctagonWidth = 88/0.75;
     // scale * normalOctagonWidth * 11 = boardAnchor.width
-    scale = (maxHeight * 0.7)/(normalOctagonWidth * 11);
-    double translate = scale * (normalOctagonWidth);
+    scale = (Math.min(maxHeight, maxWidth) * 0.7)/(normalOctagonWidth * 11);
     octagonWidth = scale * normalOctagonWidth;
 
 
@@ -1118,8 +1118,8 @@ public class QSSController {
         Polygon thisP = opolygons[i][j];
         thisP.setScaleX(scale);
         thisP.setScaleY(scale);
-        thisP.setLayoutX(translate * j);
-        thisP.setLayoutY(translate * i);
+        thisP.setLayoutX(octagonWidth * j);
+        thisP.setLayoutY(octagonWidth * i);
       }
     }
 
@@ -1128,34 +1128,36 @@ public class QSSController {
         Polygon thisP = rpolygons[i][j];
         thisP.setScaleX(scale);
         thisP.setScaleY(scale);
-        thisP.setLayoutX(translate/2 + translate * j);
-        thisP.setLayoutY(translate/2 + translate * i);
+        thisP.setLayoutX(octagonWidth/2 + octagonWidth * j);
+        thisP.setLayoutY(octagonWidth/2 + octagonWidth * i);
       }
     }
 
-    boardTop = opolygons[0][0].getLayoutX() + 50;
-    boardLeft = opolygons[0][0].getLayoutY() + 50;
+    double boarderWidth = 0.5 * octagonWidth;
+
+    boardTop = opolygons[0][0].getLayoutX() + (normalOctagonWidth - octagonWidth);
+    boardLeft = opolygons[0][0].getLayoutY() + (normalOctagonWidth - octagonWidth);
     boardRight = boardLeft + 11 * octagonWidth;
     boardBottom = boardTop + 11 * octagonWidth;
 
-    blackTop.setLayoutX(boardLeft);
-    blackTop.setLayoutY(boardTop);
-    blackTop.setPrefWidth(boardRight - boardLeft + 0.5 * octagonWidth);
-    blackTop.setPrefHeight(octagonWidth);
+    blackTop.setLayoutX(boardLeft - boarderWidth);
+    blackTop.setLayoutY(boardTop - boarderWidth);
+    blackTop.setPrefWidth(boardRight - boardLeft + 2 * boarderWidth);
+    blackTop.setPrefHeight(2 * boarderWidth);
 
-    whiteLeft.setLayoutX(boardLeft);
+    whiteLeft.setLayoutX(boardLeft - boarderWidth);
     whiteLeft.setLayoutY(boardTop);
-    whiteLeft.setPrefWidth(0.5 * octagonWidth);
+    whiteLeft.setPrefWidth(2 * boarderWidth);
     whiteLeft.setPrefHeight(boardBottom - boardTop);
 
-    blackBottom.setLayoutX(boardLeft);
-    blackBottom.setLayoutY(boardBottom);
-    blackBottom.setPrefWidth(boardRight - boardLeft + 0.5 * octagonWidth);
-    blackBottom.setPrefHeight(octagonWidth);
+    blackBottom.setLayoutX(boardLeft - boarderWidth);
+    blackBottom.setLayoutY(boardBottom - boarderWidth);
+    blackBottom.setPrefWidth(boardRight - boardLeft + 2 * boarderWidth);
+    blackBottom.setPrefHeight(2 * boarderWidth);
 
-    whiteRight.setLayoutX(boardRight);
+    whiteRight.setLayoutX(boardRight - boarderWidth);
     whiteRight.setLayoutY(boardTop);
-    whiteRight.setPrefWidth(0.5 * octagonWidth);
+    whiteRight.setPrefWidth(2 * boarderWidth);
     whiteRight.setPrefHeight(boardBottom - boardTop);
 
     title.setLayoutX(boardLeft + 5 * octagonWidth);
@@ -1168,6 +1170,7 @@ public class QSSController {
 
     rightPane.setLayoutY(boardTop);
     rightPane.setLayoutX(boardRight + octagonWidth);
+    rightPane.setPrefHeight(boardBottom - boardTop);
 
   }
 
