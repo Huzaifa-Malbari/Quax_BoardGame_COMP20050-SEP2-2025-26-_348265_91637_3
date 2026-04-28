@@ -17,6 +17,11 @@ public class ShortestPathStrategy implements Strategy{
     }
 
     @Override
+    public ArrayList<SearchNode> getChosenPath() {
+        return shortestPath;
+    }
+
+    @Override
     public void calculatePaths(GameState state, BoardCell lastMove, BoardCell lastOpponentMove) {
         paths = new ArrayList<ArrayList<SearchNode>>();
         shortestPath = null;
@@ -66,7 +71,7 @@ public class ShortestPathStrategy implements Strategy{
                 }else {
                     end = new SearchNode(state.ocells()[i][Game.MAX_OCTAGONS - 1]);
                 }
-                ArrayList<SearchNode> path = getShortestPathBetween(state, start, end);
+                ArrayList<SearchNode> path = AStar.getShortestPathBetween(state, start, end);
                 addPath(path);
 
             }
@@ -86,82 +91,6 @@ public class ShortestPathStrategy implements Strategy{
                 || path.size() == shortestPath.size() && path.getFirst().getRhombic()) {
             shortestPath = path;
         }
-
-    }
-
-    private ArrayList<SearchNode> getShortestPathBetween(GameState state, SearchNode start, SearchNode end) {
-
-        ArrayList<SearchNode> toSearch = new ArrayList<SearchNode>();
-        toSearch.add(start);
-        ArrayList<SearchNode> processed = new ArrayList<SearchNode>();
-
-        while (!toSearch.isEmpty()) {
-
-            SearchNode curr = toSearch.getFirst();
-            for (SearchNode node : toSearch) {
-                if (node.getF() < curr.getF() || node.getF() == curr.getF() && node.getH() < curr.getH()) {
-                    curr = node;
-                }
-            }
-            toSearch.remove(curr);
-            processed.add(curr);
-
-            if (curr.equals(end)) {
-                return returnPath(start, curr);
-            }
-
-            AStarState aStarState = new AStarState(toSearch, processed, start, end);
-            updateNeighbourCosts(state, curr, aStarState);
-
-        }
-
-        return new ArrayList<SearchNode>();
-    }
-
-    private record AStarState(ArrayList<SearchNode> toSearch, ArrayList<SearchNode> processed, SearchNode start, SearchNode end) {
-    }
-
-    private void updateNeighbourCosts(GameState gameState, SearchNode curr, AStarState aStarState) {
-
-        ArrayList<SearchNode> toSearch = aStarState.toSearch();
-        ArrayList<SearchNode> processed = aStarState.processed();
-        ArrayList<BoardCell> neighbours = curr.getNeighbours(gameState);
-        for (BoardCell neighbour : neighbours) {
-            if (!(neighbour.getStatus().equals(CellStatus.Free) && !processed.contains(neighbour))) {
-                continue;
-            }
-
-            boolean inSearch = toSearch.contains(neighbour);
-            int costToNeighbour = curr.getG() + SearchNode.calculateDistance(curr, neighbour);
-            SearchNode searchNeighbour = new SearchNode(neighbour);
-
-            if (inSearch) {
-                searchNeighbour = toSearch.get(toSearch.indexOf(neighbour));
-            }
-            if (!inSearch || costToNeighbour < searchNeighbour.getG()) {
-                searchNeighbour.setG(costToNeighbour);
-                searchNeighbour.setConnection(curr);
-
-                if (!inSearch) {
-                    searchNeighbour.setH(SearchNode.calculateDistance(searchNeighbour, aStarState.end()));
-                    toSearch.add(searchNeighbour);
-                }
-            }
-        }
-
-    }
-
-    private ArrayList<SearchNode> returnPath(SearchNode start, SearchNode end) {
-
-        ArrayList<SearchNode> path = new ArrayList<SearchNode>();
-        SearchNode currentNode = end;
-        while (!currentNode.equals(start)) {
-            path.addFirst(currentNode);
-            currentNode = currentNode.getConnection();
-        }
-        path.addFirst(currentNode);
-
-        return path;
 
     }
 
@@ -196,11 +125,6 @@ public class ShortestPathStrategy implements Strategy{
         }
 
         return null;
-    }
-
-    @Override
-    public ArrayList<SearchNode> getChosenPath() {
-        return shortestPath;
     }
 
 }

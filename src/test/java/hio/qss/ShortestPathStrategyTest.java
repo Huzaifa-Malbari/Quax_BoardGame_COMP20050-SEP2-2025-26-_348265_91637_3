@@ -14,30 +14,25 @@ class ShortestPathStrategyTest {
     @Test
     void testGetShortestPathBetween() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Class clazz = Class.forName("hio.qss.ShortestPathStrategy");
-        Method method = clazz.getDeclaredMethod("getShortestPathBetween", GameState.class, SearchNode.class, SearchNode.class);
-        method.setAccessible(true);
-
-        ShortestPathStrategy strategy = new ShortestPathStrategy();
         Game game = new Game();
         GameState state = game.getState();
         BoardCell[][] ocells = state.ocells();
         BoardCell[][] rcells = state.rcells();
 
         ArrayList<SearchNode> path;
-        path = (ArrayList<SearchNode>) method.invoke(strategy, state, new SearchNode(ocells[0][0]), new SearchNode(ocells[0][10]));
+        path =  AStar.getShortestPathBetween(state, new SearchNode(ocells[0][0]), new SearchNode(ocells[0][10]));
         assertEquals(11, path.size());
 
-        path = (ArrayList<SearchNode>) method.invoke(strategy, state, new SearchNode(ocells[0][0]), new SearchNode(ocells[10][10]));
+        path = AStar.getShortestPathBetween(state, new SearchNode(ocells[0][0]), new SearchNode(ocells[10][10]));
         assertEquals(21, path.size());
 
-        path = (ArrayList<SearchNode>) method.invoke(strategy, state, new SearchNode(ocells[0][0]), new SearchNode(rcells[0][0]));
+        path = AStar.getShortestPathBetween(state, new SearchNode(ocells[0][0]), new SearchNode(rcells[0][0]));
         assertEquals(2, path.size());
 
-        path = (ArrayList<SearchNode>) method.invoke(strategy, state, new SearchNode(rcells[0][0]), new SearchNode(rcells[0][9]));
+        path = AStar.getShortestPathBetween(state, new SearchNode(rcells[0][0]), new SearchNode(rcells[0][9]));
         assertEquals(11, path.size());
 
-        path = (ArrayList<SearchNode>) method.invoke(strategy, state, new SearchNode(rcells[0][0]), new SearchNode(rcells[9][9]));
+        path = AStar.getShortestPathBetween(state, new SearchNode(rcells[0][0]), new SearchNode(rcells[9][9]));
         assertEquals(19, path.size());
     }
 
