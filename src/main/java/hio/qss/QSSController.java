@@ -1,5 +1,6 @@
 package hio.qss;
 
+import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -7,20 +8,18 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javafx.scene.control.Button;
-
-import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -696,18 +695,6 @@ public class QSSController {
   private Polygon R9_9;
 
   @FXML
-  private BorderPane blackBottom;
-
-  @FXML
-  private BorderPane blackTop;
-
-  @FXML
-  private AnchorPane boardAnchor;
-
-  @FXML
-  private AnchorPane buttonPanel;
-
-  @FXML
   private AnchorPane mainAnchor;
 
   @FXML
@@ -720,25 +707,13 @@ public class QSSController {
   private Polygon promptRhombus;
 
   @FXML
-  private AnchorPane rightPane;
-
-  @FXML
   private Button showBotStrategyButton;
 
   @FXML
   private ScrollPane textualStrategyPane;
 
   @FXML
-  private Label title;
-
-  @FXML
   private Label turnLabel;
-
-  @FXML
-  private BorderPane whiteLeft;
-
-  @FXML
-  private BorderPane whiteRight;
 
 
 
@@ -752,16 +727,6 @@ public class QSSController {
   boolean botStrategyButtonEnabled = true;
 
   Game game = new Game();
-
-  Polygon[][] opolygons = new Polygon[Game.MAX_OCTAGONS][Game.MAX_OCTAGONS];
-  Polygon[][] rpolygons = new Polygon[Game.MAX_RHOMBIS][Game.MAX_RHOMBIS];
-  double scale;
-  double octagonWidth;
-
-  double boardLeft;
-  double boardRight;
-  double boardTop;
-  double boardBottom;
 
   @FXML
   void getCellID(MouseEvent event) {
@@ -917,6 +882,7 @@ public class QSSController {
 
   @FXML
   public void initialize() {
+    addBoardLabels();
     resize();
     startGame();
   }
@@ -936,34 +902,51 @@ public class QSSController {
     Pane pane = (Pane) O0_0.getParent();
     String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
 
-    double width = 0.5 * octagonWidth;
+    // Board pixel boundaries (derived from polygon positions + scale)
+    double boardLeft = 25;
+    double boardRight = 995;
+    double boardTop = 23;
+    double boardBottom = 993;
+    double frameEnd = 1025; // right/bottom edge of the visible border frame
 
     // Background border rectangles
     // Brown strips on left and right (behind the row numbers)
-    Rectangle brownLeft = new Rectangle(boardLeft - width, boardTop - width, width, boardBottom - boardTop + 2 * width);
+    int startX = (int) O0_0.getLayoutX() + 30;
+    int startY = (int) O0_0.getLayoutY() + 30;
+    Rectangle brownLeft = new Rectangle(startX, startY, boardLeft, frameEnd);
     brownLeft.setFill(Color.web("#8B4513"));
 
-    Rectangle brownRight = new Rectangle(boardRight, boardTop - width, width, boardBottom - boardTop + 2 * width);
+    Rectangle brownRight = new Rectangle(startX + boardRight, startY, frameEnd - boardRight, frameEnd);
     brownRight.setFill(Color.web("#8B4513"));
+
+    // Black strips on top and bottom (behind the column labels, on top of brown at
+    // corners)
+    Rectangle blackTop = new Rectangle(startX, startY, frameEnd, boardTop);
+    blackTop.setFill(Color.BLACK);
+
+    Rectangle blackBottom = new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
+    blackBottom.setFill(Color.BLACK);
 
     // Insert at index 0 in reverse layering order so final order is:
     // [brownLeft, brownRight, blackTop, blackBottom, ...polygons...]
     // → brown renders first (back), black in front, polygons on top
     int numChildren = pane.getChildren().size();
+    pane.getChildren().add(numChildren, blackBottom);
+    pane.getChildren().add(numChildren, blackTop);
     pane.getChildren().add(numChildren, brownRight);
     pane.getChildren().add(numChildren, brownLeft);
 
     // --- Labels (added last so they render on top of everything) ---
     for (int col = 0; col < 11; col++) {
-      double x = boardLeft + width + col * octagonWidth;
+      double x = startX + 60 + col * 88;
 
       // Top row: A-K (white text — visible on black background)
-      Text topLabel = new Text(x, boardTop, letters[col]);
+      Text topLabel = new Text(x, startY + 15, letters[col]);
       topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       topLabel.setFill(Color.WHITE);
 
       // Bottom row: A-K (white text — visible on black background)
-      Text bottomLabel = new Text(x, boardBottom + width, letters[col]);
+      Text bottomLabel = new Text(x, startY + 1010, letters[col]);
       bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       bottomLabel.setFill(Color.WHITE);
 
@@ -971,15 +954,15 @@ public class QSSController {
     }
 
     for (int row = 0; row < 11; row++) {
-      double y = boardTop + width + row * octagonWidth;
+      double y = startY + 68 + row * 88;
       int number = 11 - row;
 
       // Left numbers (black text on brown background)
-      Text leftLabel = new Text(boardLeft - width, y, String.valueOf(number));
+      Text leftLabel = new Text(startX + 5, y + 5, String.valueOf(number));
       leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
       // Right numbers (black text on brown background)
-      Text rightLabel = new Text(boardRight, y, String.valueOf(number));
+      Text rightLabel = new Text(startX + 1000, y + 5, String.valueOf(number));
       rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
       pane.getChildren().addAll(leftLabel, rightLabel);
@@ -1089,88 +1072,21 @@ public class QSSController {
 
  */
 
-  public void resize() {
+  private void resize() {
 
-    for (int i = 0; i < Game.MAX_OCTAGONS; i++) {
-      for (int j = 0; j < Game.MAX_OCTAGONS; j++) {
-        opolygons[i][j] = (Polygon) getNodeWithID("O" + i + "_" + j);
-      }
-    }
-
-    for (int i = 0; i < Game.MAX_RHOMBIS; i++) {
-      for (int j = 0; j < Game.MAX_RHOMBIS; j++) {
-        rpolygons[i][j] = (Polygon) getNodeWithID("R" + i + "_" + j);
-      }
-    }
-
-    double maxHeight = Screen.getPrimary().getVisualBounds().getHeight();
     double maxWidth = Screen.getPrimary().getVisualBounds().getWidth();
-    mainAnchor.resize(maxWidth, maxHeight);
+    double maxHeight = Screen.getPrimary().getVisualBounds().getHeight();
 
     double normalOctagonWidth = 88/0.75;
-    // scale * normalOctagonWidth * 11 = boardAnchor.width
-    scale = (Math.min(maxHeight, maxWidth) * 0.7)/(normalOctagonWidth * 11);
-    octagonWidth = scale * normalOctagonWidth;
-
-
-    for (int i = 0; i < Game.MAX_OCTAGONS; i++) {
-      for (int j = 0; j < Game.MAX_OCTAGONS; j++) {
-        Polygon thisP = opolygons[i][j];
-        thisP.setScaleX(scale);
-        thisP.setScaleY(scale);
-        thisP.setLayoutX(octagonWidth * j);
-        thisP.setLayoutY(octagonWidth * i);
-      }
+    double scale;
+    if (maxWidth <= maxHeight) {
+      scale = (0.95 * Math.min(maxHeight, maxWidth))/(11* normalOctagonWidth + 350);
+    }else {
+      scale = (0.95 * Math.min(maxHeight, maxWidth))/(11* normalOctagonWidth);
     }
+    System.out.println(scale);
 
-    for (int i = 0; i < Game.MAX_RHOMBIS; i++) {
-      for (int j = 0; j < Game.MAX_RHOMBIS; j++) {
-        Polygon thisP = rpolygons[i][j];
-        thisP.setScaleX(scale);
-        thisP.setScaleY(scale);
-        thisP.setLayoutX(octagonWidth/2 + octagonWidth * j);
-        thisP.setLayoutY(octagonWidth/2 + octagonWidth * i);
-      }
-    }
-
-    double boarderWidth = 0.5 * octagonWidth;
-
-    boardTop = opolygons[0][0].getLayoutX() + (normalOctagonWidth - octagonWidth);
-    boardLeft = opolygons[0][0].getLayoutY() + (normalOctagonWidth - octagonWidth);
-    boardRight = boardLeft + 11 * octagonWidth;
-    boardBottom = boardTop + 11 * octagonWidth;
-
-    blackTop.setLayoutX(boardLeft - boarderWidth);
-    blackTop.setLayoutY(boardTop - boarderWidth);
-    blackTop.setPrefWidth(boardRight - boardLeft + 2 * boarderWidth);
-    blackTop.setPrefHeight(2 * boarderWidth);
-
-    whiteLeft.setLayoutX(boardLeft - boarderWidth);
-    whiteLeft.setLayoutY(boardTop);
-    whiteLeft.setPrefWidth(2 * boarderWidth);
-    whiteLeft.setPrefHeight(boardBottom - boardTop);
-
-    blackBottom.setLayoutX(boardLeft - boarderWidth);
-    blackBottom.setLayoutY(boardBottom - boarderWidth);
-    blackBottom.setPrefWidth(boardRight - boardLeft + 2 * boarderWidth);
-    blackBottom.setPrefHeight(2 * boarderWidth);
-
-    whiteRight.setLayoutX(boardRight - boarderWidth);
-    whiteRight.setLayoutY(boardTop);
-    whiteRight.setPrefWidth(2 * boarderWidth);
-    whiteRight.setPrefHeight(boardBottom - boardTop);
-
-    title.setLayoutX(boardLeft + 5 * octagonWidth);
-
-    addBoardLabels();
-
-    buttonPanel.setLayoutY(boardBottom + octagonWidth);
-    buttonPanel.setLayoutX(boardLeft);
-    buttonPanel.setPrefWidth(boardRight - boardLeft);
-
-    rightPane.setLayoutY(boardTop);
-    rightPane.setLayoutX(boardRight + octagonWidth);
-    rightPane.setPrefHeight(boardBottom - boardTop);
+    mainAnchor.getTransforms().add(new Scale(scale, scale));
 
   }
 

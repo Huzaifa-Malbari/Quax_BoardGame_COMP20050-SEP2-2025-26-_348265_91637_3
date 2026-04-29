@@ -10,56 +10,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController">
-   <AnchorPane fx:id="buttonPanel" layoutX="154.0" layoutY="1095.0" prefHeight="113.0" prefWidth="873.0">
-      <children>
-      
-               <Label fx:id="turnLabel" layoutX="211.0" layoutY="49.0" prefHeight="31.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 18;" text="Black's Turn" textAlignment="CENTER" />
-      
-               <Polygon fx:id="promptOct" fill="black" layoutX="-33.0" layoutY="-48.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
-            <points>
-               <Double fx:value="75.1" />
-               <Double fx:value="40.0" />
-               <Double fx:value="124.9" />
-               <Double fx:value="40.0" />
-               <Double fx:value="160.0" />
-               <Double fx:value="75.1" />
-               <Double fx:value="160.0" />
-               <Double fx:value="124.9" />
-               <Double fx:value="124.9" />
-               <Double fx:value="160.0" />
-               <Double fx:value="75.1" />
-               <Double fx:value="160.0" />
-               <Double fx:value="40.0" />
-               <Double fx:value="124.9" />
-               <Double fx:value="40.0" />
-               <Double fx:value="75.1" />
-            </points>
-         </Polygon>
-         <Polygon fx:id="promptRhombus" fill="black" layoutX="47.0" layoutY="-33.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
-            <points>
-               <Double fx:value="100.0" />
-               <Double fx:value="64.9" />
-               <Double fx:value="135.1" />
-               <Double fx:value="100.0" />
-               <Double fx:value="100.0" />
-               <Double fx:value="135.1" />
-               <Double fx:value="64.9" />
-               <Double fx:value="100.0" />
-            </points>
-            </Polygon>
-      
-                  <!-- Turn indicator arrow -->
-         <Label layoutX="176.0" layoutY="52.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="→" />
-         <Button fx:id="pieRuleButton" layoutX="484.0" layoutY="11.0" mnemonicParsing="false" onAction="#activatePieRule" prefHeight="25.0" prefWidth="194.0" text="Activate Pie Rule" AnchorPane.rightAnchor="194.98179463536368" AnchorPane.topAnchor="0.0" />
-         <Button fx:id="showBotStrategyButton" layoutX="484.0" layoutY="11.0" mnemonicParsing="false" onAction="#showBotStrategyButton" prefHeight="25.0" prefWidth="194.0" text="Show Bot Strategy" AnchorPane.rightAnchor="0.3636195663584658" AnchorPane.topAnchor="0.0" />
-      </children>
-   </AnchorPane>
-      <BorderPane fx:id="whiteRight" layoutX="1060.3636474609375" layoutY="95.74545288085938" prefHeight="914.0" prefWidth="53.0" style="-fx-background-color: white;" />
-      <BorderPane fx:id="whiteLeft" layoutX="101.36363220214844" layoutY="95.74545288085938" prefHeight="914.0" prefWidth="46.0" style="-fx-background-color: white;" />
-      <BorderPane fx:id="blackTop" layoutX="100.36363220214844" layoutY="49.745452880859375" prefHeight="46.0" prefWidth="1011.0" style="-fx-background-color: black;" />
-      <BorderPane fx:id="blackBottom" layoutX="100.36363220214844" layoutY="1009.7454223632812" prefHeight="53.0" prefWidth="1011.0" style="-fx-background-color: black;" />
-      <Polygon fx:id="O0_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+
+<AnchorPane fx:id="mainAnchor" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hio.qss.QSSController">
+
+         <Label fx:id="turnLabel" layoutX="395.0" layoutY="1152.0" prefHeight="31.0" prefWidth="250.0" style="-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 30;" text="Black's Turn" textAlignment="CENTER">
+      <font>
+         <Font size="11.0" />
+      </font>
+   </Label>
+      <BorderPane layoutX="1135.0" layoutY="139.0" prefHeight="914.0" prefWidth="53.0" style="-fx-background-color: white;" />
+      <BorderPane layoutX="176.0" layoutY="139.0" prefHeight="914.0" prefWidth="46.0" style="-fx-background-color: white;" />
+      <BorderPane layoutX="175.0" layoutY="93.0" prefHeight="46.0" prefWidth="1011.0" style="-fx-background-color: black;" />
+      <BorderPane layoutX="175.0" layoutY="1053.0" prefHeight="53.0" prefWidth="1011.0" style="-fx-background-color: black;" />
+      <Polygon fx:id="O0_0" fill="#d0a60e" layoutX="139.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -79,7 +42,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_1" fill="#d0a60e" layoutX="227.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -99,7 +62,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_2" fill="#d0a60e" layoutX="315.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -119,7 +82,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_3" fill="#d0a60e" layoutX="403.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -139,7 +102,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_4" fill="#d0a60e" layoutX="491.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -159,7 +122,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_5" fill="#d0a60e" layoutX="579.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -179,7 +142,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_6" fill="#d0a60e" layoutX="667.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -199,7 +162,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_7" fill="#d0a60e" layoutX="755.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -219,7 +182,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_8" fill="#d0a60e" layoutX="843.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -239,7 +202,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_9" fill="#d0a60e" layoutX="931.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -259,7 +222,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O0_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="69.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O0_10" fill="#d0a60e" layoutX="1019.0" layoutY="58.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -279,7 +242,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_0" fill="#d0a60e" layoutX="139.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -299,7 +262,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_1" fill="#d0a60e" layoutX="227.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -319,7 +282,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_2" fill="#d0a60e" layoutX="315.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -339,7 +302,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_3" fill="#d0a60e" layoutX="403.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -359,7 +322,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_4" fill="#d0a60e" layoutX="491.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -379,7 +342,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_5" fill="#d0a60e" layoutX="579.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -399,7 +362,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_6" fill="#d0a60e" layoutX="667.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -419,7 +382,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_7" fill="#d0a60e" layoutX="755.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -439,7 +402,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_8" fill="#d0a60e" layoutX="843.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -459,7 +422,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_9" fill="#d0a60e" layoutX="931.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -479,7 +442,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O1_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="157.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O1_10" fill="#d0a60e" layoutX="1019.0" layoutY="146.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -499,7 +462,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_0" fill="#d0a60e" layoutX="139.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -519,7 +482,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_1" fill="#d0a60e" layoutX="227.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -539,7 +502,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_2" fill="#d0a60e" layoutX="315.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -559,7 +522,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_3" fill="#d0a60e" layoutX="403.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -579,7 +542,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_4" fill="#d0a60e" layoutX="491.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -599,7 +562,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_5" fill="#d0a60e" layoutX="579.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -619,7 +582,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_6" fill="#d0a60e" layoutX="667.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -639,7 +602,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_7" fill="#d0a60e" layoutX="755.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -659,7 +622,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_8" fill="#d0a60e" layoutX="843.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -679,7 +642,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_9" fill="#d0a60e" layoutX="931.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -699,7 +662,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O2_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="245.74545288085938" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O2_10" fill="#d0a60e" layoutX="1019.0" layoutY="234.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -719,7 +682,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_0" fill="#d0a60e" layoutX="139.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -739,7 +702,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_1" fill="#d0a60e" layoutX="227.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -759,7 +722,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_2" fill="#d0a60e" layoutX="315.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -779,7 +742,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_3" fill="#d0a60e" layoutX="403.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -799,7 +762,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_4" fill="#d0a60e" layoutX="491.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -819,7 +782,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_5" fill="#d0a60e" layoutX="579.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -839,7 +802,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_6" fill="#d0a60e" layoutX="667.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -859,7 +822,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_7" fill="#d0a60e" layoutX="755.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -879,7 +842,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_8" fill="#d0a60e" layoutX="843.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -899,7 +862,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_9" fill="#d0a60e" layoutX="931.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -919,7 +882,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O3_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="333.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O3_10" fill="#d0a60e" layoutX="1019.0" layoutY="322.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -939,7 +902,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_0" fill="#d0a60e" layoutX="139.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -959,7 +922,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_1" fill="#d0a60e" layoutX="227.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -979,7 +942,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_2" fill="#d0a60e" layoutX="315.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -999,7 +962,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_3" fill="#d0a60e" layoutX="403.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1019,7 +982,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_4" fill="#d0a60e" layoutX="491.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1039,7 +1002,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_5" fill="#d0a60e" layoutX="579.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1059,7 +1022,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_6" fill="#d0a60e" layoutX="667.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1079,7 +1042,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_7" fill="#d0a60e" layoutX="755.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1099,7 +1062,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_8" fill="#d0a60e" layoutX="843.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1119,7 +1082,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_9" fill="#d0a60e" layoutX="931.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1139,7 +1102,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O4_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="421.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O4_10" fill="#d0a60e" layoutX="1019.0" layoutY="410.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1159,7 +1122,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_0" fill="#d0a60e" layoutX="139.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1179,7 +1142,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_1" fill="#d0a60e" layoutX="227.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1199,7 +1162,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_2" fill="#d0a60e" layoutX="315.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1219,7 +1182,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_3" fill="#d0a60e" layoutX="403.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1239,7 +1202,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_4" fill="#d0a60e" layoutX="491.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1259,7 +1222,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_5" fill="#d0a60e" layoutX="579.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1279,7 +1242,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_6" fill="#d0a60e" layoutX="667.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1299,7 +1262,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_7" fill="#d0a60e" layoutX="755.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1319,7 +1282,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_8" fill="#d0a60e" layoutX="843.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1339,7 +1302,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_9" fill="#d0a60e" layoutX="931.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1359,7 +1322,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O5_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="509.7454528808594" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O5_10" fill="#d0a60e" layoutX="1019.0" layoutY="498.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1379,7 +1342,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_0" fill="#d0a60e" layoutX="139.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1399,7 +1362,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_1" fill="#d0a60e" layoutX="227.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1419,7 +1382,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_2" fill="#d0a60e" layoutX="315.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1439,7 +1402,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_3" fill="#d0a60e" layoutX="403.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1459,7 +1422,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_4" fill="#d0a60e" layoutX="491.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1479,7 +1442,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_5" fill="#d0a60e" layoutX="579.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1499,7 +1462,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_6" fill="#d0a60e" layoutX="667.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1519,7 +1482,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_7" fill="#d0a60e" layoutX="755.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1539,7 +1502,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_8" fill="#d0a60e" layoutX="843.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1559,7 +1522,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_9" fill="#d0a60e" layoutX="931.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1579,7 +1542,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O6_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="597.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O6_10" fill="#d0a60e" layoutX="1019.0" layoutY="586.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1599,7 +1562,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_0" fill="#d0a60e" layoutX="139.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1619,7 +1582,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_1" fill="#d0a60e" layoutX="227.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1639,7 +1602,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_2" fill="#d0a60e" layoutX="315.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1659,7 +1622,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_3" fill="#d0a60e" layoutX="403.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1679,7 +1642,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_4" fill="#d0a60e" layoutX="491.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1699,7 +1662,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_5" fill="#d0a60e" layoutX="579.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1719,7 +1682,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_6" fill="#d0a60e" layoutX="667.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1739,7 +1702,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_7" fill="#d0a60e" layoutX="755.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1759,7 +1722,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_8" fill="#d0a60e" layoutX="843.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1779,7 +1742,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_9" fill="#d0a60e" layoutX="931.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1799,7 +1762,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O7_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="685.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O7_10" fill="#d0a60e" layoutX="1019.0" layoutY="674.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1819,7 +1782,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_0" fill="#d0a60e" layoutX="139.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1839,7 +1802,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_1" fill="#d0a60e" layoutX="227.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1859,7 +1822,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_2" fill="#d0a60e" layoutX="315.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1879,7 +1842,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_3" fill="#d0a60e" layoutX="403.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1899,7 +1862,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_4" fill="#d0a60e" layoutX="491.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1919,7 +1882,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_5" fill="#d0a60e" layoutX="579.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1939,7 +1902,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_6" fill="#d0a60e" layoutX="667.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1959,7 +1922,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_7" fill="#d0a60e" layoutX="755.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1979,7 +1942,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_8" fill="#d0a60e" layoutX="843.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -1999,7 +1962,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_9" fill="#d0a60e" layoutX="931.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2019,7 +1982,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O8_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="773.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O8_10" fill="#d0a60e" layoutX="1019.0" layoutY="762.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2039,7 +2002,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_0" fill="#d0a60e" layoutX="139.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2059,7 +2022,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_1" fill="#d0a60e" layoutX="227.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2079,7 +2042,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_2" fill="#d0a60e" layoutX="315.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2099,7 +2062,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_3" fill="#d0a60e" layoutX="403.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2119,7 +2082,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_4" fill="#d0a60e" layoutX="491.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2139,7 +2102,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_5" fill="#d0a60e" layoutX="579.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2159,7 +2122,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_6" fill="#d0a60e" layoutX="667.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2179,7 +2142,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_7" fill="#d0a60e" layoutX="755.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2199,7 +2162,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_8" fill="#d0a60e" layoutX="843.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2219,7 +2182,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_9" fill="#d0a60e" layoutX="931.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2239,7 +2202,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O9_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="861.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O9_10" fill="#d0a60e" layoutX="1019.0" layoutY="850.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2259,7 +2222,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_0" fill="#d0a60e" layoutX="119.36363220214844" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_0" fill="#d0a60e" layoutX="139.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2279,7 +2242,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_1" fill="#d0a60e" layoutX="207.36363220214844" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_1" fill="#d0a60e" layoutX="227.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2299,7 +2262,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_2" fill="#d0a60e" layoutX="295.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_2" fill="#d0a60e" layoutX="315.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2319,7 +2282,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_3" fill="#d0a60e" layoutX="383.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_3" fill="#d0a60e" layoutX="403.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2339,7 +2302,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_4" fill="#d0a60e" layoutX="471.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_4" fill="#d0a60e" layoutX="491.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2359,7 +2322,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_5" fill="#d0a60e" layoutX="559.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_5" fill="#d0a60e" layoutX="579.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2379,7 +2342,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_6" fill="#d0a60e" layoutX="647.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_6" fill="#d0a60e" layoutX="667.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2399,7 +2362,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_7" fill="#d0a60e" layoutX="735.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_7" fill="#d0a60e" layoutX="755.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2419,7 +2382,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_8" fill="#d0a60e" layoutX="823.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_8" fill="#d0a60e" layoutX="843.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2439,7 +2402,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_9" fill="#d0a60e" layoutX="911.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_9" fill="#d0a60e" layoutX="931.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2459,7 +2422,7 @@
             <Double fx:value="75.1" />
          </points>
       </Polygon>
-      <Polygon fx:id="O10_10" fill="#d0a60e" layoutX="999.3636474609375" layoutY="949.7454223632812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="O10_10" fill="#d0a60e" layoutX="1019.0" layoutY="938.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="75.1" />
             <Double fx:value="40.0" />
@@ -2480,1268 +2443,1317 @@
          </points>
       </Polygon>
 
-                  <Polygon fx:id="R0_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R0_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="132.4204559326172" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R1_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="220.42044067382812" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R2_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="308.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R3_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="396.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R4_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="484.4204406738281" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R5_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="572.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R6_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="660.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R7_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="748.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R8_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="836.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_0" fill="#eeae0b" layoutX="182.0386199951172" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_1" fill="#eeae0b" layoutX="270.03863525390625" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_2" fill="#eeae0b" layoutX="358.03863525390625" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_3" fill="#eeae0b" layoutX="446.03863525390625" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_4" fill="#eeae0b" layoutX="534.0386352539062" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_5" fill="#eeae0b" layoutX="622.0386352539062" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_6" fill="#eeae0b" layoutX="710.0386352539062" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_7" fill="#eeae0b" layoutX="798.0386352539062" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_8" fill="#eeae0b" layoutX="886.0386352539062" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-      <Polygon fx:id="R9_9" fill="#eeae0b" layoutX="974.0386962890625" layoutY="924.42041015625" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
-         <points>
-            <Double fx:value="100.0" />
-            <Double fx:value="64.9" />
-            <Double fx:value="135.1" />
-            <Double fx:value="100.0" />
-            <Double fx:value="100.0" />
-            <Double fx:value="135.1" />
-            <Double fx:value="64.9" />
-            <Double fx:value="100.0" />
-         </points>
-      </Polygon>
-   <AnchorPane fx:id="rightPane" layoutX="1144.0" layoutY="94.0">
-      <children>
-      
-               <Polygon fx:id="O10_12" fill="#d0a60e" layoutX="-50.0" layoutY="-28.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
-            <points>
-               <Double fx:value="75.1" />
-               <Double fx:value="40.0" />
-               <Double fx:value="124.9" />
-               <Double fx:value="40.0" />
-               <Double fx:value="160.0" />
-               <Double fx:value="75.1" />
-               <Double fx:value="160.0" />
-               <Double fx:value="124.9" />
-               <Double fx:value="124.9" />
-               <Double fx:value="160.0" />
-               <Double fx:value="75.1" />
-               <Double fx:value="160.0" />
-               <Double fx:value="40.0" />
-               <Double fx:value="124.9" />
-               <Double fx:value="40.0" />
-               <Double fx:value="75.1" />
-            </points>
-         </Polygon>
-      
-               <Polygon fx:id="R9_11" fill="#eeae0b" layoutX="7.0" layoutY="-7.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
-            <points>
-               <Double fx:value="100.0" />
-               <Double fx:value="64.9" />
-               <Double fx:value="135.1" />
-               <Double fx:value="100.0" />
-               <Double fx:value="100.0" />
-               <Double fx:value="135.1" />
-               <Double fx:value="64.9" />
-               <Double fx:value="100.0" />
-            </points>
-         </Polygon>
-         <!-- Unoccupied indicator labels -->
-         <Label layoutX="40.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="All" />
-         <Label layoutX="19.0" layoutY="174.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="unoccupied" />
-         <Label layoutX="19.0" layoutY="144.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="cells are" />
-         <ScrollPane fx:id="textualStrategyPane" layoutX="8.0" layoutY="204.0">
-            <content>
-             <AnchorPane minHeight="0.0" minWidth="0.0">
-                  <children>
-                     <Text layoutX="4.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The bot uses the A star algorithm to get paths from the last move's neighbours to all ending octagons. It then choses the shortest path. If no neighbours are free, the bot checks all other cells in the current chain. Otherwise start a new chain. On the GUI, the paths considered are show in random colours, and the chosen path is shown in Yellow. The chosen cell in DarkBlue" wrappingWidth="149.23635846098614" />
-                     <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="24.0" prefWidth="149.0" text="Textual Bot Strategy: " textAlignment="CENTER" textFill="RED">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </AnchorPane>
-            </content>
-         </ScrollPane>
-      </children>
-   </AnchorPane>
+         <Polygon fx:id="promptOct" fill="black" layoutX="200.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+      <points>
+         <Double fx:value="75.1" />
+         <Double fx:value="40.0" />
+         <Double fx:value="124.9" />
+         <Double fx:value="40.0" />
+         <Double fx:value="160.0" />
+         <Double fx:value="75.1" />
+         <Double fx:value="160.0" />
+         <Double fx:value="124.9" />
+         <Double fx:value="124.9" />
+         <Double fx:value="160.0" />
+         <Double fx:value="75.1" />
+         <Double fx:value="160.0" />
+         <Double fx:value="40.0" />
+         <Double fx:value="124.9" />
+         <Double fx:value="40.0" />
+         <Double fx:value="75.1" />
+      </points>
+   </Polygon>
 
-         <Label fx:id="title" layoutX="619.0" layoutY="28.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-text-fill: green;" text="Human VS Bot" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
+         <Polygon fx:id="O10_12" fill="#d0a60e" layoutX="1230.0" layoutY="189.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+      <points>
+         <Double fx:value="75.1" />
+         <Double fx:value="40.0" />
+         <Double fx:value="124.9" />
+         <Double fx:value="40.0" />
+         <Double fx:value="160.0" />
+         <Double fx:value="75.1" />
+         <Double fx:value="160.0" />
+         <Double fx:value="124.9" />
+         <Double fx:value="124.9" />
+         <Double fx:value="160.0" />
+         <Double fx:value="75.1" />
+         <Double fx:value="160.0" />
+         <Double fx:value="40.0" />
+         <Double fx:value="124.9" />
+         <Double fx:value="40.0" />
+         <Double fx:value="75.1" />
+      </points>
+   </Polygon>
+
+            <Polygon fx:id="R0_0" fill="#eeae0b" layoutX="183.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_1" fill="#eeae0b" layoutX="271.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_2" fill="#eeae0b" layoutX="359.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_3" fill="#eeae0b" layoutX="447.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_4" fill="#eeae0b" layoutX="535.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_5" fill="#eeae0b" layoutX="623.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_6" fill="#eeae0b" layoutX="711.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_7" fill="#eeae0b" layoutX="799.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_8" fill="#eeae0b" layoutX="887.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R0_9" fill="#eeae0b" layoutX="975.0" layoutY="102.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_0" fill="#eeae0b" layoutX="183.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_1" fill="#eeae0b" layoutX="271.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_2" fill="#eeae0b" layoutX="359.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_3" fill="#eeae0b" layoutX="447.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_4" fill="#eeae0b" layoutX="535.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_5" fill="#eeae0b" layoutX="623.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_6" fill="#eeae0b" layoutX="711.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_7" fill="#eeae0b" layoutX="799.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_8" fill="#eeae0b" layoutX="887.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R1_9" fill="#eeae0b" layoutX="975.0" layoutY="190.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_0" fill="#eeae0b" layoutX="183.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_1" fill="#eeae0b" layoutX="271.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_2" fill="#eeae0b" layoutX="359.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_3" fill="#eeae0b" layoutX="447.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_4" fill="#eeae0b" layoutX="535.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_5" fill="#eeae0b" layoutX="623.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_6" fill="#eeae0b" layoutX="711.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_7" fill="#eeae0b" layoutX="799.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_8" fill="#eeae0b" layoutX="887.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R2_9" fill="#eeae0b" layoutX="975.0" layoutY="278.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_0" fill="#eeae0b" layoutX="183.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_1" fill="#eeae0b" layoutX="271.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_2" fill="#eeae0b" layoutX="359.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_3" fill="#eeae0b" layoutX="447.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_4" fill="#eeae0b" layoutX="535.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_5" fill="#eeae0b" layoutX="623.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_6" fill="#eeae0b" layoutX="711.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_7" fill="#eeae0b" layoutX="799.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_8" fill="#eeae0b" layoutX="887.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R3_9" fill="#eeae0b" layoutX="975.0" layoutY="366.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_0" fill="#eeae0b" layoutX="183.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_1" fill="#eeae0b" layoutX="271.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_2" fill="#eeae0b" layoutX="359.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_3" fill="#eeae0b" layoutX="447.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_4" fill="#eeae0b" layoutX="535.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_5" fill="#eeae0b" layoutX="623.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_6" fill="#eeae0b" layoutX="711.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_7" fill="#eeae0b" layoutX="799.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_8" fill="#eeae0b" layoutX="887.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R4_9" fill="#eeae0b" layoutX="975.0" layoutY="454.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_0" fill="#eeae0b" layoutX="183.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_1" fill="#eeae0b" layoutX="271.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_2" fill="#eeae0b" layoutX="359.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_3" fill="#eeae0b" layoutX="447.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_4" fill="#eeae0b" layoutX="535.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_5" fill="#eeae0b" layoutX="623.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_6" fill="#eeae0b" layoutX="711.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_7" fill="#eeae0b" layoutX="799.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_8" fill="#eeae0b" layoutX="887.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R5_9" fill="#eeae0b" layoutX="975.0" layoutY="542.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_0" fill="#eeae0b" layoutX="183.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_1" fill="#eeae0b" layoutX="271.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_2" fill="#eeae0b" layoutX="359.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_3" fill="#eeae0b" layoutX="447.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_4" fill="#eeae0b" layoutX="535.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_5" fill="#eeae0b" layoutX="623.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_6" fill="#eeae0b" layoutX="711.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_7" fill="#eeae0b" layoutX="799.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_8" fill="#eeae0b" layoutX="887.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R6_9" fill="#eeae0b" layoutX="975.0" layoutY="630.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_0" fill="#eeae0b" layoutX="183.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_1" fill="#eeae0b" layoutX="271.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_2" fill="#eeae0b" layoutX="359.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_3" fill="#eeae0b" layoutX="447.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_4" fill="#eeae0b" layoutX="535.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_5" fill="#eeae0b" layoutX="623.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_6" fill="#eeae0b" layoutX="711.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_7" fill="#eeae0b" layoutX="799.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_8" fill="#eeae0b" layoutX="887.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R7_9" fill="#eeae0b" layoutX="975.0" layoutY="718.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_0" fill="#eeae0b" layoutX="183.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_1" fill="#eeae0b" layoutX="271.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_2" fill="#eeae0b" layoutX="359.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_3" fill="#eeae0b" layoutX="447.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_4" fill="#eeae0b" layoutX="535.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_5" fill="#eeae0b" layoutX="623.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_6" fill="#eeae0b" layoutX="711.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_7" fill="#eeae0b" layoutX="799.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_8" fill="#eeae0b" layoutX="887.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R8_9" fill="#eeae0b" layoutX="975.0" layoutY="806.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_0" fill="#eeae0b" layoutX="183.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_1" fill="#eeae0b" layoutX="271.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_2" fill="#eeae0b" layoutX="359.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_3" fill="#eeae0b" layoutX="447.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_4" fill="#eeae0b" layoutX="535.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_5" fill="#eeae0b" layoutX="623.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_6" fill="#eeae0b" layoutX="711.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_7" fill="#eeae0b" layoutX="799.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_8" fill="#eeae0b" layoutX="887.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="R9_9" fill="#eeae0b" layoutX="975.0" layoutY="894.0" onMouseClicked="#getCellID" scaleX="0.75" scaleY="0.75" scaleZ="0.75" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="100.0" />
+            <Double fx:value="64.9" />
+            <Double fx:value="135.1" />
+            <Double fx:value="100.0" />
+            <Double fx:value="100.0" />
+            <Double fx:value="135.1" />
+            <Double fx:value="64.9" />
+            <Double fx:value="100.0" />
+         </points>
+      </Polygon>
+   <Polygon fx:id="promptRhombus" fill="black" layoutX="265.0" layoutY="1115.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+      <points>
+         <Double fx:value="100.0" />
+         <Double fx:value="64.9" />
+         <Double fx:value="135.1" />
+         <Double fx:value="100.0" />
+         <Double fx:value="100.0" />
+         <Double fx:value="135.1" />
+         <Double fx:value="64.9" />
+         <Double fx:value="100.0" />
+      </points>
+      </Polygon>
+
+         <Polygon fx:id="R9_11" fill="#eeae0b" layoutX="1342.0" layoutY="210.0" scaleX="0.6" scaleY="0.6" scaleZ="0.6" stroke="BLACK" strokeType="INSIDE">
+      <points>
+         <Double fx:value="100.0" />
+         <Double fx:value="64.9" />
+         <Double fx:value="135.1" />
+         <Double fx:value="100.0" />
+         <Double fx:value="100.0" />
+         <Double fx:value="135.1" />
+         <Double fx:value="64.9" />
+         <Double fx:value="100.0" />
+      </points>
+   </Polygon>
+
+            <!-- Turn indicator arrow -->
+   <Label layoutX="358.0" layoutY="1144.0" style="-fx-font-size: 40; -fx-font-weight: bold;" text="→" />
+   <!-- Unoccupied indicator labels -->
+   <Label layoutX="1350.0" layoutY="176.0" style="-fx-font-weight: bold; -fx-font-size: 40;" text="All">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="1218.0" layoutY="350.0" style="-fx-font-size: 40; -fx-font-weight: bold;" text="cells are unoccupied" />
+
+         <Label layoutX="546.0" layoutY="14.0" prefHeight="65.0" prefWidth="338.0" style="-fx-text-fill: green;" text="Human VS Bot" textAlignment="CENTER">
 
                 <font>
-        <Font name="System Bold" size="21.0" />
+        <Font name="System Bold" size="45.0" />
     </font>
 
             </Label>
+   <Button fx:id="pieRuleButton" layoutX="833.0" layoutY="1112.0" mnemonicParsing="false" onAction="#activatePieRule" prefHeight="62.0" prefWidth="305.0" text="Activate Pie Rule" visible="false">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Button>
+   <Button fx:id="showBotStrategyButton" layoutX="833.0" layoutY="1184.0" mnemonicParsing="false" onAction="#showBotStrategyButton" prefHeight="62.0" prefWidth="305.0" text="Show Bot Strategy">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Button>
+   <ScrollPane fx:id="textualStrategyPane" layoutX="1218.0" layoutY="408.0" prefHeight="701.0" prefWidth="399.0" visible="false">
+      <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="396.0">
+            <children>
+               <Text layoutX="4.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The bot uses the A star algorithm to get paths from the last move's neighbours to all ending octagons. It then choses the shortest path. If no neighbours are free, the bot checks all other cells in the current chain. Otherwise start a new chain. On the GUI, the paths considered are show in random colours, and the chosen path is shown in Yellow. The chosen cell in DarkBlue" wrappingWidth="392.7820587158203">
+                  <font>
+                     <Font size="30.0" />
+                  </font>
+               </Text>
+               <Label alignment="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="43.0" prefWidth="339.0" text="Textual Bot Strategy: " textAlignment="CENTER" textFill="RED">
+                  <font>
+                     <Font name="System Bold" size="30.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+      </content>
+   </ScrollPane>
    </AnchorPane>
