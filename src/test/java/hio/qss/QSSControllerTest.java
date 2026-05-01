@@ -136,7 +136,7 @@ class QSSControllerTest {
   void shouldShowBotStrategyButton() {
     QSSController controller = new QSSController();
     controller.game = new Game();
-    assertTrue(controller.botStrategyButtonEnabled);
+    assertTrue(controller.isBotStrategyButtonEnabled());
   }
 
   @Test
