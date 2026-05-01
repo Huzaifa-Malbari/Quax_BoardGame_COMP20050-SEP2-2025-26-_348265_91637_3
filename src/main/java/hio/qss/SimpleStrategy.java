@@ -88,4 +88,9 @@ public class SimpleStrategy implements Strategy{
         return null;
     }
 
+    @Override
+    public ArrayList<SearchNode> getChosenPath() {
+        return paths.getFirst();
+    }
+
 }

@@ -8,22 +8,28 @@ public class BoardCell extends RawCell{
     private int col;
     private CellGroup group;
 
-
-    public CellGroup getGroup() {
-        return group;
-    }
-
-    public void setGroup(CellGroup group) {
-        this.group = group;
-    }
-
-
     public BoardCell (Boolean isRhombic, CellStatus status, int row, int col) {
         super(isRhombic, status);
         this.row = row;
         this.col = col;
         group = null;
 
+    }
+
+    public CellGroup getGroup() {
+        return group;
+    }
+
+    public ArrayList<BoardCell> getCellsInGroup() {
+        return group.getCells();
+    }
+
+    public BoardCell getFurthestCellInGroup() {
+        return group.getFurthest();
+    }
+
+    public void setGroup(CellGroup group) {
+        this.group = group;
     }
 
     public int getRow() {
@@ -50,15 +56,11 @@ public class BoardCell extends RawCell{
             return (thatFurthestLine > thisFurthestLine) ? true : false;
         }
 
-        // this is octagonal
-
         if (cell.getRhombic()) {
             return (thatFurthestLine >= thisFurthestLine) ? true : false;
         }
 
         return (thatFurthestLine > thisFurthestLine) ? true : false;
-
-
     }
 
     @Override
@@ -76,19 +78,14 @@ public class BoardCell extends RawCell{
 
         BoardCell[][] ocells = state.ocells();
         BoardCell[][] rcells = state.rcells();
-
         ArrayList<BoardCell> neighbours = new ArrayList<>();
 
         if (getRhombic()) {
-
             neighbours.add(ocells[row][col]);
             neighbours.add(ocells[row][col + 1]);
             neighbours.add(ocells[row + 1][col]);
             neighbours.add(ocells[row + 1][col + 1]);
-
         } else {
-
-            // check neighboring octagons
             if (row - 1 >= 0) {
                 neighbours.add(ocells[row - 1][col]);
             }
@@ -101,8 +98,6 @@ public class BoardCell extends RawCell{
             if (col + 1 < Game.MAX_OCTAGONS) {
                 neighbours.add(ocells[row][col + 1]);
             }
-
-            // check neighboring rhombises
 
             if (col - 1 >= 0) {
                 if (row < Game.MAX_RHOMBIS) {
@@ -119,7 +114,6 @@ public class BoardCell extends RawCell{
                 if (row - 1 >= 0) {
                     neighbours.add(rcells[row - 1][col]);
                 }
-
             }
         }
 

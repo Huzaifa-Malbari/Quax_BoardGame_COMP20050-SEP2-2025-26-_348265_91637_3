@@ -54,4 +54,8 @@ public class Bot {
     public Strategy getStrategy() {
         return strategy;
     }
+
+    public ArrayList<SearchNode> getChosenPath() {
+        return strategy.getChosenPath();
+    }
 }
