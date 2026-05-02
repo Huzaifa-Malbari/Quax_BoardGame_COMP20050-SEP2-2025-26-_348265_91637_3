@@ -1,5 +1,6 @@
 package hio.qss;
 
+import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -756,7 +757,6 @@ public class QSSController {
     updateTurnUI();
   }
 
-
   private void setPlayerTurnText(String text) {
     Color indicatorColor;
     if (game.isBlack()) {
@@ -901,13 +901,11 @@ public class QSSController {
     Pane pane = (Pane) O0_0.getParent();
     String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
 
-
     double boardLeft = 25;
     double boardRight = 995;
     double boardTop = 23;
     double boardBottom = 993;
     double frameEnd = 1025;
-
 
     int startX = (int) O0_0.getLayoutX() + 30;
     int startY = (int) O0_0.getLayoutY() + 30;
@@ -923,22 +921,18 @@ public class QSSController {
     Rectangle blackBottom = new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
     blackBottom.setFill(Color.BLACK);
 
-
     int numChildren = pane.getChildren().size();
     pane.getChildren().add(numChildren, blackBottom);
     pane.getChildren().add(numChildren, blackTop);
     pane.getChildren().add(numChildren, brownRight);
     pane.getChildren().add(numChildren, brownLeft);
 
-
     for (int col = 0; col < 11; col++) {
       double x = startX + 60 + col * 88;
-
 
       Text topLabel = new Text(x, startY + 15, letters[col]);
       topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
       topLabel.setFill(Color.WHITE);
-
 
       Text bottomLabel = new Text(x, startY + 1010, letters[col]);
       bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
@@ -951,10 +945,8 @@ public class QSSController {
       double y = startY + 68 + row * 88;
       int number = 11 - row;
 
-
       Text leftLabel = new Text(startX + 5, y + 5, String.valueOf(number));
       leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
-
 
       Text rightLabel = new Text(startX + 1000, y + 5, String.valueOf(number));
       rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
