@@ -1,6 +1,5 @@
 package hio.qss;
 
-import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -1047,7 +1046,7 @@ public class QSSController {
 
     double normalOctagonWidth = 88 / 0.75;
     double scale;
-    if (maxWidth <= maxHeight) {
+    if (maxWidth - 350 <= maxHeight) {
       scale = (0.95 * Math.min(maxHeight, maxWidth)) / (11 * normalOctagonWidth + 350);
     } else {
       scale = (0.95 * Math.min(maxHeight, maxWidth)) / (11 * normalOctagonWidth);
