@@ -724,6 +724,49 @@ public class QSSController {
   Game game = new Game();
 
   @FXML
+  public void initialize() {
+    addBoardLabels();
+    resize();
+    startGame();
+  }
+
+  private void startGame() {
+    game = new Game();
+    Random random = new Random();
+    if (random.nextDouble() >= 0.5) {
+      botMove();
+    } else {
+      game.getBot().setBlack(false);
+    }
+    setPlayerTurnText(null);
+  }
+
+  private void restartGame() {
+    resetColour();
+    pieRuleUsedOrExpired = false;
+    startGame();
+  }
+
+  private void resetColour() {
+    if (showStrategy) {
+      showBotStrategyButton();
+    }
+    changedColour = new ArrayList<Polygon>();
+    oldColour = new ArrayList<Paint>();
+
+    Pane pane = (Pane) O0_0.getParent();
+    for (Node node : pane.getChildren()) {
+      if (node instanceof Polygon) {
+        Polygon p = (Polygon) node;
+        String id = p.getId();
+        if (id != null && (id.startsWith("O") || id.startsWith("R"))) {
+          p.setFill(Color.web("#d0a60e"));
+        }
+      }
+    }
+  }
+
+  @FXML
   void getCellID(MouseEvent event) {
     Polygon polygon = (Polygon) event.getSource();
     placeCell(polygon);
@@ -749,23 +792,6 @@ public class QSSController {
     botMove();
 
     updateTurnUI();
-  }
-
-  private void setPlayerTurnText(String text) {
-    Color indicatorColor;
-    if (game.isBlack()) {
-      turnLabel.setText("Black's Turn");
-      indicatorColor = Color.BLACK;
-    } else {
-      turnLabel.setText("White's Turn");
-      indicatorColor = Color.WHITE;
-    }
-    promptOct.setFill(indicatorColor);
-    promptRhombus.setFill(indicatorColor);
-  }
-
-  String getTurnText() {
-    return game.isBlack() ? "Black's Turn" : "White's Turn";
   }
 
   private void placeCell(Polygon polygon) {
@@ -814,15 +840,6 @@ public class QSSController {
     }
   }
 
-  private Node getNodeWithID(String id) {
-    for (Node o : O0_0.getParent().getChildrenUnmodifiable()) {
-      if (o.getId() != null && o.getId().equals(id)) {
-        return o;
-      }
-    }
-    return null;
-  }
-
   private void displayWinner() {
     String winner = game.isBlackWins() ? "Black" : "White";
     turnLabel.setText(winner + " Wins!");
@@ -846,111 +863,6 @@ public class QSSController {
     alert.show();
   }
 
-  private void restartGame() {
-    resetColour();
-    pieRuleUsedOrExpired = false;
-    startGame();
-  }
-
-  private void resetColour() {
-    if (showStrategy) {
-      showBotStrategyButton();
-    }
-    changedColour = new ArrayList<Polygon>();
-    oldColour = new ArrayList<Paint>();
-
-    Pane pane = (Pane) O0_0.getParent();
-    for (Node node : pane.getChildren()) {
-      if (node instanceof Polygon) {
-        Polygon p = (Polygon) node;
-        String id = p.getId();
-        if (id != null && (id.startsWith("O") || id.startsWith("R"))) {
-          p.setFill(Color.web("#d0a60e"));
-        }
-      }
-    }
-  }
-
-  @FXML
-  public void initialize() {
-    addBoardLabels();
-    resize();
-    startGame();
-  }
-
-  private void startGame() {
-    game = new Game();
-    Random random = new Random();
-    if (random.nextDouble() >= 0.5) {
-      botMove();
-    } else {
-      game.getBot().setBlack(false);
-    }
-    setPlayerTurnText(null);
-  }
-
-  private void addBoardLabels() {
-    Pane pane = (Pane) O0_0.getParent();
-    String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
-
-    double boardLeft = 25;
-    double boardRight = 995;
-    double boardTop = 23;
-    double boardBottom = 993;
-    double frameEnd = 1025;
-
-    int startX = (int) O0_0.getLayoutX() + 30;
-    int startY = (int) O0_0.getLayoutY() + 30;
-    Rectangle brownLeft = new Rectangle(startX, startY, boardLeft, frameEnd);
-    brownLeft.setFill(Color.web("#8B4513"));
-
-    Rectangle brownRight = new Rectangle(startX + boardRight, startY, frameEnd - boardRight, frameEnd);
-    brownRight.setFill(Color.web("#8B4513"));
-
-    Rectangle blackTop = new Rectangle(startX, startY, frameEnd, boardTop);
-    blackTop.setFill(Color.BLACK);
-
-    Rectangle blackBottom = new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
-    blackBottom.setFill(Color.BLACK);
-
-    int numChildren = pane.getChildren().size();
-    pane.getChildren().add(numChildren, blackBottom);
-    pane.getChildren().add(numChildren, blackTop);
-    pane.getChildren().add(numChildren, brownRight);
-    pane.getChildren().add(numChildren, brownLeft);
-
-    for (int col = 0; col < 11; col++) {
-      double x = startX + 60 + col * 88;
-
-      Text topLabel = new Text(x, startY + 15, letters[col]);
-      topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
-      topLabel.setFill(Color.WHITE);
-
-      Text bottomLabel = new Text(x, startY + 1010, letters[col]);
-      bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
-      bottomLabel.setFill(Color.WHITE);
-
-      pane.getChildren().addAll(topLabel, bottomLabel);
-    }
-
-    for (int row = 0; row < 11; row++) {
-      double y = startY + 68 + row * 88;
-      int number = 11 - row;
-
-      Text leftLabel = new Text(startX + 5, y + 5, String.valueOf(number));
-      leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
-
-      Text rightLabel = new Text(startX + 1000, y + 5, String.valueOf(number));
-      rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
-
-      pane.getChildren().addAll(leftLabel, rightLabel);
-    }
-  }
-
-  boolean shouldShowPieRuleButton() {
-    return !pieRuleUsedOrExpired && game.getMoveCount() == 1 && !game.isBlack();
-  }
-
   private void updateTurnUI() {
     if (game.isBlack()) {
       turnLabel.setText("Black's Turn");
@@ -964,8 +876,25 @@ public class QSSController {
     pieRuleButton.setManaged(showPieRule);
   }
 
-  public boolean isBotStrategyButtonEnabled() {
-    return botStrategyButtonEnabled;
+  private void setPlayerTurnText(String text) {
+    Color indicatorColor;
+    if (game.isBlack()) {
+      turnLabel.setText("Black's Turn");
+      indicatorColor = Color.BLACK;
+    } else {
+      turnLabel.setText("White's Turn");
+      indicatorColor = Color.WHITE;
+    }
+    promptOct.setFill(indicatorColor);
+    promptRhombus.setFill(indicatorColor);
+  }
+
+  String getTurnText() {
+    return game.isBlack() ? "Black's Turn" : "White's Turn";
+  }
+
+  boolean shouldShowPieRuleButton() {
+    return !pieRuleUsedOrExpired && game.getMoveCount() == 1 && !game.isBlack();
   }
 
   @FXML
@@ -1039,6 +968,73 @@ public class QSSController {
 
   }
 
+  private Node getNodeWithID(String id) {
+    for (Node o : O0_0.getParent().getChildrenUnmodifiable()) {
+      if (o.getId() != null && o.getId().equals(id)) {
+        return o;
+      }
+    }
+    return null;
+  }
+
+  private void addBoardLabels() {
+    Pane pane = (Pane) O0_0.getParent();
+    String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
+
+    double boardLeft = 25;
+    double boardRight = 995;
+    double boardTop = 23;
+    double boardBottom = 993;
+    double frameEnd = 1025;
+
+    int startX = (int) O0_0.getLayoutX() + 30;
+    int startY = (int) O0_0.getLayoutY() + 30;
+    Rectangle brownLeft = new Rectangle(startX, startY, boardLeft, frameEnd);
+    brownLeft.setFill(Color.web("#8B4513"));
+
+    Rectangle brownRight = new Rectangle(startX + boardRight, startY, frameEnd - boardRight, frameEnd);
+    brownRight.setFill(Color.web("#8B4513"));
+
+    Rectangle blackTop = new Rectangle(startX, startY, frameEnd, boardTop);
+    blackTop.setFill(Color.BLACK);
+
+    Rectangle blackBottom = new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
+    blackBottom.setFill(Color.BLACK);
+
+    int numChildren = pane.getChildren().size();
+    pane.getChildren().add(numChildren, blackBottom);
+    pane.getChildren().add(numChildren, blackTop);
+    pane.getChildren().add(numChildren, brownRight);
+    pane.getChildren().add(numChildren, brownLeft);
+
+    for (int col = 0; col < 11; col++) {
+      double x = startX + 60 + col * 88;
+
+      Text topLabel = new Text(x, startY + 15, letters[col]);
+      topLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+      topLabel.setFill(Color.WHITE);
+
+      Text bottomLabel = new Text(x, startY + 1010, letters[col]);
+      bottomLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+      bottomLabel.setFill(Color.WHITE);
+
+      pane.getChildren().addAll(topLabel, bottomLabel);
+    }
+
+    for (int row = 0; row < 11; row++) {
+      double y = startY + 68 + row * 88;
+      int number = 11 - row;
+
+      Text leftLabel = new Text(startX + 5, y + 5, String.valueOf(number));
+      leftLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+      Text rightLabel = new Text(startX + 1000, y + 5, String.valueOf(number));
+      rightLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+      pane.getChildren().addAll(leftLabel, rightLabel);
+    }
+  }
+
   private void resize() {
 
     double maxWidth = Screen.getPrimary().getVisualBounds().getWidth();
@@ -1054,6 +1050,10 @@ public class QSSController {
 
     mainAnchor.getTransforms().add(new Scale(scale, scale));
 
+  }
+
+  public boolean isBotStrategyButtonEnabled() {
+    return botStrategyButtonEnabled;
   }
 
 }
