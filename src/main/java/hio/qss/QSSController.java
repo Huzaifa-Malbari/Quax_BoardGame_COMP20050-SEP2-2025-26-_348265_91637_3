@@ -23,7 +23,6 @@ import javafx.scene.control.Button;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 public class QSSController {
   @FXML
   private Polygon O0_0;
@@ -715,10 +714,7 @@ public class QSSController {
   @FXML
   private Label turnLabel;
 
-
-
-
-  private boolean pieRuleUsedOrExpired = false; // added by Ioan
+  private boolean pieRuleUsedOrExpired = false;
   private Polygon highlightedBotCell = null;
   private boolean showStrategy = false;
 
@@ -738,7 +734,7 @@ public class QSSController {
   }
 
   @FXML
-  private void activatePieRule() { // added by Ioan - button event handler
+  private void activatePieRule() {
     boolean canUsePieRule = !pieRuleUsedOrExpired &&
         game.getMoveCount() == 1 &&
         !game.isBlack();
@@ -749,7 +745,6 @@ public class QSSController {
 
     pieRuleUsedOrExpired = true;
 
-    // This usually means player 2 takes over player 1's first move / swaps sides.
     game.setBot(new Bot(game.getBot().getStrategy()));
     game.getBot().setBlack(false);
     botMove();
@@ -779,7 +774,7 @@ public class QSSController {
       Color color = (game.isBlack()) ? Color.BLACK : Color.WHITE;
 
       Boolean success = game.placeCell(polygon.getId());
-      // Update View
+
       if (success) {
         polygon.setFill(color);
 
@@ -789,8 +784,6 @@ public class QSSController {
           oldColour.remove(index);
         }
 
-        // If more than 1 move has been played, pie rule is no longer available. - added
-        // by Ioan
         if (game.getMoveCount() > 1) {
           pieRuleUsedOrExpired = true;
         }
@@ -815,7 +808,7 @@ public class QSSController {
     Bot bot = game.getBot();
     bot.calculatePaths(game.getState());
     String id = bot.getNextMove().getAssociatedCellID();
-    placeCell( (Polygon) getNodeWithID(id));
+    placeCell((Polygon) getNodeWithID(id));
     bot.setLastMove(game.getBoardCellWithID(bot.getNextMove().getAssociatedCellID()));
     if (showStrategy) {
       showPaths();
@@ -824,7 +817,7 @@ public class QSSController {
 
   private Node getNodeWithID(String id) {
     for (Node o : O0_0.getParent().getChildrenUnmodifiable()) {
-      if (o.getId() != null && o.getId().equals(id)){
+      if (o.getId() != null && o.getId().equals(id)) {
         return o;
       }
     }
@@ -891,7 +884,7 @@ public class QSSController {
     Random random = new Random();
     if (random.nextDouble() >= 0.5) {
       botMove();
-    }else {
+    } else {
       game.getBot().setBlack(false);
     }
     setPlayerTurnText(null);
@@ -955,13 +948,10 @@ public class QSSController {
     }
   }
 
-  // added by Ioan - checks if the pie rule button should be shown on screen
   boolean shouldShowPieRuleButton() {
     return !pieRuleUsedOrExpired && game.getMoveCount() == 1 && !game.isBlack();
   }
 
-  // added by Ioan - during Initialization it offers the option to activate the
-  // pie rule to the first player
   private void updateTurnUI() {
     if (game.isBlack()) {
       turnLabel.setText("Black's Turn");
@@ -1002,14 +992,13 @@ public class QSSController {
     changedColour = new ArrayList<>();
     oldColour = new ArrayList<>();
 
-
     for (SearchNode node : chosenPath) {
       Polygon polygon = (Polygon) getNodeWithID(node.getAssociatedCellID());
       oldColour.add(polygon.getFill());
       changedColour.add(polygon);
       if (node.equals(chosenPath.getFirst())) {
         polygon.setFill(Color.DARKBLUE);
-      }else {
+      } else {
         polygon.setFill(Color.YELLOW);
       }
     }
@@ -1022,9 +1011,8 @@ public class QSSController {
 
       Color color = Color.BLACK;
       do {
-      color = Color.rgb(random.nextInt(100, 256), random.nextInt(100, 256)
-              , random.nextInt(100, 256));
-      }while (color.equals(Color.BLACK) || color.equals(Color.WHITE) || color.equals(Color.LIGHTGREEN));
+        color = Color.rgb(random.nextInt(100, 256), random.nextInt(100, 256), random.nextInt(100, 256));
+      } while (color.equals(Color.BLACK) || color.equals(Color.WHITE) || color.equals(Color.LIGHTGREEN));
 
       for (SearchNode node : currpath) {
         Polygon polygon = (Polygon) getNodeWithID(node.getAssociatedCellID());
@@ -1052,20 +1040,18 @@ public class QSSController {
 
   }
 
-
   private void resize() {
 
     double maxWidth = Screen.getPrimary().getVisualBounds().getWidth();
     double maxHeight = Screen.getPrimary().getVisualBounds().getHeight();
 
-    double normalOctagonWidth = 88/0.75;
+    double normalOctagonWidth = 88 / 0.75;
     double scale;
     if (maxWidth <= maxHeight) {
-      scale = (0.95 * Math.min(maxHeight, maxWidth))/(11* normalOctagonWidth + 350);
-    }else {
-      scale = (0.95 * Math.min(maxHeight, maxWidth))/(11* normalOctagonWidth);
+      scale = (0.95 * Math.min(maxHeight, maxWidth)) / (11 * normalOctagonWidth + 350);
+    } else {
+      scale = (0.95 * Math.min(maxHeight, maxWidth)) / (11 * normalOctagonWidth);
     }
-    System.out.println(scale);
 
     mainAnchor.getTransforms().add(new Scale(scale, scale));
 
