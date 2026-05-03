@@ -5,6 +5,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class QSSControllerTest {
@@ -140,10 +142,15 @@ class QSSControllerTest {
   }
 
   @Test
-  void shouldShowBotStrategy() {
+  void shouldShowBotStrategy() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
     QSSController controller = new QSSController();
     controller.game = new Game();
-    Bot bot = controller.game.getBot();
+
+    Class clazz = Class.forName("hio.qss.QSSController");
+    Field qbot = clazz.getDeclaredField("bot");
+    qbot.setAccessible(true);
+
+    Bot bot = (Bot) qbot.get(controller);
     bot.calculatePaths(controller.game.getState());
     assertNotNull(bot.getNextMove());
   }

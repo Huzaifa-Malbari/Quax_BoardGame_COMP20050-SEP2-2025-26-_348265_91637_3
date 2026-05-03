@@ -16,8 +16,6 @@ public class Game {
   private BoardCell[][] rcells;
   private int moveCount;
 
-  private Bot bot;
-
   public Game() {
     isBlack = true;
     ocells = new BoardCell[11][11];
@@ -25,9 +23,6 @@ public class Game {
     blackWins = false;
     gameOver = false;
     moveCount = 0;
-
-    bot = new Bot(new ShortestPathStrategy());
-
     initialiseBoard();
   }
 
@@ -44,6 +39,7 @@ public class Game {
     }
   }
 
+  // deprecated: (kept for old tests)
   public boolean placeCell(Boolean isRhombic, int row, int col) {
     BoardCell cell = new BoardCell(isRhombic, CellStatus.Free, row, col);
     return placeCell(cell.getAssociatedCellID());
@@ -149,14 +145,6 @@ public class Game {
         }
       }
     }
-  }
-
-  public Bot getBot() {
-    return bot;
-  }
-
-  public void setBot(Bot bot) {
-    this.bot = bot;
   }
 
   public int getMoveCount() {

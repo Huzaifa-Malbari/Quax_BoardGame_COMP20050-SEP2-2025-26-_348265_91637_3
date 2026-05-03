@@ -90,9 +90,8 @@ class ShortestPathStrategyTest {
     void testGetChosenPath() {
 
         Game game = new Game();
-        game.setBot(new Bot(new ShortestPathStrategy()));
 
-        Bot bot = game.getBot();
+        Bot bot = new Bot(new ShortestPathStrategy());
         bot.calculatePaths(game.getState());
         bot.setLastMove(game.getState().ocells()[0][0]);
         assertEquals(game.getState().ocells()[0][0], bot.getNextMove());

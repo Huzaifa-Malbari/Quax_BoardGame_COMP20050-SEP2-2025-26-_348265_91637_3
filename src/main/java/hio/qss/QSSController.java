@@ -722,6 +722,7 @@ public class QSSController {
   private boolean botStrategyButtonEnabled = true;
 
   Game game = new Game();
+  Bot bot = new Bot(new ShortestPathStrategy());
 
   @FXML
   public void initialize() {
@@ -732,11 +733,12 @@ public class QSSController {
 
   private void startGame() {
     game = new Game();
+    bot = new Bot(new ShortestPathStrategy());
     Random random = new Random();
     if (random.nextDouble() >= 0.5) {
       botMove();
     } else {
-      game.getBot().setBlack(false);
+      bot.setBlack(false);
     }
     setPlayerTurnText(null);
   }
@@ -770,7 +772,7 @@ public class QSSController {
   void getCellID(MouseEvent event) {
     Polygon polygon = (Polygon) event.getSource();
     placeCell(polygon);
-    if (game.isBlack() == game.getBot().isBlack()) {
+    if (!game.isGameOver() && game.isBlack() == bot.isBlack()) {
       botMove();
     }
   }
@@ -787,8 +789,8 @@ public class QSSController {
 
     pieRuleUsedOrExpired = true;
 
-    game.setBot(new Bot(game.getBot().getStrategy()));
-    game.getBot().setBlack(false);
+    bot = new Bot(bot.getStrategy());
+    bot.setBlack(false);
     botMove();
 
     updateTurnUI();
@@ -830,7 +832,6 @@ public class QSSController {
     if (showStrategy) {
       hidePaths();
     }
-    Bot bot = game.getBot();
     bot.calculatePaths(game.getState());
     String id = bot.getNextMove().getAssociatedCellID();
     placeCell((Polygon) getNodeWithID(id));
@@ -911,7 +912,6 @@ public class QSSController {
   }
 
   private void showPaths() {
-    Bot bot = game.getBot();
     ArrayList<SearchNode> chosenPath = bot.getChosenPath();
     if (chosenPath == null) {
       return;
