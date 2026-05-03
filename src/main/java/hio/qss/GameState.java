@@ -1,4 +1,4 @@
+
 package hio.qss;
 
-public record GameState(BoardCell[][] ocells, BoardCell[][] rcells, boolean isBlack) {
-}
+public record GameState(BoardCell[][] ocells, BoardCell[][] rcells, boolean isBlack) {}

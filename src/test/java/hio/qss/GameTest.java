@@ -1,14 +1,13 @@
+
 package hio.qss;
-
-import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameTest {
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
+class GameTest {
   @Test
   void testPlaceCellValid() {
     Game game = new Game();
@@ -79,7 +78,6 @@ class GameTest {
       assertTrue(game.isGameOver());
       assertFalse(game.isBlackWins());
     }
-
   }
 
   /* Test for pie rule event - move count */

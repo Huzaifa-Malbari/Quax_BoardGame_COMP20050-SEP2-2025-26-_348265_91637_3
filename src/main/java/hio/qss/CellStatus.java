@@ -1,5 +1,4 @@
+
 package hio.qss;
 
-public enum CellStatus {
-    Free, B, W
-}
+public enum CellStatus { Free, B, W }

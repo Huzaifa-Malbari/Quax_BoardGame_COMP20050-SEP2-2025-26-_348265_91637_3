@@ -1,10 +1,14 @@
+
 package hio.qss;
 
+import java.util.ArrayList;
+import java.util.Random;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -18,700 +22,466 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import javafx.scene.control.Button;
-import java.util.ArrayList;
-import java.util.Random;
-
 public class QSSController {
-  @FXML
-  private Polygon O0_0;
+  @FXML private Polygon O0_0;
 
-  @FXML
-  private Polygon O0_1;
+  @FXML private Polygon O0_1;
 
-  @FXML
-  private Polygon O0_10;
+  @FXML private Polygon O0_10;
 
-  @FXML
-  private Polygon O0_2;
+  @FXML private Polygon O0_2;
 
-  @FXML
-  private Polygon O0_3;
+  @FXML private Polygon O0_3;
 
-  @FXML
-  private Polygon O0_4;
+  @FXML private Polygon O0_4;
 
-  @FXML
-  private Polygon O0_5;
+  @FXML private Polygon O0_5;
 
-  @FXML
-  private Polygon O0_6;
+  @FXML private Polygon O0_6;
 
-  @FXML
-  private Polygon O0_7;
+  @FXML private Polygon O0_7;
 
-  @FXML
-  private Polygon O0_8;
+  @FXML private Polygon O0_8;
 
-  @FXML
-  private Polygon O0_9;
+  @FXML private Polygon O0_9;
 
-  @FXML
-  private Polygon O10_0;
+  @FXML private Polygon O10_0;
 
-  @FXML
-  private Polygon O10_1;
+  @FXML private Polygon O10_1;
 
-  @FXML
-  private Polygon O10_10;
+  @FXML private Polygon O10_10;
 
-  @FXML
-  private Polygon O10_12;
+  @FXML private Polygon O10_12;
 
-  @FXML
-  private Polygon O10_2;
+  @FXML private Polygon O10_2;
 
-  @FXML
-  private Polygon O10_3;
+  @FXML private Polygon O10_3;
 
-  @FXML
-  private Polygon O10_4;
+  @FXML private Polygon O10_4;
 
-  @FXML
-  private Polygon O10_5;
+  @FXML private Polygon O10_5;
 
-  @FXML
-  private Polygon O10_6;
+  @FXML private Polygon O10_6;
 
-  @FXML
-  private Polygon O10_7;
+  @FXML private Polygon O10_7;
 
-  @FXML
-  private Polygon O10_8;
+  @FXML private Polygon O10_8;
 
-  @FXML
-  private Polygon O10_9;
+  @FXML private Polygon O10_9;
 
-  @FXML
-  private Polygon O1_0;
+  @FXML private Polygon O1_0;
 
-  @FXML
-  private Polygon O1_1;
+  @FXML private Polygon O1_1;
 
-  @FXML
-  private Polygon O1_10;
+  @FXML private Polygon O1_10;
 
-  @FXML
-  private Polygon O1_2;
+  @FXML private Polygon O1_2;
 
-  @FXML
-  private Polygon O1_3;
+  @FXML private Polygon O1_3;
 
-  @FXML
-  private Polygon O1_4;
+  @FXML private Polygon O1_4;
 
-  @FXML
-  private Polygon O1_5;
+  @FXML private Polygon O1_5;
 
-  @FXML
-  private Polygon O1_6;
+  @FXML private Polygon O1_6;
 
-  @FXML
-  private Polygon O1_7;
+  @FXML private Polygon O1_7;
 
-  @FXML
-  private Polygon O1_8;
+  @FXML private Polygon O1_8;
 
-  @FXML
-  private Polygon O1_9;
+  @FXML private Polygon O1_9;
 
-  @FXML
-  private Polygon O2_0;
+  @FXML private Polygon O2_0;
 
-  @FXML
-  private Polygon O2_1;
+  @FXML private Polygon O2_1;
 
-  @FXML
-  private Polygon O2_10;
+  @FXML private Polygon O2_10;
 
-  @FXML
-  private Polygon O2_2;
+  @FXML private Polygon O2_2;
 
-  @FXML
-  private Polygon O2_3;
+  @FXML private Polygon O2_3;
 
-  @FXML
-  private Polygon O2_4;
+  @FXML private Polygon O2_4;
 
-  @FXML
-  private Polygon O2_5;
+  @FXML private Polygon O2_5;
 
-  @FXML
-  private Polygon O2_6;
+  @FXML private Polygon O2_6;
 
-  @FXML
-  private Polygon O2_7;
+  @FXML private Polygon O2_7;
 
-  @FXML
-  private Polygon O2_8;
+  @FXML private Polygon O2_8;
 
-  @FXML
-  private Polygon O2_9;
+  @FXML private Polygon O2_9;
 
-  @FXML
-  private Polygon O3_0;
+  @FXML private Polygon O3_0;
 
-  @FXML
-  private Polygon O3_1;
+  @FXML private Polygon O3_1;
 
-  @FXML
-  private Polygon O3_10;
+  @FXML private Polygon O3_10;
 
-  @FXML
-  private Polygon O3_2;
+  @FXML private Polygon O3_2;
 
-  @FXML
-  private Polygon O3_3;
+  @FXML private Polygon O3_3;
 
-  @FXML
-  private Polygon O3_4;
+  @FXML private Polygon O3_4;
 
-  @FXML
-  private Polygon O3_5;
+  @FXML private Polygon O3_5;
 
-  @FXML
-  private Polygon O3_6;
+  @FXML private Polygon O3_6;
 
-  @FXML
-  private Polygon O3_7;
+  @FXML private Polygon O3_7;
 
-  @FXML
-  private Polygon O3_8;
+  @FXML private Polygon O3_8;
 
-  @FXML
-  private Polygon O3_9;
+  @FXML private Polygon O3_9;
 
-  @FXML
-  private Polygon O4_0;
+  @FXML private Polygon O4_0;
 
-  @FXML
-  private Polygon O4_1;
+  @FXML private Polygon O4_1;
 
-  @FXML
-  private Polygon O4_10;
+  @FXML private Polygon O4_10;
 
-  @FXML
-  private Polygon O4_2;
+  @FXML private Polygon O4_2;
 
-  @FXML
-  private Polygon O4_3;
+  @FXML private Polygon O4_3;
 
-  @FXML
-  private Polygon O4_4;
+  @FXML private Polygon O4_4;
 
-  @FXML
-  private Polygon O4_5;
+  @FXML private Polygon O4_5;
 
-  @FXML
-  private Polygon O4_6;
+  @FXML private Polygon O4_6;
 
-  @FXML
-  private Polygon O4_7;
+  @FXML private Polygon O4_7;
 
-  @FXML
-  private Polygon O4_8;
+  @FXML private Polygon O4_8;
 
-  @FXML
-  private Polygon O4_9;
+  @FXML private Polygon O4_9;
 
-  @FXML
-  private Polygon O5_0;
+  @FXML private Polygon O5_0;
 
-  @FXML
-  private Polygon O5_1;
+  @FXML private Polygon O5_1;
 
-  @FXML
-  private Polygon O5_10;
+  @FXML private Polygon O5_10;
 
-  @FXML
-  private Polygon O5_2;
+  @FXML private Polygon O5_2;
 
-  @FXML
-  private Polygon O5_3;
+  @FXML private Polygon O5_3;
 
-  @FXML
-  private Polygon O5_4;
+  @FXML private Polygon O5_4;
 
-  @FXML
-  private Polygon O5_5;
+  @FXML private Polygon O5_5;
 
-  @FXML
-  private Polygon O5_6;
+  @FXML private Polygon O5_6;
 
-  @FXML
-  private Polygon O5_7;
+  @FXML private Polygon O5_7;
 
-  @FXML
-  private Polygon O5_8;
+  @FXML private Polygon O5_8;
 
-  @FXML
-  private Polygon O5_9;
+  @FXML private Polygon O5_9;
 
-  @FXML
-  private Polygon O6_0;
+  @FXML private Polygon O6_0;
 
-  @FXML
-  private Polygon O6_1;
+  @FXML private Polygon O6_1;
 
-  @FXML
-  private Polygon O6_10;
+  @FXML private Polygon O6_10;
 
-  @FXML
-  private Polygon O6_2;
+  @FXML private Polygon O6_2;
 
-  @FXML
-  private Polygon O6_3;
+  @FXML private Polygon O6_3;
 
-  @FXML
-  private Polygon O6_4;
+  @FXML private Polygon O6_4;
 
-  @FXML
-  private Polygon O6_5;
+  @FXML private Polygon O6_5;
 
-  @FXML
-  private Polygon O6_6;
+  @FXML private Polygon O6_6;
 
-  @FXML
-  private Polygon O6_7;
+  @FXML private Polygon O6_7;
 
-  @FXML
-  private Polygon O6_8;
+  @FXML private Polygon O6_8;
 
-  @FXML
-  private Polygon O6_9;
+  @FXML private Polygon O6_9;
 
-  @FXML
-  private Polygon O7_0;
+  @FXML private Polygon O7_0;
 
-  @FXML
-  private Polygon O7_1;
+  @FXML private Polygon O7_1;
 
-  @FXML
-  private Polygon O7_10;
+  @FXML private Polygon O7_10;
 
-  @FXML
-  private Polygon O7_2;
+  @FXML private Polygon O7_2;
 
-  @FXML
-  private Polygon O7_3;
+  @FXML private Polygon O7_3;
 
-  @FXML
-  private Polygon O7_4;
+  @FXML private Polygon O7_4;
 
-  @FXML
-  private Polygon O7_5;
+  @FXML private Polygon O7_5;
 
-  @FXML
-  private Polygon O7_6;
+  @FXML private Polygon O7_6;
 
-  @FXML
-  private Polygon O7_7;
+  @FXML private Polygon O7_7;
 
-  @FXML
-  private Polygon O7_8;
+  @FXML private Polygon O7_8;
 
-  @FXML
-  private Polygon O7_9;
+  @FXML private Polygon O7_9;
 
-  @FXML
-  private Polygon O8_0;
+  @FXML private Polygon O8_0;
 
-  @FXML
-  private Polygon O8_1;
+  @FXML private Polygon O8_1;
 
-  @FXML
-  private Polygon O8_10;
+  @FXML private Polygon O8_10;
 
-  @FXML
-  private Polygon O8_2;
+  @FXML private Polygon O8_2;
 
-  @FXML
-  private Polygon O8_3;
+  @FXML private Polygon O8_3;
 
-  @FXML
-  private Polygon O8_4;
+  @FXML private Polygon O8_4;
 
-  @FXML
-  private Polygon O8_5;
+  @FXML private Polygon O8_5;
 
-  @FXML
-  private Polygon O8_6;
+  @FXML private Polygon O8_6;
 
-  @FXML
-  private Polygon O8_7;
+  @FXML private Polygon O8_7;
 
-  @FXML
-  private Polygon O8_8;
+  @FXML private Polygon O8_8;
 
-  @FXML
-  private Polygon O8_9;
+  @FXML private Polygon O8_9;
 
-  @FXML
-  private Polygon O9_0;
+  @FXML private Polygon O9_0;
 
-  @FXML
-  private Polygon O9_1;
+  @FXML private Polygon O9_1;
 
-  @FXML
-  private Polygon O9_10;
+  @FXML private Polygon O9_10;
 
-  @FXML
-  private Polygon O9_2;
+  @FXML private Polygon O9_2;
 
-  @FXML
-  private Polygon O9_3;
+  @FXML private Polygon O9_3;
 
-  @FXML
-  private Polygon O9_4;
+  @FXML private Polygon O9_4;
 
-  @FXML
-  private Polygon O9_5;
+  @FXML private Polygon O9_5;
 
-  @FXML
-  private Polygon O9_6;
+  @FXML private Polygon O9_6;
 
-  @FXML
-  private Polygon O9_7;
+  @FXML private Polygon O9_7;
 
-  @FXML
-  private Polygon O9_8;
+  @FXML private Polygon O9_8;
 
-  @FXML
-  private Polygon O9_9;
+  @FXML private Polygon O9_9;
 
-  @FXML
-  private Polygon R0_0;
+  @FXML private Polygon R0_0;
 
-  @FXML
-  private Polygon R0_1;
+  @FXML private Polygon R0_1;
 
-  @FXML
-  private Polygon R0_2;
+  @FXML private Polygon R0_2;
 
-  @FXML
-  private Polygon R0_3;
+  @FXML private Polygon R0_3;
 
-  @FXML
-  private Polygon R0_4;
+  @FXML private Polygon R0_4;
 
-  @FXML
-  private Polygon R0_5;
+  @FXML private Polygon R0_5;
 
-  @FXML
-  private Polygon R0_6;
+  @FXML private Polygon R0_6;
 
-  @FXML
-  private Polygon R0_7;
+  @FXML private Polygon R0_7;
 
-  @FXML
-  private Polygon R0_8;
+  @FXML private Polygon R0_8;
 
-  @FXML
-  private Polygon R0_9;
+  @FXML private Polygon R0_9;
 
-  @FXML
-  private Polygon R1_0;
+  @FXML private Polygon R1_0;
 
-  @FXML
-  private Polygon R1_1;
+  @FXML private Polygon R1_1;
 
-  @FXML
-  private Polygon R1_2;
+  @FXML private Polygon R1_2;
 
-  @FXML
-  private Polygon R1_3;
+  @FXML private Polygon R1_3;
 
-  @FXML
-  private Polygon R1_4;
+  @FXML private Polygon R1_4;
 
-  @FXML
-  private Polygon R1_5;
+  @FXML private Polygon R1_5;
 
-  @FXML
-  private Polygon R1_6;
+  @FXML private Polygon R1_6;
 
-  @FXML
-  private Polygon R1_7;
+  @FXML private Polygon R1_7;
 
-  @FXML
-  private Polygon R1_8;
+  @FXML private Polygon R1_8;
 
-  @FXML
-  private Polygon R1_9;
+  @FXML private Polygon R1_9;
 
-  @FXML
-  private Polygon R2_0;
+  @FXML private Polygon R2_0;
 
-  @FXML
-  private Polygon R2_1;
+  @FXML private Polygon R2_1;
 
-  @FXML
-  private Polygon R2_2;
+  @FXML private Polygon R2_2;
 
-  @FXML
-  private Polygon R2_3;
+  @FXML private Polygon R2_3;
 
-  @FXML
-  private Polygon R2_4;
+  @FXML private Polygon R2_4;
 
-  @FXML
-  private Polygon R2_5;
+  @FXML private Polygon R2_5;
 
-  @FXML
-  private Polygon R2_6;
+  @FXML private Polygon R2_6;
 
-  @FXML
-  private Polygon R2_7;
+  @FXML private Polygon R2_7;
 
-  @FXML
-  private Polygon R2_8;
+  @FXML private Polygon R2_8;
 
-  @FXML
-  private Polygon R2_9;
+  @FXML private Polygon R2_9;
 
-  @FXML
-  private Polygon R3_0;
+  @FXML private Polygon R3_0;
 
-  @FXML
-  private Polygon R3_1;
+  @FXML private Polygon R3_1;
 
-  @FXML
-  private Polygon R3_2;
+  @FXML private Polygon R3_2;
 
-  @FXML
-  private Polygon R3_3;
+  @FXML private Polygon R3_3;
 
-  @FXML
-  private Polygon R3_4;
+  @FXML private Polygon R3_4;
 
-  @FXML
-  private Polygon R3_5;
+  @FXML private Polygon R3_5;
 
-  @FXML
-  private Polygon R3_6;
+  @FXML private Polygon R3_6;
 
-  @FXML
-  private Polygon R3_7;
+  @FXML private Polygon R3_7;
 
-  @FXML
-  private Polygon R3_8;
+  @FXML private Polygon R3_8;
 
-  @FXML
-  private Polygon R3_9;
+  @FXML private Polygon R3_9;
 
-  @FXML
-  private Polygon R4_0;
+  @FXML private Polygon R4_0;
 
-  @FXML
-  private Polygon R4_1;
+  @FXML private Polygon R4_1;
 
-  @FXML
-  private Polygon R4_2;
+  @FXML private Polygon R4_2;
 
-  @FXML
-  private Polygon R4_3;
+  @FXML private Polygon R4_3;
 
-  @FXML
-  private Polygon R4_4;
+  @FXML private Polygon R4_4;
 
-  @FXML
-  private Polygon R4_5;
+  @FXML private Polygon R4_5;
 
-  @FXML
-  private Polygon R4_6;
+  @FXML private Polygon R4_6;
 
-  @FXML
-  private Polygon R4_7;
+  @FXML private Polygon R4_7;
 
-  @FXML
-  private Polygon R4_8;
+  @FXML private Polygon R4_8;
 
-  @FXML
-  private Polygon R4_9;
+  @FXML private Polygon R4_9;
 
-  @FXML
-  private Polygon R5_0;
+  @FXML private Polygon R5_0;
 
-  @FXML
-  private Polygon R5_1;
+  @FXML private Polygon R5_1;
 
-  @FXML
-  private Polygon R5_2;
+  @FXML private Polygon R5_2;
 
-  @FXML
-  private Polygon R5_3;
+  @FXML private Polygon R5_3;
 
-  @FXML
-  private Polygon R5_4;
+  @FXML private Polygon R5_4;
 
-  @FXML
-  private Polygon R5_5;
+  @FXML private Polygon R5_5;
 
-  @FXML
-  private Polygon R5_6;
+  @FXML private Polygon R5_6;
 
-  @FXML
-  private Polygon R5_7;
+  @FXML private Polygon R5_7;
 
-  @FXML
-  private Polygon R5_8;
+  @FXML private Polygon R5_8;
 
-  @FXML
-  private Polygon R5_9;
+  @FXML private Polygon R5_9;
 
-  @FXML
-  private Polygon R6_0;
+  @FXML private Polygon R6_0;
 
-  @FXML
-  private Polygon R6_1;
+  @FXML private Polygon R6_1;
 
-  @FXML
-  private Polygon R6_2;
+  @FXML private Polygon R6_2;
 
-  @FXML
-  private Polygon R6_3;
+  @FXML private Polygon R6_3;
 
-  @FXML
-  private Polygon R6_4;
+  @FXML private Polygon R6_4;
 
-  @FXML
-  private Polygon R6_5;
+  @FXML private Polygon R6_5;
 
-  @FXML
-  private Polygon R6_6;
+  @FXML private Polygon R6_6;
 
-  @FXML
-  private Polygon R6_7;
+  @FXML private Polygon R6_7;
 
-  @FXML
-  private Polygon R6_8;
+  @FXML private Polygon R6_8;
 
-  @FXML
-  private Polygon R6_9;
+  @FXML private Polygon R6_9;
 
-  @FXML
-  private Polygon R7_0;
+  @FXML private Polygon R7_0;
 
-  @FXML
-  private Polygon R7_1;
+  @FXML private Polygon R7_1;
 
-  @FXML
-  private Polygon R7_2;
+  @FXML private Polygon R7_2;
 
-  @FXML
-  private Polygon R7_3;
+  @FXML private Polygon R7_3;
 
-  @FXML
-  private Polygon R7_4;
+  @FXML private Polygon R7_4;
 
-  @FXML
-  private Polygon R7_5;
+  @FXML private Polygon R7_5;
 
-  @FXML
-  private Polygon R7_6;
+  @FXML private Polygon R7_6;
 
-  @FXML
-  private Polygon R7_7;
+  @FXML private Polygon R7_7;
 
-  @FXML
-  private Polygon R7_8;
+  @FXML private Polygon R7_8;
 
-  @FXML
-  private Polygon R7_9;
+  @FXML private Polygon R7_9;
 
-  @FXML
-  private Polygon R8_0;
+  @FXML private Polygon R8_0;
 
-  @FXML
-  private Polygon R8_1;
+  @FXML private Polygon R8_1;
 
-  @FXML
-  private Polygon R8_2;
+  @FXML private Polygon R8_2;
 
-  @FXML
-  private Polygon R8_3;
+  @FXML private Polygon R8_3;
 
-  @FXML
-  private Polygon R8_4;
+  @FXML private Polygon R8_4;
 
-  @FXML
-  private Polygon R8_5;
+  @FXML private Polygon R8_5;
 
-  @FXML
-  private Polygon R8_6;
+  @FXML private Polygon R8_6;
 
-  @FXML
-  private Polygon R8_7;
+  @FXML private Polygon R8_7;
 
-  @FXML
-  private Polygon R8_8;
+  @FXML private Polygon R8_8;
 
-  @FXML
-  private Polygon R8_9;
+  @FXML private Polygon R8_9;
 
-  @FXML
-  private Polygon R9_0;
+  @FXML private Polygon R9_0;
 
-  @FXML
-  private Polygon R9_1;
+  @FXML private Polygon R9_1;
 
-  @FXML
-  private Polygon R9_11;
+  @FXML private Polygon R9_11;
 
-  @FXML
-  private Polygon R9_2;
+  @FXML private Polygon R9_2;
 
-  @FXML
-  private Polygon R9_3;
+  @FXML private Polygon R9_3;
 
-  @FXML
-  private Polygon R9_4;
+  @FXML private Polygon R9_4;
 
-  @FXML
-  private Polygon R9_5;
+  @FXML private Polygon R9_5;
 
-  @FXML
-  private Polygon R9_6;
+  @FXML private Polygon R9_6;
 
-  @FXML
-  private Polygon R9_7;
+  @FXML private Polygon R9_7;
 
-  @FXML
-  private Polygon R9_8;
+  @FXML private Polygon R9_8;
 
-  @FXML
-  private Polygon R9_9;
+  @FXML private Polygon R9_9;
 
-  @FXML
-  private AnchorPane mainAnchor;
+  @FXML private AnchorPane mainAnchor;
 
-  @FXML
-  private Button pieRuleButton;
+  @FXML private Button pieRuleButton;
 
-  @FXML
-  private Polygon promptOct;
+  @FXML private Polygon promptOct;
 
-  @FXML
-  private Polygon promptRhombus;
+  @FXML private Polygon promptRhombus;
 
-  @FXML
-  private Button showBotStrategyButton;
+  @FXML private Button showBotStrategyButton;
 
-  @FXML
-  private ScrollPane textualStrategyPane;
+  @FXML private ScrollPane textualStrategyPane;
 
-  @FXML
-  private Label turnLabel;
+  @FXML private Label turnLabel;
 
   private boolean pieRuleUsedOrExpired = false;
   private Polygon highlightedBotCell = null;
@@ -779,9 +549,7 @@ public class QSSController {
 
   @FXML
   private void activatePieRule() {
-    boolean canUsePieRule = !pieRuleUsedOrExpired &&
-        game.getMoveCount() == 1 &&
-        !game.isBlack();
+    boolean canUsePieRule = !pieRuleUsedOrExpired && game.getMoveCount() == 1 && !game.isBlack();
 
     if (!canUsePieRule) {
       return;
@@ -846,7 +614,8 @@ public class QSSController {
     turnLabel.setText(winner + " Wins!");
 
     ButtonType restartButton = new ButtonType("Restart");
-    Alert alert = new Alert(Alert.AlertType.WARNING, winner + " Wins!", restartButton, ButtonType.OK);
+    Alert alert =
+        new Alert(Alert.AlertType.WARNING, winner + " Wins!", restartButton, ButtonType.OK);
     alert.setHeaderText("Game Over");
     alert.getDialogPane().setPrefSize(400, 200);
     alert.initModality(Modality.NONE);
@@ -857,7 +626,8 @@ public class QSSController {
       stage.setX((screen.getWidth() - stage.getWidth()) / 2);
       stage.setY((screen.getHeight() - stage.getHeight()) / 2);
 
-      alert.getDialogPane().lookupButton(restartButton)
+      alert.getDialogPane()
+          .lookupButton(restartButton)
           .addEventFilter(MouseEvent.MOUSE_RELEASED, ev -> restartGame());
     }));
 
@@ -936,11 +706,12 @@ public class QSSController {
 
     Random random = new Random();
     for (ArrayList<SearchNode> currpath : paths) {
-
       Color color = Color.BLACK;
       do {
-        color = Color.rgb(random.nextInt(100, 256), random.nextInt(100, 256), random.nextInt(100, 256));
-      } while (color.equals(Color.BLACK) || color.equals(Color.WHITE) || color.equals(Color.LIGHTGREEN));
+        color =
+            Color.rgb(random.nextInt(100, 256), random.nextInt(100, 256), random.nextInt(100, 256));
+      } while (
+          color.equals(Color.BLACK) || color.equals(Color.WHITE) || color.equals(Color.LIGHTGREEN));
 
       for (SearchNode node : currpath) {
         Polygon polygon = (Polygon) getNodeWithID(node.getAssociatedCellID());
@@ -950,10 +721,8 @@ public class QSSController {
         oldColour.add(polygon.getFill());
         changedColour.add(polygon);
         polygon.setFill(color);
-
       }
     }
-
   }
 
   private void hidePaths() {
@@ -965,7 +734,6 @@ public class QSSController {
       Polygon polygon = changedColour.removeFirst();
       polygon.setFill(oldColour.removeFirst());
     }
-
   }
 
   private Node getNodeWithID(String id) {
@@ -979,7 +747,7 @@ public class QSSController {
 
   private void addBoardLabels() {
     Pane pane = (Pane) O0_0.getParent();
-    String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
+    String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"};
 
     double boardLeft = 25;
     double boardRight = 995;
@@ -992,13 +760,15 @@ public class QSSController {
     Rectangle brownLeft = new Rectangle(startX, startY, boardLeft, frameEnd);
     brownLeft.setFill(Color.web("#8B4513"));
 
-    Rectangle brownRight = new Rectangle(startX + boardRight, startY, frameEnd - boardRight, frameEnd);
+    Rectangle brownRight =
+        new Rectangle(startX + boardRight, startY, frameEnd - boardRight, frameEnd);
     brownRight.setFill(Color.web("#8B4513"));
 
     Rectangle blackTop = new Rectangle(startX, startY, frameEnd, boardTop);
     blackTop.setFill(Color.BLACK);
 
-    Rectangle blackBottom = new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
+    Rectangle blackBottom =
+        new Rectangle(startX, startY + boardBottom, frameEnd, frameEnd - boardBottom);
     blackBottom.setFill(Color.BLACK);
 
     int numChildren = pane.getChildren().size();
@@ -1036,7 +806,6 @@ public class QSSController {
   }
 
   private void resize() {
-
     double maxWidth = Screen.getPrimary().getVisualBounds().getWidth();
     double maxHeight = Screen.getPrimary().getVisualBounds().getHeight();
 
@@ -1049,11 +818,9 @@ public class QSSController {
     }
 
     mainAnchor.getTransforms().add(new Scale(scale, scale));
-
   }
 
   public boolean isBotStrategyButtonEnabled() {
     return botStrategyButtonEnabled;
   }
-
 }

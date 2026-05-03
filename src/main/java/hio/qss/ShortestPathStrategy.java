@@ -1,3 +1,4 @@
+
 package hio.qss;
 
 import java.util.ArrayList;
@@ -53,7 +54,6 @@ public class ShortestPathStrategy implements Strategy {
   }
 
   private void addNeighbourPaths(GameState state, BoardCell lastMove) {
-
     for (BoardCell neighbour : lastMove.getNeighbours(state)) {
       if (!neighbour.getStatus().equals(CellStatus.Free)) {
         continue;
@@ -68,14 +68,11 @@ public class ShortestPathStrategy implements Strategy {
         }
         ArrayList<SearchNode> path = AStar.getShortestPathBetween(state, start, end);
         addPath(path);
-
       }
     }
-
   }
 
   private void addPath(ArrayList<SearchNode> path) {
-
     if (path.size() == 0) {
       return;
     }
@@ -86,11 +83,9 @@ public class ShortestPathStrategy implements Strategy {
         || path.size() == shortestPath.size() && path.getFirst().getRhombic()) {
       shortestPath = path;
     }
-
   }
 
   private BoardCell getNextFreeCell(GameState state) {
-
     for (int i = 0; i < state.ocells().length; i++) {
       for (int j = 0; j < state.ocells().length; j++) {
         if (!state.isBlack()) {
@@ -106,7 +101,6 @@ public class ShortestPathStrategy implements Strategy {
           i = j;
           j = temp;
         }
-
       }
     }
 
@@ -115,11 +109,9 @@ public class ShortestPathStrategy implements Strategy {
         if (state.rcells()[i][j].getStatus().equals(CellStatus.Free)) {
           return state.rcells()[i][j];
         }
-
       }
     }
 
     return null;
   }
-
 }

@@ -1,3 +1,4 @@
+
 package hio.qss;
 
 public class RawCell implements Cell {

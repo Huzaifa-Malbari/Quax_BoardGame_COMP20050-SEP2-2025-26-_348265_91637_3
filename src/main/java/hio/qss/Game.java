@@ -1,10 +1,10 @@
+
 package hio.qss;
 
-import javax.swing.*;
 import java.util.ArrayList;
+import javax.swing.*;
 
 public class Game {
-
   public static int MAX_RHOMBIS = 10;
   public static int MAX_OCTAGONS = 11;
 
@@ -46,7 +46,6 @@ public class Game {
   }
 
   public boolean placeCell(String id) {
-
     BoardCell cell = getBoardCellWithID(id);
 
     if (gameOver || !cell.getStatus().equals(CellStatus.Free)) {
@@ -61,7 +60,6 @@ public class Game {
   }
 
   private BoardCell updateCell(BoardCell cell) {
-
     int row = cell.getRow();
     int col = cell.getCol();
     CellStatus status = isBlack ? CellStatus.B : CellStatus.W;
@@ -84,7 +82,6 @@ public class Game {
   }
 
   private void updateChains(BoardCell thisCell) {
-
     int row = thisCell.getRow();
     int col = thisCell.getCol();
     boolean isRhombic = thisCell.getRhombic();
@@ -93,11 +90,13 @@ public class Game {
       thisCell = rcells[row][col];
     }
 
-    ArrayList<BoardCell> neighbours = thisCell.getNeighbours(new GameState(ocells, rcells, isBlack));
+    ArrayList<BoardCell> neighbours =
+        thisCell.getNeighbours(new GameState(ocells, rcells, isBlack));
     ArrayList<CellGroup> groups = new ArrayList<CellGroup>();
     CellGroup maxGroup = new CellGroup();
     for (BoardCell neighbour : neighbours) {
-      if (neighbour.getStatus().equals(thisCell.getStatus()) && !groups.contains(neighbour.getGroup())) {
+      if (neighbour.getStatus().equals(thisCell.getStatus())
+          && !groups.contains(neighbour.getGroup())) {
         groups.add(neighbour.getGroup());
         if (groups.size() > 0 && groups.getLast().size() > maxGroup.size()) {
           maxGroup = groups.getLast();
@@ -119,7 +118,6 @@ public class Game {
   }
 
   private void checkForWin() {
-
     if (isBlack) {
       for (int i = 0; i < MAX_OCTAGONS; i++) {
         if (!ocells[0][i].getStatus().equals(CellStatus.B)) {
@@ -166,5 +164,4 @@ public class Game {
       return ocells[row][col];
     }
   }
-
 }

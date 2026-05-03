@@ -1,13 +1,12 @@
+
 package hio.qss;
-
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BotTest {
+import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
+class BotTest {
   // Checks that a new Bot stores the strategy it was given, starts as black, and
   // has no remembered moves yet.
   @Test
@@ -58,7 +57,7 @@ class BotTest {
   /*
    * This is the most important behavior test. It verifies that when
    * Bot.calculatePaths(state) is called, the bot passes:
-   * 
+   *
    * the GameState
    * its own lastMove
    * its own lastOpponentMove
@@ -96,23 +95,25 @@ class BotTest {
   // RecordingStrategy is a fake version of Strategy
 
   private static class RecordingStrategy implements Strategy {
-    private final ArrayList<ArrayList<SearchNode>> paths = new ArrayList<>(); // Stores path data that the fake will
-                                                                              // return when getPaths() is called.
-    private SearchNode nextMove; // Stores the move that the fake will return when getNextMove() is called.
+    private final ArrayList<ArrayList<SearchNode>> paths =
+        new ArrayList<>(); // Stores path data that the fake will
+                           // return when getPaths() is called.
+    private SearchNode
+        nextMove; // Stores the move that the fake will return when getNextMove() is called.
     private GameState statePassed;
     private BoardCell lastMovePassed;
     private BoardCell lastOpponentMovePassed;
     // these save the values sent by the bot into calculatePaths(...)
 
     @Override
-    public ArrayList<ArrayList<SearchNode>> getPaths() { // we put test data into paths, then check that bot.getPaths()
-                                                         // returns it
+    public ArrayList<ArrayList<SearchNode>> getPaths() { // we put test data into paths, then check
+                                                         // that bot.getPaths() returns it
       return paths;
     }
 
     @Override
-    public SearchNode getNextMove() { // we put a SearchNode into nextMove, then check that bot.getNextMove() returns
-                                      // it.
+    public SearchNode getNextMove() { // we put a SearchNode into nextMove, then check that
+                                      // bot.getNextMove() returns it.
       return nextMove;
     }
 

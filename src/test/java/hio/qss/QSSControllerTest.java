@@ -1,18 +1,17 @@
+
 package hio.qss;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.lang.reflect.Field;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class QSSControllerTest {
   @Test
   void setPlayerTurnTextTest() {
-
     QSSController qssController = new QSSController();
 
     assertEquals("Black's Turn", qssController.getTurnText());
@@ -39,9 +38,9 @@ class QSSControllerTest {
   @Test
   void displayWinner() {
     QSSController qssController = new QSSController();
-    for(int row = 0; row <= 10; row++) {
+    for (int row = 0; row <= 10; row++) {
       qssController.game.placeCell(false, row, 0);
-      if(!qssController.game.isGameOver()){
+      if (!qssController.game.isGameOver()) {
         qssController.game.placeCell(false, row, 1);
       }
     }
@@ -69,9 +68,9 @@ class QSSControllerTest {
   @Test
   void whiteWinsTest() {
     QSSController qssController = new QSSController();
-    for(int col = 0; col <= 10; col++) {
-      qssController.game.placeCell(false, 1,  col);
-      if(!qssController.game.isGameOver()){
+    for (int col = 0; col <= 10; col++) {
+      qssController.game.placeCell(false, 1, col);
+      if (!qssController.game.isGameOver()) {
         qssController.game.placeCell(false, 5, col);
       }
     }
@@ -90,9 +89,9 @@ class QSSControllerTest {
   @Test
   void noMoveAfterGameOverTest() {
     QSSController qssController = new QSSController();
-    for(int row = 0; row <= 10; row++) {
+    for (int row = 0; row <= 10; row++) {
       qssController.game.placeCell(false, row, 5);
-      if(!qssController.game.isGameOver()){
+      if (!qssController.game.isGameOver()) {
         qssController.game.placeCell(false, row, 6);
       }
     }
@@ -142,7 +141,8 @@ class QSSControllerTest {
   }
 
   @Test
-  void shouldShowBotStrategy() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
+  void shouldShowBotStrategy()
+      throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
     QSSController controller = new QSSController();
     controller.game = new Game();
 
