@@ -88,18 +88,17 @@ public class ShortestPathStrategy implements Strategy {
   private BoardCell getNextFreeCell(GameState state) {
     for (int i = 0; i < state.ocells().length; i++) {
       for (int j = 0; j < state.ocells().length; j++) {
+        BoardCell cell = state.ocells()[i][j];
         if (!state.isBlack()) {
-          int temp = i;
-          i = j;
-          j = temp;
+          cell = state.ocells()[j][i];
         }
-        if (state.ocells()[i][j].getStatus().equals(CellStatus.Free)) {
-          return state.ocells()[i][j];
-        }
-        if (!state.isBlack()) {
-          int temp = i;
-          i = j;
-          j = temp;
+        if (cell.getStatus().equals(CellStatus.Free)) {
+          paths = new ArrayList<ArrayList<SearchNode>>();
+          addNeighbourPaths(state, new SearchNode(cell));
+          if (paths.size() != 0) {
+            paths = new ArrayList<ArrayList<SearchNode>>();
+            return cell;
+          }
         }
       }
     }
